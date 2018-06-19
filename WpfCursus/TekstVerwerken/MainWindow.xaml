@@ -5,25 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TekstVerwerken"
         mc:Ignorable="d"
-        Title="Werken met tekst" Height="400" Width="525">
+        Title="Werken met tekst" Height="800" Width="525">
    
     <Grid Margin="25">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">            Dit is een <Italic>voorbeeld</Italic> van het            <Bold>gebruik</Bold> van <Underline>WERKEN MET</Underline>                    </TextBlock>
-
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            Dit is een <Italic>voorbeeld</Italic> van het
+            <Bold>gebruik</Bold> van <Underline>WERKEN MET</Underline>
+            
+        </TextBlock>
+        
 
         <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="_Gebruikersnaam" Target="{Binding ElementName=textBoxGebruikersnaam}" BorderBrush="Black" BorderThickness="1"></Label>
         <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="_Paswoord" Target="{Binding ElementName=psdBox}" BorderBrush="Black" BorderThickness="1"></Label>
         <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Name="textBoxGebruikersnaam"></TextBox>
         <PasswordBox Grid.Row="2" Grid.Column="1" Margin="5" Name="psdBox"></PasswordBox>
+        
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2">
+            <Button Content="Probeer maar aan te melden" Margin="0,10,0,10" Click="Button_Click"></Button>
+            <TextBlock Name="textBlockAanmelding"></TextBlock>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2">
+            <Label BorderBrush="Black" BorderThickness="2" Name="LabelTekst" Height="50">Dit is de tekstblok die we gaan manipuleren</Label>
+            <StackPanel Orientation="Horizontal">
+                <ToggleButton Margin="10" Name="ButtonBold" Checked="ButtonBold_Checked" Unchecked="ButtonBold_Unchecked" Height="50">
+                    <StackPanel>
+                        <Image Source="Images/bold.png"></Image>
+                        <Label>Bold</Label>
+                    </StackPanel>
+
+                </ToggleButton>
+                <ToggleButton Margin="10" Name="ButtonItalic" Click="ButtonItalic_Click">Italic</ToggleButton>
+                <TextBlock Margin="10">Lettertype vergroten of verkleinen</TextBlock>
+                <RepeatButton Margin="10" Width="30" Name="RepeatButtonGroter" Interval="100" Delay="1000" Click="RepeatButtonGroter_Click">+</RepeatButton>
+                <RepeatButton Margin="10" Width="30" Name="RepeatButtonKleiner" Interval="100" Delay="1000" Click="RepeatButtonKleiner_Click">-</RepeatButton>
+            </StackPanel>
+            <StackPanel>
+                <RadioButton Content="Blue" GroupName="kleur" Margin="5 0" Checked="Kleur_Checked"></RadioButton>
+                <RadioButton Content="Green" GroupName="kleur" Margin="5 0" Checked="Kleur_Checked"></RadioButton>
+                <RadioButton Content="Red" GroupName="kleur" Margin="5 0" Checked="Kleur_Checked"></RadioButton>
+                <RadioButton Content="Black" GroupName="kleur" Margin="5 0" Checked="Kleur_Checked"></RadioButton>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Name="CheckBoxBold" Content="Bold" Margin="10 0" Click="CheckBoxBold_Click"></CheckBox>
+                <CheckBox Name="CheckBoxItalic" Content="Italic" Margin="10 0" Click="ButtonItalic_Click"></CheckBox>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 
 
