@@ -13,3 +13,17 @@ c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht
 c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.exe
 c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.pdb
 C:\Users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.csprojResolveAssemblyReference.cache
+C:\GIT\WpfCursus\Verkeerslicht\bin\Debug\Verkeerslicht.exe.config
+C:\GIT\WpfCursus\Verkeerslicht\bin\Debug\Verkeerslicht.exe
+C:\GIT\WpfCursus\Verkeerslicht\bin\Debug\Verkeerslicht.pdb
+C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.g.cs
+C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\App.g.cs
+C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht_MarkupCompile.cache
+C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht_MarkupCompile.lref
+C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.baml
+C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.g.resources
+C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.Properties.Resources.resources
+C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.csproj.GenerateResource.cache
+C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.csproj.CoreCompileInputs.cache
+C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.exe
+C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.pdb
