@@ -24,5 +24,28 @@ namespace TekstVerwerken
         {
             InitializeComponent();
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            textBlockAanmelding.TextWrapping = TextWrapping.Wrap;
+            textBlockAanmelding.Text = "Je probeerde aan te melden met: " +
+            textBoxGebruikersnaam.Text + " en paswoord: " + psdBox.Password;
+        }
+
+        private void ButtonBold_Checked(object sender, RoutedEventArgs e)
+        {
+            LabelTekst.FontWeight = FontWeights.Bold;
+        }
+        private void ButtonBold_Unchecked(object sender, RoutedEventArgs e)
+        {
+            LabelTekst.FontWeight = FontWeights.Normal;
+        }
+
+        private void ButtonItalic_Click(object sender, RoutedEventArgs e)
+        {
+            if (ButtonItalic.IsChecked == true)
+                LabelTekst.FontStyle = FontStyles.Italic;
+            else
+                LabelTekst.FontStyle = FontStyles.Normal;
+        }
     }
 }
