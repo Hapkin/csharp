@@ -1,0 +1,43 @@
+﻿<Window x:Class="Verkeerslicht.VerkeerslichtMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Verkeerslicht"
+        mc:Ignorable="d"
+        Title="titel" Height="450" Width="800">
+    <Grid ShowGridLines="True">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Canvas Margin="10" Width="120" Height="370" Background="Yellow" Name="canvasLicht">
+                <Ellipse VerticalAlignment="Top" Canvas.Top="10" Canvas.Left="10" HorizontalAlignment="Center" Width="100" Height="100" Fill="Red" Name="RedLight"></Ellipse>
+                <Ellipse VerticalAlignment="Center" Canvas.Top="130" Canvas.Left="10" HorizontalAlignment="Center" Width="100" Height="100" Fill="Orange" Name="OrangeLight"></Ellipse>
+                <Ellipse VerticalAlignment="Bottom" Canvas.Top="250" Canvas.Left="10" HorizontalAlignment="Center" Width="100" Height="100" Fill="Green" Name="GreenLight"></Ellipse>
+            </Canvas>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" Name="gridKnoppen">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Click="Button_Click" Grid.Row="0" Name="ButtonGreen" Margin="10,10,10,10" Content="Go" Tag="Green"></Button>
+            <Button Click="Button_Click" Grid.Row="1" Name="ButtonOrange" Margin="10,10,10,10" Content="Opgelet" Tag="Orange"></Button>
+            <Button Click="Button_Click" Grid.Row="2" Name="ButtonRed" Margin="10,10,10,10" Content="Stop" Tag="Red"></Button>
+        </Grid>
+        <!--
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="0" Name="ButtonRed" Margin="10" Content="Rode achtergrond" Tag="Red"></Button>
+        <Button VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Name="ButtonGreen" Margin="10" Content="Groene achtergrond" Tag="Green"></Button>
+        <Button VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Name="ButtonBlue" Margin="10,10,10,0" Content="Blauwe achtergrond" Tag="Blue"></Button>-->
+    </Grid>
+</Window>

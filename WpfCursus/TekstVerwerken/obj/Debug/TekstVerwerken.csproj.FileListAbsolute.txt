@@ -1,0 +1,15 @@
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\bin\Debug\TekstVerwerken.exe.config
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\bin\Debug\TekstVerwerken.exe
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\bin\Debug\TekstVerwerken.pdb
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken.csprojResolveAssemblyReference.cache
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\obj\Debug\MainWindow.g.cs
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\obj\Debug\App.g.cs
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken_MarkupCompile.cache
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken_MarkupCompile.lref
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\obj\Debug\MainWindow.baml
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken.g.resources
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken.Properties.Resources.resources
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken.csproj.GenerateResource.cache
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken.csproj.CoreCompileInputs.cache
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken.exe
+C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken.pdb
