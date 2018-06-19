@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TekstVerwerken", "TekstVerw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizza", "Pizza\Pizza.csproj", "{BECACB62-B47F-415E-B3A0-BF1B5AA0577F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HobbyLijst", "HobbyLijst\HobbyLijst.csproj", "{6200B2A9-496F-4E82-ABD5-B6F20D65E92E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bars", "Bars\Bars.csproj", "{C6A4EDC2-D3A2-4B45-808A-1BAE5B002CD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{BECACB62-B47F-415E-B3A0-BF1B5AA0577F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BECACB62-B47F-415E-B3A0-BF1B5AA0577F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BECACB62-B47F-415E-B3A0-BF1B5AA0577F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6200B2A9-496F-4E82-ABD5-B6F20D65E92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6200B2A9-496F-4E82-ABD5-B6F20D65E92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6200B2A9-496F-4E82-ABD5-B6F20D65E92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6200B2A9-496F-4E82-ABD5-B6F20D65E92E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6A4EDC2-D3A2-4B45-808A-1BAE5B002CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6A4EDC2-D3A2-4B45-808A-1BAE5B002CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6A4EDC2-D3A2-4B45-808A-1BAE5B002CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6A4EDC2-D3A2-4B45-808A-1BAE5B002CD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

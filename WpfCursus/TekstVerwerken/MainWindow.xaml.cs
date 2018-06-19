@@ -69,7 +69,7 @@ namespace TekstVerwerken
         private void Kleur_Checked(object sender, RoutedEventArgs e)
         {
             RadioButton knop = (RadioButton)sender;
-            LabelTekst2.Foreground = 
+            LabelTekst.Foreground = 
                 (SolidColorBrush)new BrushConverter().ConvertFromString(knop.Content.ToString());
         }
 

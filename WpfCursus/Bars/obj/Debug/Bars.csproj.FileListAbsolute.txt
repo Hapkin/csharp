@@ -1,0 +1,15 @@
+C:\GIT\WpfCursus\Bars\bin\Debug\Bars.exe.config
+C:\GIT\WpfCursus\Bars\bin\Debug\Bars.exe
+C:\GIT\WpfCursus\Bars\bin\Debug\Bars.pdb
+C:\GIT\WpfCursus\Bars\obj\Debug\BarWindow.g.cs
+C:\GIT\WpfCursus\Bars\obj\Debug\App.g.cs
+C:\GIT\WpfCursus\Bars\obj\Debug\Bars_MarkupCompile.cache
+C:\GIT\WpfCursus\Bars\obj\Debug\Bars_MarkupCompile.lref
+C:\GIT\WpfCursus\Bars\obj\Debug\BarWindow.baml
+C:\GIT\WpfCursus\Bars\obj\Debug\Bars.g.resources
+C:\GIT\WpfCursus\Bars\obj\Debug\Bars.Properties.Resources.resources
+C:\GIT\WpfCursus\Bars\obj\Debug\Bars.csproj.GenerateResource.cache
+C:\GIT\WpfCursus\Bars\obj\Debug\Bars.csproj.CoreCompileInputs.cache
+C:\GIT\WpfCursus\Bars\obj\Debug\Bars.exe
+C:\GIT\WpfCursus\Bars\obj\Debug\Bars.pdb
+C:\GIT\WpfCursus\Bars\obj\Debug\Bars.csprojResolveAssemblyReference.cache
