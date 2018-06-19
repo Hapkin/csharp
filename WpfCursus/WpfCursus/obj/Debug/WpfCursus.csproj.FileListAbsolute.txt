@@ -1,0 +1,14 @@
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\obj\Debug\WpfCursus.csprojResolveAssemblyReference.cache
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\obj\Debug\App.g.cs
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\obj\Debug\WpfCursus_MarkupCompile.cache
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\obj\Debug\WpfCursus.g.resources
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\obj\Debug\WpfCursus.Properties.Resources.resources
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\obj\Debug\WpfCursus.csproj.GenerateResource.cache
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\obj\Debug\WpfCursus.csproj.CoreCompileInputs.cache
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\obj\Debug\ButtonWindow.baml
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\obj\Debug\ButtonWindow.g.cs
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\bin\Debug\WpfCursus.exe.config
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\bin\Debug\WpfCursus.exe
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\bin\Debug\WpfCursus.pdb
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\obj\Debug\WpfCursus.exe
+c:\users\jo.vansant\source\repos\WpfCursus\WpfCursus\obj\Debug\WpfCursus.pdb

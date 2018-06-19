@@ -1,0 +1,15 @@
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\bin\Debug\Verkeerslicht.exe.config
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\bin\Debug\Verkeerslicht.exe
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\bin\Debug\Verkeerslicht.pdb
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.g.cs
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\App.g.cs
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht_MarkupCompile.cache
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht_MarkupCompile.lref
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.baml
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.g.resources
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.Properties.Resources.resources
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.csproj.GenerateResource.cache
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.csproj.CoreCompileInputs.cache
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.exe
+c:\users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.pdb
+C:\Users\jo.vansant\source\repos\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.csprojResolveAssemblyReference.cache
