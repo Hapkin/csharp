@@ -25,3 +25,4 @@ C:\GIT\WpfCursus\WpfCursus\obj\Debug\WpfCursus.csproj.GenerateResource.cache
 C:\GIT\WpfCursus\WpfCursus\obj\Debug\WpfCursus.csproj.CoreCompileInputs.cache
 C:\GIT\WpfCursus\WpfCursus\obj\Debug\WpfCursus.exe
 C:\GIT\WpfCursus\WpfCursus\obj\Debug\WpfCursus.pdb
+C:\GIT\WpfCursus\WpfCursus\obj\Debug\WpfCursus.csprojResolveAssemblyReference.cache

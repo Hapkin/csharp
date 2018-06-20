@@ -27,3 +27,4 @@ C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.csproj.GenerateResource.c
 C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.csproj.CoreCompileInputs.cache
 C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.exe
 C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.pdb
+C:\GIT\WpfCursus\Verkeerslicht\obj\Debug\Verkeerslicht.csprojResolveAssemblyReference.cache

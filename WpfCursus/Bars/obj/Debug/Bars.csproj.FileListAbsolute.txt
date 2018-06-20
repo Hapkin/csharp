@@ -12,4 +12,6 @@ C:\GIT\WpfCursus\Bars\obj\Debug\Bars.csproj.GenerateResource.cache
 C:\GIT\WpfCursus\Bars\obj\Debug\Bars.csproj.CoreCompileInputs.cache
 C:\GIT\WpfCursus\Bars\obj\Debug\Bars.exe
 C:\GIT\WpfCursus\Bars\obj\Debug\Bars.pdb
+C:\GIT\WpfCursus\Bars\obj\Debug\Window1.g.cs
+C:\GIT\WpfCursus\Bars\obj\Debug\Window1.baml
 C:\GIT\WpfCursus\Bars\obj\Debug\Bars.csprojResolveAssemblyReference.cache
