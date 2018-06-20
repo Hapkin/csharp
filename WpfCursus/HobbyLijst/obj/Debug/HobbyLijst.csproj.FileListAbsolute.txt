@@ -12,3 +12,4 @@ C:\GIT\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.csproj.GenerateResource.cache
 C:\GIT\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.csproj.CoreCompileInputs.cache
 C:\GIT\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.exe
 C:\GIT\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.pdb
+C:\GIT\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.csprojResolveAssemblyReference.cache

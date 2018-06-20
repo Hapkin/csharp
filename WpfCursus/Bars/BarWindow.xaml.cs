@@ -228,5 +228,28 @@ namespace Bars
                 "tekstbox");
             }
         }
+
+
+        private void PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+
+            //Afdrukvoorbeeld is de nieuwe pagina!
+            Afdrukvoorbeeld preview = new Afdrukvoorbeeld();
+            preview.Owner = this;
+            preview.AfdrukDocument = StelAfdrukSamen();
+            preview.ShowDialog();
+        }
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (MessageBox.Show("Programma afsluiten ?",
+            "Afsluiten",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Question,
+            MessageBoxResult.No) == MessageBoxResult.No)
+                e.Cancel = true;
+        }
+
+        private void CloseExecuted(object sender, ExecutedRoutedEventArgs e)
+        { this.Close(); }
     }
 }
