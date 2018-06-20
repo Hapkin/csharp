@@ -1,7 +1,6 @@
 C:\GIT\WpfCursus\HobbyLijst\bin\Debug\HobbyLijst.exe.config
 C:\GIT\WpfCursus\HobbyLijst\bin\Debug\HobbyLijst.exe
 C:\GIT\WpfCursus\HobbyLijst\bin\Debug\HobbyLijst.pdb
-C:\GIT\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.csprojResolveAssemblyReference.cache
 C:\GIT\WpfCursus\HobbyLijst\obj\Debug\MainWindow.g.cs
 C:\GIT\WpfCursus\HobbyLijst\obj\Debug\App.g.cs
 C:\GIT\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst_MarkupCompile.cache
