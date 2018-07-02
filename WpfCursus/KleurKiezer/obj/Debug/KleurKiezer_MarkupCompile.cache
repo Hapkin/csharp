@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\GIT\WpfCursus\KleurKiezer\App.xaml
-21006450374
+477863616
 
-5796971864
+6-277060416
 131569487696
-BrushesWindow.xaml;Resources\turquoise.xaml;
+BrushesWindow.xaml;KleurenKiezenWindow.xaml;Resources\regenboog.xaml;Resources\turquoise.xaml;
 
 False
 

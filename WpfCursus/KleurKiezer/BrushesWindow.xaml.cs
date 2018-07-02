@@ -24,5 +24,24 @@ namespace KleurKiezer
         {
             InitializeComponent();
         }
+
+        private void VergrootButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (VergrootButton.IsChecked == true)
+            {
+                VergrootButton.Content = "Zonder vergroting";
+                VisualBrush zicht = new VisualBrush();
+                zicht.TileMode = System.Windows.Media.TileMode.FlipY;
+                zicht.Viewport = new Rect(0, 0, 1, 0.5);
+                zicht.Visual = PanelMetKnop;
+                Vergroting.Fill = zicht;
+            }
+            else
+            {
+                VergrootButton.Content = "Vergroot";
+                Vergroting.Fill = null;
+            }
+        }
+
     }
 }
