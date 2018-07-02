@@ -1,0 +1,16 @@
+C:\GIT\WpfCursus\KleurKiezer\bin\Debug\KleurKiezer.exe.config
+C:\GIT\WpfCursus\KleurKiezer\bin\Debug\KleurKiezer.exe
+C:\GIT\WpfCursus\KleurKiezer\bin\Debug\KleurKiezer.pdb
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\App.g.cs
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer_MarkupCompile.cache
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer_MarkupCompile.lref
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer.g.resources
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer.Properties.Resources.resources
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer.csproj.GenerateResource.cache
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer.csproj.CoreCompileInputs.cache
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer.exe
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer.pdb
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\BrushesWindow.g.cs
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\BrushesWindow.baml
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\Resources\turquoise.baml
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\App.baml
