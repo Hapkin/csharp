@@ -10,6 +10,8 @@
                 </ResourceDictionary>
                 <ResourceDictionary Source="Resources/regenboog.xaml">
                 </ResourceDictionary>
+                <ResourceDictionary Source="Resources/ShinyRed.xaml">
+                </ResourceDictionary>
                 <ResourceDictionary Source="Resources/standaardStijlen.xaml">
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>

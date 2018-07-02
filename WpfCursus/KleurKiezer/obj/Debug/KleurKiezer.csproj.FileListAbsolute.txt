@@ -18,3 +18,5 @@ C:\GIT\WpfCursus\KleurKiezer\obj\Debug\Resources\regenboog.baml
 C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer.csprojResolveAssemblyReference.cache
 C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurenKiezenWindow.baml
 C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurenKiezenWindow.g.cs
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\Resources\standaardStijlen.baml
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\Resources\ShinyRed.baml

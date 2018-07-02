@@ -11,7 +11,7 @@
         </ControlTemplate>
     </Window.Resources>
     
-    
+
 
     <StackPanel Orientation="Horizontal">
         <StackPanel Orientation="Vertical" Height="300" Width="300" Margin="0,10">
@@ -36,7 +36,18 @@
                 <Slider Height="23" Name="sliderBlue" Width="100" Minimum="0" Maximum="255" Margin="10" SmallChange="1" IsSnapToTickEnabled="True" Value="0" />
                 <Label Name="labelBlue" VerticalAlignment="Center" Width="50" Content="{Binding ElementName=sliderBlue, Path=Value}" ></Label>
             </StackPanel>
-            <ComboBox Name="comboBoxKleuren" Margin="10,30" DisplayMemberPath="Naam" SelectedValuePath="Naam"></ComboBox>
+            <ComboBox Name="comboBoxKleuren" Margin="10,30">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Fill="{Binding Path=Naam}" Stroke="Black"
+StrokeThickness="2" Height="25" Width="50">
+                            </Rectangle>
+                            <Label Content="{Binding Path=Naam}" Foreground="Black"></Label>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
                     <RadioButton Name="radioVoorgrond" Content="Voorgrond in RGB" Margin="10" IsChecked="True"></RadioButton>
