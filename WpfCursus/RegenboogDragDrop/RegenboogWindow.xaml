@@ -14,23 +14,23 @@
     </Window.Resources>
         <StackPanel>
         <StackPanel Margin="0,50" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Rectangle Fill="Yellow"></Rectangle>
-            <Rectangle Fill="Orange"></Rectangle>
-            <Rectangle Fill="Red"></Rectangle>
-            <Rectangle Fill="Blue"></Rectangle>
-            <Rectangle Fill="Green"></Rectangle>
-            <Rectangle Fill="Violet"></Rectangle>
-            <Rectangle Fill="Indigo"></Rectangle>
+            <Rectangle Fill="Yellow" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Fill="Orange" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Fill="Red" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Fill="Blue" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Fill="Green" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Fill="Violet" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Fill="Indigo" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
         </StackPanel>
         <StackPanel Name="DropZone" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Rectangle Name="dropRed" Fill="White"></Rectangle>
-            <Rectangle Name="dropOrange" Fill="White"></Rectangle>
-            <Rectangle Name="dropYellow" Fill="White"></Rectangle>
-            <Rectangle Name="dropGreen" Fill="White"></Rectangle>
-            <Rectangle Name="dropBlue" Fill="White"></Rectangle>
-            <Rectangle Name="dropIndigo" Fill="White"></Rectangle>
-            <Rectangle Name="dropViolet" Fill="White"></Rectangle>
+            <Rectangle Name="dropRed" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Name="dropOrange" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" DragDrop.Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Name="dropYellow" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" DragDrop.Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Name="dropGreen" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" DragDrop.Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Name="dropBlue" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" DragDrop.Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Name="dropIndigo" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" DragDrop.Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Name="dropViolet" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" DragDrop.Drop="Rectangle_Drop"></Rectangle>
         </StackPanel>
-        <Button Name="ButtonCheck" Content="Check volgorde" Margin="5,50"></Button>
+        <Button Name="ButtonCheck" Content="Check volgorde" Margin="5,50" Click="ButtonCheck_Click"></Button>
     </StackPanel>
 </Window>

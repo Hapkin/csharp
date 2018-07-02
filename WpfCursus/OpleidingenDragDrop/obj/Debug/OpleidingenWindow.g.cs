@@ -99,7 +99,7 @@ namespace WPFCursus {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/RegenboogDragDrop;component/opleidingenwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/OpleidingenDragDrop;component/opleidingenwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\OpleidingenWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
