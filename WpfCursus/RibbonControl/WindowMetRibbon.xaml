@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:WindowMetRibbonControl"
         x:Class="WindowMetRibbonControl.WindowMetRibbon"
-       Height="350" Width="525" Icon="images\app48.png" Title="Window met Ribbon">
+       Height="350" Width="525" Icon="images\app48.png" Title="Window met Ribbon" Closing="Window_Closing">
 
     <Window.CommandBindings>
         <CommandBinding Command="Help" Executed="HelpExecuted"></CommandBinding>

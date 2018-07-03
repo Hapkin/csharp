@@ -29,6 +29,33 @@ namespace WindowMetRibbonControl
         public WindowMetRibbon()
         {
             InitializeComponent();
+
+            if (RibbonControl.Properties.Settings.Default.qat != null)
+            {
+                System.Collections.Specialized.StringCollection qatlijst =
+                RibbonControl.Properties.Settings.Default.qat;
+                int lijnnr = 0;
+                while (lijnnr < qatlijst.Count)
+                {
+                    String commando = qatlijst[lijnnr];
+                    String png = qatlijst[lijnnr + 1];
+                    RibbonButton nieuweKnop = new RibbonButton();
+                    BitmapImage icon = new BitmapImage();
+                    icon.BeginInit();
+                    icon.UriSource = new Uri(png);
+                    icon.EndInit();
+                    nieuweKnop.SmallImageSource = icon;
+                    CommandBindingCollection ccol = this.CommandBindings;
+                    foreach (CommandBinding cb in ccol)
+                    {
+                        RoutedUICommand rcb = (RoutedUICommand)cb.Command;
+                        if (rcb.Text == commando)
+                            nieuweKnop.Command = rcb;
+                    }
+                    Qat.Items.Add(nieuweKnop);
+                    lijnnr += 2;
+                }
+            }
         }
 
 
@@ -83,6 +110,7 @@ namespace WindowMetRibbonControl
 
         private void CloseExecuted(object sender, ExecutedRoutedEventArgs e)
         {
+
             this.Close();
         }
 
@@ -121,6 +149,28 @@ namespace WindowMetRibbonControl
             SolidColorBrush kleur = (SolidColorBrush)bc.ConvertFromString(keuze.Tag.ToString());
             TextBoxVoorbeeld.Foreground = kleur;
         }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            System.Collections.Specialized.StringCollection qatlijst =
+            new System.Collections.Specialized.StringCollection();
+            if (RibbonControl.Properties.Settings.Default.qat != null)
+                RibbonControl.Properties.Settings.Default.qat.Clear();
+            foreach (Object li in Qat.Items)
+            {
+                if (li is RibbonButton)
+                {
+                    RibbonButton knop = (RibbonButton)li;
+                    RoutedUICommand commando = (RoutedUICommand)knop.Command;
+                    qatlijst.Add(commando.Text);
+                    qatlijst.Add(knop.SmallImageSource.ToString());
+                }
+            }
+            if (qatlijst.Count > 0)
+            {
+                RibbonControl.Properties.Settings.Default.qat = qatlijst;
+            }
+            RibbonControl.Properties.Settings.Default.Save();
+        }
     }
 
 
@@ -137,6 +187,8 @@ namespace WindowMetRibbonControl
         {
             return null;
         }
+
+
     }
     public class BooleanToFontStyle : IValueConverter
     {
