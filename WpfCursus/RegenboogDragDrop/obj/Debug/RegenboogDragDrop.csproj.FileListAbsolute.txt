@@ -11,3 +11,4 @@ C:\GIT\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.csproj.GenerateRe
 C:\GIT\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.csproj.CoreCompileInputs.cache
 C:\GIT\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.exe
 C:\GIT\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.pdb
+C:\GIT\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.csprojResolveAssemblyReference.cache

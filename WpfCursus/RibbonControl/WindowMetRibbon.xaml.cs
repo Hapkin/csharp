@@ -29,6 +29,7 @@ namespace WindowMetRibbonControl
         public WindowMetRibbon()
         {
             InitializeComponent();
+            LeesMRU();
 
             if (RibbonControl.Properties.Settings.Default.qat != null)
             {
@@ -66,6 +67,7 @@ namespace WindowMetRibbonControl
                 using (StreamReader bestand = new StreamReader(bestandsnaam))
                 {
                     TextBoxVoorbeeld.Text = bestand.ReadLine();
+                    BijwerkenMRU(bestandsnaam);
                 }
             }
             catch (Exception ex)
@@ -99,6 +101,7 @@ namespace WindowMetRibbonControl
                     using (StreamWriter bestand = new StreamWriter(dlg.FileName))
                     {
                         bestand.WriteLine(TextBoxVoorbeeld.Text);
+                        BijwerkenMRU(dlg.FileName);
                     }
                 }
             }
@@ -170,6 +173,42 @@ namespace WindowMetRibbonControl
                 RibbonControl.Properties.Settings.Default.qat = qatlijst;
             }
             RibbonControl.Properties.Settings.Default.Save();
+        }
+        private void LeesMRU()
+        {
+
+            MRUGalleryCat.Items.Clear();
+            if (RibbonControl.Properties.Settings.Default.mru != null)
+            {
+                System.Collections.Specialized.StringCollection mrulijst =
+                RibbonControl.Properties.Settings.Default.mru;
+                for (int lijnnr = 0; lijnnr < mrulijst.Count; lijnnr++)
+                {
+                    MRUGalleryCat.Items.Add(mrulijst[lijnnr]);
+                }
+            }
+        }
+        private void BijwerkenMRU(string bestandsnaam)
+        {
+            System.Collections.Specialized.StringCollection mrulijst = new
+            System.Collections.Specialized.StringCollection();
+            if (RibbonControl.Properties.Settings.Default.mru != null)
+            {
+                mrulijst = RibbonControl.Properties.Settings.Default.mru;
+                int positie = mrulijst.IndexOf(bestandsnaam);
+                if (positie >= 0)
+                {
+                    mrulijst.RemoveAt(positie);
+                }
+                else
+                {
+                    if (mrulijst.Count >= 6) mrulijst.RemoveAt(5);
+                }
+            }
+            mrulijst.Insert(0, bestandsnaam);
+            RibbonControl.Properties.Settings.Default.mru = mrulijst;
+            RibbonControl.Properties.Settings.Default.Save();
+            LeesMRU();
         }
     }
 

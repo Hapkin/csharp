@@ -11,3 +11,4 @@ C:\GIT\WpfCursus\DataBinding\obj\Debug\DataBinding.csproj.GenerateResource.cache
 C:\GIT\WpfCursus\DataBinding\obj\Debug\DataBinding.csproj.CoreCompileInputs.cache
 C:\GIT\WpfCursus\DataBinding\obj\Debug\DataBinding.exe
 C:\GIT\WpfCursus\DataBinding\obj\Debug\DataBinding.pdb
+C:\GIT\WpfCursus\DataBinding\obj\Debug\DataBinding.csprojResolveAssemblyReference.cache
