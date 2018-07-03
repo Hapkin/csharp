@@ -16,7 +16,6 @@ C:\Users\jo.vansant\source\repos\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerk
 C:\GIT\WpfCursus\TekstVerwerken\bin\Debug\TekstVerwerken.exe.config
 C:\GIT\WpfCursus\TekstVerwerken\bin\Debug\TekstVerwerken.exe
 C:\GIT\WpfCursus\TekstVerwerken\bin\Debug\TekstVerwerken.pdb
-C:\GIT\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken.csprojResolveAssemblyReference.cache
 C:\GIT\WpfCursus\TekstVerwerken\obj\Debug\MainWindow.g.cs
 C:\GIT\WpfCursus\TekstVerwerken\obj\Debug\App.g.cs
 C:\GIT\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken_MarkupCompile.cache
@@ -28,3 +27,4 @@ C:\GIT\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken.csproj.GenerateResource
 C:\GIT\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken.csproj.CoreCompileInputs.cache
 C:\GIT\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken.exe
 C:\GIT\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken.pdb
+C:\GIT\WpfCursus\TekstVerwerken\obj\Debug\TekstVerwerken.csprojResolveAssemblyReference.cache

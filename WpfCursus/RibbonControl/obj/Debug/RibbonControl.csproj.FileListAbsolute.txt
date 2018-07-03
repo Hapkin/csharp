@@ -1,0 +1,16 @@
+C:\GIT\WpfCursus\RibbonControl\bin\Debug\RibbonControl.exe.config
+C:\GIT\WpfCursus\RibbonControl\bin\Debug\RibbonControl.exe
+C:\GIT\WpfCursus\RibbonControl\bin\Debug\RibbonControl.pdb
+C:\GIT\WpfCursus\RibbonControl\obj\Debug\WindowMetRibbon.baml
+C:\GIT\WpfCursus\RibbonControl\obj\Debug\WindowMetRibbon.g.cs
+C:\GIT\WpfCursus\RibbonControl\obj\Debug\App.g.cs
+C:\GIT\WpfCursus\RibbonControl\obj\Debug\RibbonControl_MarkupCompile.cache
+C:\GIT\WpfCursus\RibbonControl\obj\Debug\RibbonControl.g.resources
+C:\GIT\WpfCursus\RibbonControl\obj\Debug\RibbonControl.Properties.Resources.resources
+C:\GIT\WpfCursus\RibbonControl\obj\Debug\RibbonControl.csproj.GenerateResource.cache
+C:\GIT\WpfCursus\RibbonControl\obj\Debug\RibbonControl.csproj.CoreCompileInputs.cache
+C:\GIT\WpfCursus\RibbonControl\obj\Debug\RibbonControl.exe
+C:\GIT\WpfCursus\RibbonControl\obj\Debug\RibbonControl.pdb
+C:\GIT\WpfCursus\RibbonControl\obj\Debug\RibbonControl.csprojResolveAssemblyReference.cache
+C:\GIT\WpfCursus\RibbonControl\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\GIT\WpfCursus\RibbonControl\obj\Debug\RibbonControl_MarkupCompile.lref
