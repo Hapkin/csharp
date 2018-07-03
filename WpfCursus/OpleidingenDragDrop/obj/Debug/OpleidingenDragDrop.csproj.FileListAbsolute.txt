@@ -1,0 +1,13 @@
+C:\GIT\WpfCursus\OpleidingenDragDrop\bin\Debug\OpleidingenDragDrop.exe.config
+C:\GIT\WpfCursus\OpleidingenDragDrop\bin\Debug\OpleidingenDragDrop.exe
+C:\GIT\WpfCursus\OpleidingenDragDrop\bin\Debug\OpleidingenDragDrop.pdb
+C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenWindow.baml
+C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenWindow.g.cs
+C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\App.g.cs
+C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop_MarkupCompile.cache
+C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.g.resources
+C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.Properties.Resources.resources
+C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.csproj.GenerateResource.cache
+C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.csproj.CoreCompileInputs.cache
+C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.exe
+C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.pdb

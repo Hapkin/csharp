@@ -1,0 +1,36 @@
+﻿<Window x:Class="RegenboogDragDrop.WindowRegenboog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WindowRegenboog" Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="{x:Type Rectangle}">
+            <Setter Property="Height" Value="50"></Setter>
+            <Setter Property="Width" Value="50"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="Stroke" Value="Black"></Setter>
+            <Setter Property="StrokeThickness" Value="3"></Setter>
+        </Style>
+
+    </Window.Resources>
+        <StackPanel>
+        <StackPanel Margin="0,50" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Rectangle Fill="Yellow" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Fill="Orange" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Fill="Red" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Fill="Blue" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Fill="Green" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Fill="Violet" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Fill="Indigo" AllowDrop="True" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+        </StackPanel>
+        <StackPanel Name="DropZone" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Rectangle Name="dropRed" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Name="dropOrange" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" DragDrop.Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Name="dropYellow" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" DragDrop.Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Name="dropGreen" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" DragDrop.Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Name="dropBlue" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" DragDrop.Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Name="dropIndigo" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" DragDrop.Drop="Rectangle_Drop"></Rectangle>
+            <Rectangle Name="dropViolet" AllowDrop="True" Fill="White" MouseMove="Rectangle_MouseMove" DragEnter="Rectangle_DragEnter" DragLeave="Rectangle_DragLeave" DragDrop.Drop="Rectangle_Drop"></Rectangle>
+        </StackPanel>
+        <Button Name="ButtonCheck" Content="Check volgorde" Margin="5,50" Click="ButtonCheck_Click"></Button>
+    </StackPanel>
+</Window>
