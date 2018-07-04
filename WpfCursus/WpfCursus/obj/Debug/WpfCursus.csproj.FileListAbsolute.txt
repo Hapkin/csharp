@@ -25,3 +25,16 @@ C:\GIT\WpfCursus\WpfCursus\obj\Debug\WpfCursus.csproj.GenerateResource.cache
 C:\GIT\WpfCursus\WpfCursus\obj\Debug\WpfCursus.csproj.CoreCompileInputs.cache
 C:\GIT\WpfCursus\WpfCursus\obj\Debug\WpfCursus.exe
 C:\GIT\WpfCursus\WpfCursus\obj\Debug\WpfCursus.pdb
+E:\users\Prog\GIT\Jo\WpfCursus\WpfCursus\bin\Debug\WpfCursus.exe.config
+E:\users\Prog\GIT\Jo\WpfCursus\WpfCursus\bin\Debug\WpfCursus.exe
+E:\users\Prog\GIT\Jo\WpfCursus\WpfCursus\bin\Debug\WpfCursus.pdb
+E:\users\Prog\GIT\Jo\WpfCursus\WpfCursus\obj\Debug\WpfCursus.csprojResolveAssemblyReference.cache
+E:\users\Prog\GIT\Jo\WpfCursus\WpfCursus\obj\Debug\ButtonWindow.baml
+E:\users\Prog\GIT\Jo\WpfCursus\WpfCursus\obj\Debug\ButtonWindow.g.cs
+E:\users\Prog\GIT\Jo\WpfCursus\WpfCursus\obj\Debug\App.g.cs
+E:\users\Prog\GIT\Jo\WpfCursus\WpfCursus\obj\Debug\WpfCursus_MarkupCompile.cache
+E:\users\Prog\GIT\Jo\WpfCursus\WpfCursus\obj\Debug\WpfCursus.g.resources
+E:\users\Prog\GIT\Jo\WpfCursus\WpfCursus\obj\Debug\WpfCursus.Properties.Resources.resources
+E:\users\Prog\GIT\Jo\WpfCursus\WpfCursus\obj\Debug\WpfCursus.csproj.GenerateResource.Cache
+E:\users\Prog\GIT\Jo\WpfCursus\WpfCursus\obj\Debug\WpfCursus.exe
+E:\users\Prog\GIT\Jo\WpfCursus\WpfCursus\obj\Debug\WpfCursus.pdb

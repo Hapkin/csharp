@@ -96,7 +96,7 @@
                     </RibbonCheckBox>
                     <RibbonCheckBox SmallImageSource="images\italic.png" Label="Schuin" IsChecked="{Binding ElementName=ButtonSchuin, Path=IsChecked}">
                     </RibbonCheckBox>
-                    <RibbonCheckBox Name="CheckBoxAlleenLezen" SmallImageSource="images\ReadOnly16.png" Label="Alleen lezen">
+                    <RibbonCheckBox Name="CheckBoxAlleenLezen" SmallImageSource="images\ReadOnly16.png" Label="Alleen lezen" Visibility="{Binding ElementName=TextBoxVoorbeeld, Path=Focusable, Converter={StaticResource LogischNaarVisueel}}">
                     </RibbonCheckBox>
                 </RibbonGroup>
                 <RibbonGroup Header="Kleur">

@@ -11,3 +11,15 @@ C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.csproj.Genera
 C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.csproj.CoreCompileInputs.cache
 C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.exe
 C:\GIT\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.pdb
+E:\users\Prog\GIT\Jo\WpfCursus\OpleidingenDragDrop\bin\Debug\OpleidingenDragDrop.exe.config
+E:\users\Prog\GIT\Jo\WpfCursus\OpleidingenDragDrop\bin\Debug\OpleidingenDragDrop.exe
+E:\users\Prog\GIT\Jo\WpfCursus\OpleidingenDragDrop\bin\Debug\OpleidingenDragDrop.pdb
+E:\users\Prog\GIT\Jo\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenWindow.baml
+E:\users\Prog\GIT\Jo\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenWindow.g.cs
+E:\users\Prog\GIT\Jo\WpfCursus\OpleidingenDragDrop\obj\Debug\App.g.cs
+E:\users\Prog\GIT\Jo\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop_MarkupCompile.cache
+E:\users\Prog\GIT\Jo\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.g.resources
+E:\users\Prog\GIT\Jo\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.Properties.Resources.resources
+E:\users\Prog\GIT\Jo\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.csproj.GenerateResource.Cache
+E:\users\Prog\GIT\Jo\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.exe
+E:\users\Prog\GIT\Jo\WpfCursus\OpleidingenDragDrop\obj\Debug\OpleidingenDragDrop.pdb
