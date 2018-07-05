@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpleidingenDragDrop", "Ople
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RibbonControl", "RibbonControl\RibbonControl.csproj", "{9BA3A8E8-5F54-4093-A681-48BB0C4E8CDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMVoorbeeld", "MVVMVoorbeeld\MVVMVoorbeeld.csproj", "{64020BCB-550F-4AAE-9C8D-057040FA6A5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{9BA3A8E8-5F54-4093-A681-48BB0C4E8CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BA3A8E8-5F54-4093-A681-48BB0C4E8CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BA3A8E8-5F54-4093-A681-48BB0C4E8CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64020BCB-550F-4AAE-9C8D-057040FA6A5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64020BCB-550F-4AAE-9C8D-057040FA6A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64020BCB-550F-4AAE-9C8D-057040FA6A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64020BCB-550F-4AAE-9C8D-057040FA6A5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
