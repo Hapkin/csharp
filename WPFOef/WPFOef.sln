@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bloemsamenstelling", "Bloem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchuifSpel", "SchuifSpel\SchuifSpel.csproj", "{FF35548D-0C43-46F9-BCF9-060E25649BA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingBonMVVM", "ParkingBonMVVM\ParkingBonMVVM.csproj", "{FD791BF6-3E48-4CA6-80E8-2EC578F8A59C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{FF35548D-0C43-46F9-BCF9-060E25649BA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF35548D-0C43-46F9-BCF9-060E25649BA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF35548D-0C43-46F9-BCF9-060E25649BA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD791BF6-3E48-4CA6-80E8-2EC578F8A59C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD791BF6-3E48-4CA6-80E8-2EC578F8A59C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD791BF6-3E48-4CA6-80E8-2EC578F8A59C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD791BF6-3E48-4CA6-80E8-2EC578F8A59C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
