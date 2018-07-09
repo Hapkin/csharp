@@ -29,6 +29,34 @@ namespace WindowMetRibbonControl
         public WindowMetRibbon()
         {
             InitializeComponent();
+            LeesMRU();
+
+            if (RibbonControl.Properties.Settings.Default.qat != null)
+            {
+                System.Collections.Specialized.StringCollection qatlijst =
+                RibbonControl.Properties.Settings.Default.qat;
+                int lijnnr = 0;
+                while (lijnnr < qatlijst.Count)
+                {
+                    String commando = qatlijst[lijnnr];
+                    String png = qatlijst[lijnnr + 1];
+                    RibbonButton nieuweKnop = new RibbonButton();
+                    BitmapImage icon = new BitmapImage();
+                    icon.BeginInit();
+                    icon.UriSource = new Uri(png);
+                    icon.EndInit();
+                    nieuweKnop.SmallImageSource = icon;
+                    CommandBindingCollection ccol = this.CommandBindings;
+                    foreach (CommandBinding cb in ccol)
+                    {
+                        RoutedUICommand rcb = (RoutedUICommand)cb.Command;
+                        if (rcb.Text == commando)
+                            nieuweKnop.Command = rcb;
+                    }
+                    Qat.Items.Add(nieuweKnop);
+                    lijnnr += 2;
+                }
+            }
         }
 
 
@@ -39,6 +67,7 @@ namespace WindowMetRibbonControl
                 using (StreamReader bestand = new StreamReader(bestandsnaam))
                 {
                     TextBoxVoorbeeld.Text = bestand.ReadLine();
+                    BijwerkenMRU(bestandsnaam);
                 }
             }
             catch (Exception ex)
@@ -72,6 +101,7 @@ namespace WindowMetRibbonControl
                     using (StreamWriter bestand = new StreamWriter(dlg.FileName))
                     {
                         bestand.WriteLine(TextBoxVoorbeeld.Text);
+                        BijwerkenMRU(dlg.FileName);
                     }
                 }
             }
@@ -83,6 +113,7 @@ namespace WindowMetRibbonControl
 
         private void CloseExecuted(object sender, ExecutedRoutedEventArgs e)
         {
+
             this.Close();
         }
 
@@ -121,6 +152,64 @@ namespace WindowMetRibbonControl
             SolidColorBrush kleur = (SolidColorBrush)bc.ConvertFromString(keuze.Tag.ToString());
             TextBoxVoorbeeld.Foreground = kleur;
         }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            System.Collections.Specialized.StringCollection qatlijst =
+            new System.Collections.Specialized.StringCollection();
+            if (RibbonControl.Properties.Settings.Default.qat != null)
+                RibbonControl.Properties.Settings.Default.qat.Clear();
+            foreach (Object li in Qat.Items)
+            {
+                if (li is RibbonButton)
+                {
+                    RibbonButton knop = (RibbonButton)li;
+                    RoutedUICommand commando = (RoutedUICommand)knop.Command;
+                    qatlijst.Add(commando.Text);
+                    qatlijst.Add(knop.SmallImageSource.ToString());
+                }
+            }
+            if (qatlijst.Count > 0)
+            {
+                RibbonControl.Properties.Settings.Default.qat = qatlijst;
+            }
+            RibbonControl.Properties.Settings.Default.Save();
+        }
+        private void LeesMRU()
+        {
+
+            MRUGalleryCat.Items.Clear();
+            if (RibbonControl.Properties.Settings.Default.mru != null)
+            {
+                System.Collections.Specialized.StringCollection mrulijst =
+                RibbonControl.Properties.Settings.Default.mru;
+                for (int lijnnr = 0; lijnnr < mrulijst.Count; lijnnr++)
+                {
+                    MRUGalleryCat.Items.Add(mrulijst[lijnnr]);
+                }
+            }
+        }
+        private void BijwerkenMRU(string bestandsnaam)
+        {
+            System.Collections.Specialized.StringCollection mrulijst = new
+            System.Collections.Specialized.StringCollection();
+            if (RibbonControl.Properties.Settings.Default.mru != null)
+            {
+                mrulijst = RibbonControl.Properties.Settings.Default.mru;
+                int positie = mrulijst.IndexOf(bestandsnaam);
+                if (positie >= 0)
+                {
+                    mrulijst.RemoveAt(positie);
+                }
+                else
+                {
+                    if (mrulijst.Count >= 6) mrulijst.RemoveAt(5);
+                }
+            }
+            mrulijst.Insert(0, bestandsnaam);
+            RibbonControl.Properties.Settings.Default.mru = mrulijst;
+            RibbonControl.Properties.Settings.Default.Save();
+            LeesMRU();
+        }
     }
 
 
@@ -137,6 +226,8 @@ namespace WindowMetRibbonControl
         {
             return null;
         }
+
+
     }
     public class BooleanToFontStyle : IValueConverter
     {

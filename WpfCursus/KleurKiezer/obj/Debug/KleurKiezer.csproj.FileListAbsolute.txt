@@ -19,3 +19,4 @@ C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer.csproj.GenerateResource.cache
 C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer.csproj.CoreCompileInputs.cache
 C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer.exe
 C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer.pdb
+C:\GIT\WpfCursus\KleurKiezer\obj\Debug\KleurKiezer.csprojResolveAssemblyReference.cache
