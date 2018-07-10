@@ -1,33 +1,35 @@
-﻿<Window x:Class="Verkeerslicht.VerkeerslichtMain"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Verkeerslicht"
+        xmlns:Properties="clr-namespace:Verkeerslicht.Properties" x:Class="Verkeerslicht.VerkeerslichtMain"
         mc:Ignorable="d"
         Title="titel" Height="450" Width="800">
     <Grid ShowGridLines="True">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" Grid.Column="0">
-            <Canvas Margin="10" Width="120" Height="370" Background="Yellow" Name="canvasLicht">
-                <Ellipse VerticalAlignment="Top" Canvas.Top="10" Canvas.Left="10" HorizontalAlignment="Center" Width="100" Height="100" Fill="Red" Name="RedLight"></Ellipse>
-                <Ellipse VerticalAlignment="Center" Canvas.Top="130" Canvas.Left="10" HorizontalAlignment="Center" Width="100" Height="100" Fill="Orange" Name="OrangeLight"></Ellipse>
-                <Ellipse VerticalAlignment="Bottom" Canvas.Top="250" Canvas.Left="10" HorizontalAlignment="Center" Width="100" Height="100" Fill="Green" Name="GreenLight"></Ellipse>
+            <Canvas Margin="10" Width="120" Height="370" Background="Yellow" x:Name="canvasLicht">
+                <Ellipse VerticalAlignment="Top" Canvas.Top="10" Canvas.Left="10" HorizontalAlignment="Center" Width="100" Height="100" Fill="Red" x:Name="RedLight"/>
+                <Ellipse VerticalAlignment="Center" Canvas.Top="130" Canvas.Left="10" HorizontalAlignment="Center" Width="100" Height="100" Fill="Orange" x:Name="OrangeLight"/>
+                <Ellipse VerticalAlignment="Bottom" Canvas.Top="250" Canvas.Left="10" HorizontalAlignment="Center" Width="100" Height="100" Fill="Green" x:Name="GreenLight"/>
             </Canvas>
         </Grid>
-        <Grid Grid.Row="0" Grid.Column="1" Name="gridKnoppen">
+        <Grid Grid.Row="0" Grid.Column="1" x:Name="gridKnoppen">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button Click="Button_Click" Grid.Row="0" Name="ButtonGreen" Margin="10,10,10,10" Content="Go" Tag="Green"></Button>
-            <Button Click="Button_Click" Grid.Row="1" Name="ButtonOrange" Margin="10,10,10,10" Content="Opgelet" Tag="Orange"></Button>
-            <Button Click="Button_Click" Grid.Row="2" Name="ButtonRed" Margin="10,10,10,10" Content="Stop" Tag="Red"></Button>
+            <Button Click="Button_Click" Grid.Row="0" x:Name="ButtonGreen" Margin="10,10,10,10" Content="Go" Tag="Green"/>
+            <Button Click="Button_Click" Grid.Row="1" x:Name="ButtonOrange" Margin="10,10,10,10" Content="Opgelet" Tag="Orange">
+            </Button>
+            <Button Click="Button_Click" Grid.Row="2" x:Name="ButtonRed" Margin="10,10,10,10" Content="Stop" Tag="Red"/>
         </Grid>
         <!--
         <Grid.RowDefinitions>

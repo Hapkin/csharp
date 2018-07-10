@@ -1,0 +1,15 @@
+﻿<Window x:Class="EnterpriseMVVM.DesktopClient.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:EnterpriseMVVM.DesktopClient.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance viewModels:CustomerViewModel}"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Margin="30">
+        <TextBox Text="{Binding CustomerName, 
+                                ValidatesOnDataErrors=True, 
+                                UpdateSourceTrigger=PropertyChanged}" />
+    </Grid>
+</Window>

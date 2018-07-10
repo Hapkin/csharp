@@ -4,17 +4,30 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\obj\Debug\
+=======
+C:\GIT\WpfCursus\MVVMVoorbeeld\obj\Debug\
+>>>>>>> Jo
 MVVMVoorbeeld
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\App.xaml
 1-393623702
 
 6-1364686237
 69831945346
 View\TextBoxView.xaml;
+=======
+C:\GIT\WpfCursus\MVVMVoorbeeld\App.xaml
+3-1184560850
+
+10877182157
+7153965675
+View\PrintPreview.xaml;View\TextBoxView2.xaml;View\TextBoxView.xaml;
+>>>>>>> Jo
 
 False
 
