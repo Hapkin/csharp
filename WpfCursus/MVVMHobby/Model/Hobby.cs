@@ -9,9 +9,6 @@ namespace MVVMHobby.Model
 {
     public class Hobby
     {
-        public string Categorie { get; set; }
-        public string Activiteit { get; set; }
-        public BitmapImage Symbool { get; set; }
         public Hobby(string nCategorie, string nActiviteit,
         BitmapImage nSymbool)
         {
@@ -19,5 +16,11 @@ namespace MVVMHobby.Model
             Activiteit = nActiviteit;
             Symbool = nSymbool;
         }
+
+
+        public string Categorie { get; set; }
+        public string Activiteit { get; set; }
+        public BitmapImage Symbool { get; set; }
+        
     }
 }

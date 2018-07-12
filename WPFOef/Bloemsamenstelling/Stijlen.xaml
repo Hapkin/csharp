@@ -3,32 +3,33 @@
                     xmlns:local="clr-namespace:Bloemsamenstelling">
 
     <Style TargetType="{x:Type Ellipse}">
-    <Setter Property="Height" Value="100"></Setter>
-    <Setter Property="Width" Value="100"></Setter>
-    <Setter Property="Fill"
+        <Setter Property="Height" Value="100"></Setter>
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Fill"
             Value="{Binding ElementName=cirkelsKleuren,Path=SelectedValue}">
-    </Setter>
-    <Setter Property="Stroke"
+        </Setter>
+        <Setter Property="Stroke"
             Value="{Binding ElementName=cirkelKaderKleuren, Path=SelectedValue}">
-    </Setter>
-    <Setter Property="StrokeThickness"
+        </Setter>
+        <Setter Property="StrokeThickness"
             Value="{Binding ElementName=diktecirkelSlider, Path=Value}">
-    </Setter>
-</Style>
-<Style TargetType="{x:Type Rectangle}">
-    <Setter Property="Height" Value="20"></Setter>
-    <Setter Property="Width" Value="20"></Setter>
-    <Setter Property="Fill"
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type Rectangle}">
+        <Setter Property="Height" Value="20"></Setter>
+        <Setter Property="Width" Value="20"></Setter>
+        <Setter Property="Fill"
             Value="{Binding ElementName=rechthoekenKleuren,Path=SelectedValue}">
-    </Setter>
-    <Setter Property="Stroke"
+        </Setter>
+        
+        <Setter Property="Stroke"
             Value="{Binding ElementName=rechthoekKaderKleuren, Path=SelectedValue}">
-    </Setter>
-    <Setter Property="StrokeThickness"
+        </Setter>
+        <Setter Property="StrokeThickness"
             Value="{Binding ElementName=dikterechthoekSlider, Path=Value}">
-    </Setter>
-</Style>
-<Style TargetType="{x:Type Label}">
-    <Setter Property="Foreground" Value="Black"></Setter>
-</Style>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="Black"></Setter>
+    </Style>
 </ResourceDictionary>
