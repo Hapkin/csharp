@@ -1,0 +1,168 @@
+﻿<UserControl x:Class="WPFFlynet.View.PersoneelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFFlynet.View"
+             xmlns:model="clr-namespace:WPFFlynet.Model"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="850"
+            >
+    <!-- DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" -->
+
+
+
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!-- Titel row0 -->
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2">Personeel:</TextBlock>
+
+        <!-- inhoud row1 -->
+
+        <ListBox
+            Grid.Row="1" Grid.Column="0"
+            Name="ListboxPersoneel"
+            ItemsSource="{Binding lPersoneel}" 
+            DisplayMemberPath="Naam" 
+            SelectedItem="{Binding SelectedPersoneel}"
+            >
+        </ListBox>
+
+
+
+
+
+        <Grid Grid.Row="1" Grid.Column="1" Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+
+
+
+            <!--row 0 -->
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"
+                   Content="Naam:"
+                   Height="32" Width="60"/>
+            <TextBox 
+                Grid.Row="0"
+                Grid.Column="0"
+                TextWrapping="Wrap"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top" 
+                Height="24" Width="100"
+                Text="{Binding SelectedPersoneel.Naam}"
+                IsReadOnly="True"
+                />
+
+            <!-- row 1 -->
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"
+                   Content="Graad:"
+                   Height="32" Width="60"/>
+            <ComboBox 
+                Grid.Row="1"
+                Grid.Column="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top" 
+                Height="24" Width="120"
+                SelectedItem="{Binding Path=SelectedPersoneel.Graad}"  
+                ItemsSource="{Binding Source={model:EnumBindingSource {x:Type model:Graad}}}"
+                />
+
+
+
+
+
+            <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Top"
+                       Content="Certificaten:"
+                       Height="28" Width="80"/>
+                <ListBox
+                    Grid.Row="1"
+                    ItemsSource="{Binding lCertificaten, UpdateSourceTrigger=PropertyChanged}"
+                    >
+                    <!--
+                    DataContext="{Binding SelectedPersoneel}"
+                    >-->
+                    <ListBox.Resources>
+                        <model:CheckboxConverter x:Key="contains"/>
+                    </ListBox.Resources>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <!--<TextBlock Text="{Binding Path=CertificaatAfkorting, UpdateSourceTrigger=PropertyChanged}" />-->
+                                <CheckBox Margin="3" Content="{Binding Path=CertificaatAfkorting}">
+                                    <CheckBox.IsChecked>
+                                        <MultiBinding Converter="{StaticResource contains}" Mode="OneWay">
+                                            <Binding Path="." />
+                                            <!-- dit verstuurd de source van de listview ItemsSource="{Binding lCertificaten}"-->
+                                            <!-- <Binding Path="SelectedPersoneel"  RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type UserControl}}" Mode="TwoWay" /> -->
+                                            <Binding ElementName="ListboxPersoneel" Path="SelectedItem" UpdateSourceTrigger="PropertyChanged"/>
+                                        </MultiBinding>
+                                    </CheckBox.IsChecked>
+                                </CheckBox>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <!-- listbox items naast elkaar krijgen!  -->
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), 
+                            RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                            ItemWidth="{Binding (ListView.View).ItemWidth, RelativeSource={RelativeSource AncestorType=ListView}}"
+                            MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}"
+                            ItemHeight="{Binding (ListView.View).ItemHeight, RelativeSource={RelativeSource AncestorType=ListView}}" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+
+
+                </ListBox>
+
+            </Grid>
+
+            <TreeView Grid.Row="2" Grid.ColumnSpan="2">
+                <TreeViewItem IsSelected="False" Focusable="False">
+                    <TextBlock Text="{Binding SelectedPersoneel}" />
+
+                </TreeViewItem>
+            </TreeView>
+        </Grid>
+        <!-- 
+ 
+        -->
+
+
+
+    </Grid>
+
+</UserControl>

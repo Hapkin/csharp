@@ -1,0 +1,68 @@
+﻿<Window x:Class="ADOCursus.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ADOCursus"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!-- row 0-->
+        <Button Grid.Column="0" Grid.Row="0"
+            x:Name="buttonBieren" Content="Bieren openen"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Width="100"
+                Click="buttonBieren_Click"/>
+        
+
+        <Button Grid.Column="1" Grid.Row="0"
+            x:Name="buttonBank" Content="Bank Saldo verhogen"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Width="100"
+                Click="buttonBank_Click" />
+
+
+        <!-- row 1-->
+        <Label Grid.Column="0" Grid.Row="1"
+            x:Name="labelStatus" Content=""
+               BorderBrush="Black" BorderThickness="1"
+               MinWidth="150"
+               HorizontalAlignment="Left" VerticalAlignment="Top"
+               Margin="0,0,0,0"/>
+
+
+        <!-- row 2-->
+        <Label Grid.Column="0" Grid.Row="2"
+               Content="RekeningNr.:"
+            />
+        <TextBox Grid.Column="1" Grid.Row="2"
+                 Name="textBoxRekeningNr"
+                 Text="333-3333333-16"
+                 />
+        <!-- row 3-->
+        <Label Grid.Column="0" Grid.Row="3"
+               Content="Te storten:"
+            />
+        <TextBox Grid.Column="1" Grid.Row="3"
+                 Name="textBoxTeStorten"
+                 Text="10"
+                 />
+        <!-- row 4-->
+        <Button Grid.Column="0" Grid.Row="4"
+            x:Name="buttonStorten" Content="Storten"
+                Width="100"
+                Click="buttonStorten_Click" />
+
+    </Grid>
+</Window>

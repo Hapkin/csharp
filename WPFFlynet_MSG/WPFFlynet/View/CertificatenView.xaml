@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="WPFFlynet.View.CertificatenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFFlynet.View"
+             xmlns:vm="clr-namespace:WPFFlynet.ViewModel"
+             xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+             
+             mc:Ignorable="d" 
+             >
+    <!--   DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}"
+    <UserControl.Resources>
+    
+        <vm:ViewModelLocator x:Key="VMLocator" />
+    </UserControl.Resources>-->
+
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0">Certificaten:</TextBlock>
+        <GroupBox Grid.Row="1">
+            <DataGrid 
+                ItemsSource="{Binding lCertificaten}" 
+                IsReadOnly="False"
+                CanUserAddRows="False"
+                >
+                <!-- Unloaded="" event nog aanmaken dat het datagrid wel saved voor je van view veranderd
+                DisplayMemberPath="CertificaatAfkorting"-->
+            </DataGrid>
+        </GroupBox>
+        <!--<TextBlock Grid.Row="2" Text="{Binding ThereIsNoDataContext, diag:PresentationTraceSources.TraceLevel=High}"/>-->
+    </Grid>
+</UserControl>
