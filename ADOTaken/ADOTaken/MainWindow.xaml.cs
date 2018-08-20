@@ -63,16 +63,18 @@ namespace ADOTaken
 
         private void buttonToevoegen_Click(object sender, RoutedEventArgs e)
         {
+            
             try
             {
+                int nieuwId;
                 var manager = new TuincentrumActies();
                 var deLeverancier = new Leverancier();
                 deLeverancier.Naam = txtNaam.Text;
                 deLeverancier.Adres = txtAdres.Text;
                 deLeverancier.PostNr = txtPostcode.Text;
                 deLeverancier.Woonplaats = txtPlaats.Text;
-                manager.LeverancierToevoegen(deLeverancier);
-                labelStatus.Content = "nieuwe leverancier is toegevoegd";
+                nieuwId = manager.LeverancierToevoegen(deLeverancier);
+                labelStatus.Content = $"leverancier met nummer {nieuwId.ToString()} is toegevoegd";
             }
             catch (Exception ex)
             {

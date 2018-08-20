@@ -12,9 +12,10 @@ namespace DBConnectie
 {
     public class TuincentrumActies
     {
-        public void LeverancierToevoegen(Leverancier eenLeverancier)
+        public int LeverancierToevoegen(Leverancier eenLeverancier)
         {
             var manager = new DBTuincerntrum();
+            int nieuwId;
             using (var conTuin = manager.GetConnection())
             {
                 using (var comToevoegen = conTuin.CreateCommand())
@@ -38,9 +39,11 @@ namespace DBConnectie
                     parWoonplaats.Value = eenLeverancier.Woonplaats;
                     comToevoegen.Parameters.Add(parWoonplaats);
                     conTuin.Open();
-                    comToevoegen.ExecuteNonQuery();
+                    //ExecuteNonQuery wordt Scalar omdat je nu 1 waarde moet terugkrijgen (ID)
+                    nieuwId = Convert.ToInt32(comToevoegen.ExecuteScalar());
                 }
             }
+            return nieuwId;
         }
 
         
