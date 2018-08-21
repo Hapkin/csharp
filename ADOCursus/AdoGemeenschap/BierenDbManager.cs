@@ -13,16 +13,28 @@ namespace AdoGemeenschap
     // OPGELET REFERENCE System.configuration toevoegen!
     public class BierenDbManager
     {
-        private static ConnectionStringSettings conBierenSetting = ConfigurationManager.ConnectionStrings["Bieren"];
+        //private static ConnectionStringSettings conBierenSetting = ConfigurationManager.ConnectionStrings["bieren"];
+
+        //private static DbProviderFactory factory = DbProviderFactories.GetFactory(conBierenSetting.ProviderName);
+
+
+        //public DbConnection GetConnection()
+        //{
+        //    var conBieren = factory.CreateConnection();
+        //    conBieren.ConnectionString = conBierenSetting.ConnectionString;
+        //    return conBieren;
+        //}
+
+        private static ConnectionStringSettings conBierenSetting = ConfigurationManager.ConnectionStrings["bieren"];
 
         private static DbProviderFactory factory = DbProviderFactories.GetFactory(conBierenSetting.ProviderName);
 
 
         public DbConnection GetConnection()
         {
-            var conBieren = factory.CreateConnection();
-            conBieren.ConnectionString = conBierenSetting.ConnectionString;
-            return conBieren;
+            var conBier = factory.CreateConnection();
+            conBier.ConnectionString = conBierenSetting.ConnectionString;
+            return conBier;
         }
 
     }

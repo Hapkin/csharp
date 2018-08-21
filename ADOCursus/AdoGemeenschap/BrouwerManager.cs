@@ -13,6 +13,7 @@ namespace AdoGemeenschap
         {
             List<Brouwer> brouwers = new List<Brouwer>();
             var manager = new BierenDbManager();
+            
             using (var conBieren = manager.GetConnection())
             {
                 using (var comBrouwers = conBieren.CreateCommand())
@@ -54,10 +55,8 @@ namespace AdoGemeenschap
                     } // using rdrBrouwers
                 } // using comBrouwers
             } // using conBieren
+            
             return brouwers;
         }
     }
-
-
-
 }

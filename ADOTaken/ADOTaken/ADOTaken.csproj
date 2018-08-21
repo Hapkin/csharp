@@ -78,6 +78,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Oefening8-Datareader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Oefening4-transactions.xaml.cs">
@@ -88,6 +92,9 @@
     </Compile>
     <Compile Include="Oefening6-meerdereReturns.xaml.cs">
       <DependentUpon>Oefening6-meerdereReturns.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Oefening8-Datareader.xaml.cs">
+      <DependentUpon>Oefening8-Datareader.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -106,6 +113,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\DBConnectie.PlantGegevens.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

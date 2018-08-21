@@ -16,30 +16,57 @@ namespace AdoGemeenschap
             this.Postcode = postcode;
             this.Gemeente = gemeente;
             this.Omzet = omzet;
+            this.Changed = false;
         }
-        public string BrNaam { get; set; }
+
+        public Brouwer() { }
 
         private Int32 brouwersNrValue;
-        public Int32 BrouwerNr
-        {
-            get { return brouwersNrValue; }
-        }
-        public string Naam { get; set; }
-        public string Adres { get; set; }
+        private String brNaamValue;
+        private String adresValue;
         private Int16 postcodeValue;
+        private String gemeenteValue;
+        private Int32? omzetValue;
+        public bool Changed { get; set; }
+
+        public Int32 BrouwerNr
+        { get { return brouwersNrValue; } }
+        public String BrNaam
+        {
+            get { return brNaamValue; }
+            set
+            {
+                brNaamValue = value;
+                Changed = true;
+            }
+        }
+        public String Adres
+        {
+            get { return adresValue; }
+            set
+            {
+                adresValue = value;
+                Changed = true;
+            }
+        }
         public Int16 Postcode
         {
             get { return postcodeValue; }
             set
             {
-                if (value < 1000 || value > 9999)
-                    throw new Exception("Postcode moet tussen 1000 en 9999 liggen");
-                else
-                    postcodeValue = value;
+                postcodeValue = value;
+                Changed = true;
             }
         }
-        public string Gemeente { get; set; }
-        private Int32 omzetValue;
+        public String Gemeente
+        {
+            get { return gemeenteValue; }
+            set
+            {
+                gemeenteValue = value;
+                Changed = true;
+            }
+        }
         public Int32? Omzet
         {
             get { return omzetValue; }
@@ -47,10 +74,15 @@ namespace AdoGemeenschap
             {
                 if (value.HasValue && Convert.ToInt32(value) < 0)
                 { throw new Exception("Omzet moet positief zijn"); }
-                else { omzetValue = (Int32)value; }
+                else
+                {
+                    omzetValue = value;
+                    Changed = true;
+                }
             }
         }
 
     }
+
 }
 

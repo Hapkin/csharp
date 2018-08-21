@@ -52,5 +52,8 @@
     <Compile Include="RekeningenManager.cs" />
     <Compile Include="RekeningInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\Brouwer.datasource" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

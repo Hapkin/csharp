@@ -242,11 +242,106 @@ namespace DBConnectie
 
 
 
+        public List<PlantGegevens> GetLijstPlanten(Soort keuzesoort)
+        {
+            List<PlantGegevens> lPlanten = new List<PlantGegevens>();
+            var manager = new DBTuincerntrum();
+
+            using (var MijnConnectie = manager.GetConnection())
+            {
+                using (var MijnCommand = MijnConnectie.CreateCommand())
+                {
+                    MijnCommand.CommandType = CommandType.Text;
+
+                    if (keuzesoort != null)
+                    {
+                        MijnCommand.CommandText =
+                            MijnCommand.CommandText =
+                            "SELECT Planten.Naam ,Soorten.Soort AS Soort ,Leveranciers.Naam AS Leverancier ,[Kleur] ,[VerkoopPrijs] FROM Tuincentrum.dbo.Planten INNER JOIN Tuincentrum.dbo.Soorten ON Soorten.SoortNr = Planten.SoortNr INNER JOIN Tuincentrum.dbo.Leveranciers ON Leveranciers.LevNr = Planten.Levnr WHERE Soorten.SoortNr = @soortNr";
+                        var parZoals = MijnCommand.CreateParameter();
+                        parZoals.ParameterName = "@soortNr";
+                        parZoals.Value = keuzesoort.SoortNr;
+                        MijnCommand.Parameters.Add(parZoals);
+                    }
+                    else
+                        MijnCommand.CommandText = 
+                            "SELECT Planten.Naam ,Soorten.Soort AS Soort ,Leveranciers.Naam AS Leverancier ,[Kleur] ,[VerkoopPrijs] FROM Tuincentrum.dbo.Planten INNER JOIN Tuincentrum.dbo.Soorten ON Soorten.SoortNr = Planten.SoortNr INNER JOIN Tuincentrum.dbo.Leveranciers ON Leveranciers.LevNr = Planten.Levnr";
+
+                    MijnConnectie.Open();
+                    using (var objPlant = MijnCommand.ExecuteReader())
+                    {
+                        //Int32 plantNr = objPlant.GetOrdinal("BrouwerNr");
+                        //GetOrdinal => nakijken welke kolom op welk nummer zit
+                        Int32 kolomNrNaam = objPlant.GetOrdinal("Naam");
+                        Int32 kolomNrSoort = objPlant.GetOrdinal("Soort");
+                        Int32 kolomNrLeverancier = objPlant.GetOrdinal("Leverancier");
+                        Int32 kolomNrKleur = objPlant.GetOrdinal("Kleur");
+                        Int32 kolomNrPrijs = objPlant.GetOrdinal("VerkoopPrijs");
+                        
+                        while (objPlant.Read())
+                        {
+                            /*PlantGegevens(
+                                string naam, 
+                                string soort, 
+                                string leverancier, 
+                                string kleur,
+                                decimal kprijs)*/
+                            lPlanten.Add(
+                                new PlantGegevens(
+                                    objPlant.GetString(kolomNrNaam),
+                                    objPlant.GetString(kolomNrSoort),
+                                    objPlant.GetString(kolomNrLeverancier),
+                                    objPlant.GetString(kolomNrKleur),
+                                    objPlant.GetDecimal(kolomNrPrijs)));
+
+                        } // do while
+                    } // using rdrBrouwers
+                } // using comBrouwers
+            } // using conBieren
+
+            return lPlanten;
+        }
+        public List<Soort> GetLijstSoorten()
+        {
+            List<Soort> lPlanten = new List<Soort>();
+            var manager = new DBTuincerntrum();
+
+            using (var MijnConnectie = manager.GetConnection())
+            {
+                using (var MijnCommand = MijnConnectie.CreateCommand())
+                {
+                    MijnCommand.CommandType = CommandType.Text;
+                    MijnCommand.CommandText =
+                        "SELECT * FROM Soorten";
+
+                    MijnConnectie.Open();
+                    using (var objSoort = MijnCommand.ExecuteReader())
+                    {
+                        //GetOrdinal => nakijken welke kolom op welk nummer zit
+                        Int32 kolomNrSoortNr = objSoort.GetOrdinal("SoortNr");
+                        Int32 kolomNrSoort = objSoort.GetOrdinal("Soort");
+                        Int32 kolomNrMagazijn = objSoort.GetOrdinal("MagazijnNr");
+                        
+
+                        while (objSoort.Read())
+                        {
+                            lPlanten.Add(
+                                new Soort(
+                                    objSoort.GetInt32(kolomNrSoortNr),
+                                    objSoort.GetString(kolomNrSoort),
+                                    objSoort.GetByte(kolomNrMagazijn)));
+
+                        } // do while
+                    } // using rdrBrouwers
+                } // using comBrouwers
+            } // using conBieren
+
+            return lPlanten;
+        }
 
 
 
 
 
-
-                }
+    }
 }
