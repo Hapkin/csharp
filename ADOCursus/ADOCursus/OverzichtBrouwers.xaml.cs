@@ -22,6 +22,7 @@ namespace ADOCursus
     public partial class OverzichtBrouwers : Window
     {
         private CollectionViewSource brouwerViewSource;
+
         public OverzichtBrouwers()
         {
             InitializeComponent();
@@ -59,11 +60,13 @@ namespace ADOCursus
         public List<Brouwer> brouwersOb = new List<Brouwer>();
         private void VulDeGrid()
         {
-            CollectionViewSource brouwerViewSource =
+            brouwerViewSource =
                 (CollectionViewSource)(this.FindResource("brouwerViewSource"));
             var manager = new BrouwerManager();
             brouwersOb = manager.GetBrouwersBeginNaam(textBoxZoeken.Text);
             brouwerViewSource.Source = brouwersOb;
+            labelTotalRowCount.Content = brouwerDataGrid.Items.Count;
+            goUpdate();
         }
 
         private void goToFirstButton_Click(object sender, RoutedEventArgs e)
@@ -86,6 +89,55 @@ namespace ADOCursus
             brouwerViewSource.View.MoveCurrentToLast();
             goUpdate();
         }
+
+        private void goButton_Click(object sender, RoutedEventArgs e)
+        {
+            int position;
+            int.TryParse(textBoxGo.Text, out position);
+            if (position > 0 && position <= brouwerDataGrid.Items.Count)
+            {
+                brouwerViewSource.View.MoveCurrentToPosition(position - 1);
+            }
+            else
+            {
+                MessageBox.Show("The input index is not valid.");
+            }
+            goUpdate();
+        }
+        private void brouwerDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            goUpdate();
+        }
+        private void checkBoxPostcode0_Click(object sender, RoutedEventArgs e)
+        {
+            Binding binding1 = BindingOperations.GetBinding(postcodeTextBox,
+            TextBox.TextProperty);
+            binding1.ValidationRules.Clear();
+            var binding2 = (postcodeColumn as DataGridBoundColumn).Binding as Binding;
+            binding2.ValidationRules.Clear();
+            brouwerDataGrid.RowValidationRules.Clear();
+            switch (checkBoxPostcode0.IsChecked)
+            {
+                case true:
+                    binding1.ValidationRules.Add(new PostcodeRangeRule0());
+                    binding2.ValidationRules.Add(new PostcodeRangeRule0());
+                    brouwerDataGrid.RowValidationRules.Add(new PostcodeRangeRule0());
+                    break;
+                case false:
+                    binding1.ValidationRules.Add(new PostcodeRangeRule());
+                    binding2.ValidationRules.Add(new PostcodeRangeRule());
+                    brouwerDataGrid.RowValidationRules.Add(new PostcodeRangeRule());
+                    break;
+                default:
+                    binding1.ValidationRules.Add(new PostcodeRangeRule());
+                    binding2.ValidationRules.Add(new PostcodeRangeRule());
+                    brouwerDataGrid.RowValidationRules.Add(new PostcodeRangeRule());
+                    break;
+            }
+        }
+
+
+
         private void goUpdate()
         {
             goToPreviousButton.IsEnabled = !(brouwerViewSource.View.CurrentPosition == 0);
@@ -97,8 +149,12 @@ namespace ADOCursus
             if (brouwerDataGrid.Items.Count != 0)
             {
                 if (brouwerDataGrid.SelectedItem != null)
+                {
                     brouwerDataGrid.ScrollIntoView(brouwerDataGrid.SelectedItem);
+                    listBoxBrouwers.ScrollIntoView(brouwerDataGrid.SelectedItem);
+                }
             }
+            textBoxGo.Text = (brouwerViewSource.View.CurrentPosition + 1).ToString();
         }
     }
 }
