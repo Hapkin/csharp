@@ -6,6 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Data.Common;
+using System.Threading;
+using System.Windows.Markup;
+using System.Globalization;
 
 namespace ADOCursus
 {
@@ -21,6 +24,17 @@ namespace ADOCursus
             Application.Current.Properties["Bieren2"] = connectionString;
             
             
+        }
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("nl-BE"); ;
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("nl-BE"); ;
+
+            FrameworkElement.LanguageProperty.OverrideMetadata(
+              typeof(FrameworkElement),
+              new FrameworkPropertyMetadata(
+                    XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+            base.OnStartup(e);
         }
 
     }

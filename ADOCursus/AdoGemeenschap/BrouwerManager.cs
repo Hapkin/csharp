@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Collections.ObjectModel;
 
 namespace AdoGemeenschap
 {
     public class BrouwerManager
     {
-        public List<Brouwer> GetBrouwersBeginNaam(String beginNaam)
+        public ObservableCollection<Brouwer> GetBrouwersBeginNaam(String beginNaam)
         {
-            List<Brouwer> brouwers = new List<Brouwer>();
+            ObservableCollection<Brouwer> brouwers = new ObservableCollection<Brouwer>();
             var manager = new BierenDbManager();
-            
+
             using (var conBieren = manager.GetConnection())
             {
                 using (var comBrouwers = conBieren.CreateCommand())
@@ -55,8 +56,42 @@ namespace AdoGemeenschap
                     } // using rdrBrouwers
                 } // using comBrouwers
             } // using conBieren
-            
+
             return brouwers;
+        }
+
+
+        public List<Brouwer> SchrijfVerwijderingen(List<Brouwer> brouwers)
+        {
+            List<Brouwer> nietVerwijderdeBrouwers = new List<Brouwer>();
+            var manager = new BierenDbManager();
+            using (var conBieren = manager.GetConnection())
+            {
+                conBieren.Open();
+                using (var comDelete = conBieren.CreateCommand())
+                {
+                    comDelete.CommandType = CommandType.Text;
+                    comDelete.CommandText = "delete from brouwers where BrouwerNr = @brouwernr";
+                    var parBrouwerNr = comDelete.CreateParameter();
+                    parBrouwerNr.ParameterName = "@brouwernr";
+                    comDelete.Parameters.Add(parBrouwerNr);
+                    foreach (Brouwer eenBrouwer in brouwers)
+                    {
+                        try
+                        {
+                            parBrouwerNr.Value = eenBrouwer.BrouwerNr;
+                            if (comDelete.ExecuteNonQuery() == 0)
+                                nietVerwijderdeBrouwers.Add(eenBrouwer);
+                        }
+                        catch (Exception)
+                        {
+                            nietVerwijderdeBrouwers.Add(eenBrouwer);
+                        }
+                    } // foreach
+                } // comDelete
+            } // conBieren
+            return nietVerwijderdeBrouwers;
+
         }
     }
 }

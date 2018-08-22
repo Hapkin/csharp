@@ -4,7 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ADOCursus"
+        
         xmlns:AdoGemeenschap="clr-namespace:AdoGemeenschap;assembly=AdoGemeenschap" x:Class="ADOCursus.OverzichtBrouwers"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        
+        xmlns:glob="clr-namespace:System.Globalization;assembly=mscorlib"
         mc:Ignorable="d"
         Title="OverzichtBrouwers" SizeToContent="Width" Loaded="Window_Loaded">
     <Window.Resources>
@@ -28,7 +32,7 @@
 
     <DockPanel LastChildFill="True">
         <Border Height="30" Background="SkyBlue" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top">
-            <StackPanel HorizontalAlignment="Center" Margin="0" Width="410"
+            <StackPanel HorizontalAlignment="Center" Margin="0"
                         Orientation="Horizontal">
                 <Button Content="|&lt;&lt;" Name="goToFirstButton"
                         Width="Auto" IsEnabled="False"
@@ -60,6 +64,13 @@
                         Name="buttonZoeken" Width="Auto"
                         Background="BlanchedAlmond" FontWeight="Bold"
                         Click="buttonZoeken_Click" />
+                <Button Height="28" Name="buttonSave" Width="28"
+                        Click="buttonSave_Click">
+                    <Image Source=".\SaveHL.bmp"></Image>
+                </Button>
+                <Label Content="Postcode filter:"></Label>
+                <ComboBox Name="comboBoxPostCode" SelectionChanged="comboBoxPostCode_SelectionChanged" />
+
                 <CheckBox Name="checkBoxPostcode0" Content="Poscode 0 ok"
                           VerticalAlignment="Center" 
                           Click="checkBoxPostcode0_Click" />
@@ -73,7 +84,9 @@
                          HorizontalAlignment="Left" Margin="0,0,0,0" 
                          Name="listBoxBrouwers" 
                          VerticalAlignment="Top" Width="120" 
-                         ItemsSource="{Binding}" DisplayMemberPath="BrNaam"/>
+                         ItemsSource="{Binding}" DisplayMemberPath="BrNaam"
+                         PreviewMouseDown="testOpFouten_PreviewMouseDown"
+                         />
             </StackPanel>
         </Border>
         <Border Height="250" Background="SkyBlue" BorderBrush="Black"
@@ -84,7 +97,8 @@
 
 
                 <Grid DataContext="{StaticResource brouwerViewSource}"
-                      HorizontalAlignment="Left" Name="gridDetail" VerticalAlignment="Top">
+                      HorizontalAlignment="Left" Name="gridDetail" VerticalAlignment="Top"
+                      PreviewMouseDown="testOpFouten_PreviewMouseDown">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
@@ -122,7 +136,7 @@
                                      ValidatesOnExceptions="true" 
                                      NotifyOnValidationError="true">
                                     <Binding.ValidationRules>
-                                        <local:PostcodeRangeRule/>
+                                        <local:PostcodeRangeRule />
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
@@ -133,7 +147,27 @@
                     <Label Content="Gemeente:" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
                     <TextBox Grid.Column="1" Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="3" Name="gemeenteTextBox" Text="{Binding Path=Gemeente, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center" Width="120" />
                     <Label Content="Omzet:" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
-                    <TextBox Grid.Column="3" Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="3" Name="omzetTextBox" Text="{Binding Path=Omzet, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center" Width="120" />
+                    <TextBox Grid.Column="3" Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="3" 
+                             Name="omzetTextBox" 
+                             VerticalAlignment="Center" Width="120" 
+                             Validation.ErrorTemplate="{StaticResource validationTemplate}"
+                             Style="{StaticResource textBoxInError}">
+                        <TextBox.Text>
+                            <Binding Path="Omzet" ValidatesOnDataErrors="True" 
+                                     UpdateSourceTrigger="PropertyChanged" 
+                                     ValidatesOnNotifyDataErrors="True" 
+                                     Mode="TwoWay"
+                                     ConverterCulture="{x:Static glob:CultureInfo.CurrentCulture}"
+                                     StringFormat="c"
+                                     TargetNullValue="{x:Static sys:String.Empty}">
+                                <!--  -->
+                                <Binding.ValidationRules>
+                                    <local:IngevuldGroterDanNul ValidatesOnTargetUpdated="True"
+                                                                ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
                 </Grid>
 
 
@@ -173,6 +207,7 @@
                                         IsReadOnly="True" 
                                         Binding="{Binding BrouwerNr}"/>
                     <DataGridTextColumn x:Name="brNaamColumn" Header="Naam"
+                                        Width="250"
                                         Binding="{Binding BrNaam, UpdateSourceTrigger=PropertyChanged}"/>
                     <DataGridTextColumn x:Name="adresColumn" Header="Adres"
                                         Binding="{Binding Adres}"/>
@@ -192,8 +227,13 @@
 
                     <DataGridTextColumn x:Name="gemeenteColumn" Header="Gemeente"
                                         Binding="{Binding Gemeente}"/>
+
+                    <!-- lege string converteren naar null voor de databank -->
+                    <!-- converteren naar currency met culturesetting -->
                     <DataGridTextColumn x:Name="omzetColumn" Header="Omzet"
-                                        Binding="{Binding Omzet}" Foreground="#FF00FF00"/>
+                                        Binding="{Binding Omzet,UpdateSourceTrigger=PropertyChanged,TargetNullValue={x:Static sys:String.Empty}, StringFormat=c}"
+                                        Foreground="#FF00FF00"
+                                        />
                 </DataGrid.Columns>
             </DataGrid>
 

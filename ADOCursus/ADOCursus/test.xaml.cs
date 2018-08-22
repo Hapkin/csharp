@@ -31,12 +31,12 @@ namespace ADOCursus
             //System.Windows.Data.CollectionViewSource brouwerViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("brouwerViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // brouwerViewSource.Source = [generic data source]
-            CollectionViewSource brouwerViewSource =
-                ((CollectionViewSource)(this.FindResource("brouwerViewSource")));
-            var manager = new BrouwerManager();
-            List<Brouwer> brouwersOb = new List<Brouwer>();
-            brouwersOb = manager.GetBrouwersBeginNaam("");
-            brouwerViewSource.Source = brouwersOb;
+            //CollectionViewSource brouwerViewSource =
+            //    ((CollectionViewSource)(this.FindResource("brouwerViewSource")));
+            //var manager = new BrouwerManager();
+            //List<Brouwer> brouwersOb = new List<Brouwer>();
+            //brouwersOb = manager.GetBrouwersBeginNaam("");
+            //brouwerViewSource.Source = brouwersOb;
         }
     }
 }

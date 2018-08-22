@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +21,7 @@ namespace ADOCursus
     /// <summary>
     /// Interaction logic for OverzichtBrouwers.xaml
     /// </summary>
-    public partial class OverzichtBrouwers : Window
+    public partial class OverzichtBrouwers : Window  //, INotifyCollectionChanged? voor gebruik ObservableCollection
     {
         private CollectionViewSource brouwerViewSource;
 
@@ -44,6 +46,12 @@ namespace ADOCursus
 
             VulDeGrid();
             textBoxZoeken.Focus();
+            var nummers = (from b in brouwersOb
+                           orderby b.Postcode
+                           select b.Postcode.ToString()).Distinct().ToList();
+            nummers.Insert(0, "alles");
+            comboBoxPostCode.ItemsSource = nummers;
+            comboBoxPostCode.SelectedIndex = 0;
         }
         private void buttonZoeken_Click(object sender, RoutedEventArgs e)
         {
@@ -57,7 +65,45 @@ namespace ADOCursus
             }
         }
 
-        public List<Brouwer> brouwersOb = new List<Brouwer>();
+        public ObservableCollection<Brouwer> brouwersOb = new ObservableCollection<Brouwer>();
+        public List<Brouwer> OudeBrouwers = new List<Brouwer>();
+        void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs
+        e)
+        {
+            if (e.OldItems != null)
+            {
+                foreach (Brouwer oudeBrouwer in e.OldItems)
+                {
+                    OudeBrouwers.Add(oudeBrouwer);
+                }
+            }
+            labelTotalRowCount.Content = brouwerDataGrid.Items.Count;
+        }
+
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
+        {
+            List<Brouwer> resultaatBrouwers = new List<Brouwer>();
+            var manager = new BrouwerManager();
+            if (OudeBrouwers.Count() != 0)
+            {
+                resultaatBrouwers = manager.SchrijfVerwijderingen(OudeBrouwers);
+                if (resultaatBrouwers.Count > 0)
+                {
+                    StringBuilder boodschap = new StringBuilder();
+                    boodschap.Append("Niet verwijderd: \n");
+                    foreach (var b in resultaatBrouwers)
+                    {
+                        boodschap.Append("Nummer: " + b.BrouwerNr + " : " + b.BrNaam + " niet\n");
+                    }
+                    MessageBox.Show(boodschap.ToString());
+                }
+            }
+            MessageBox.Show(OudeBrouwers.Count - resultaatBrouwers.Count +
+            " brouwer(s) verwijderd in de database", "Info", MessageBoxButton.OK,
+            MessageBoxImage.Information);
+            OudeBrouwers.Clear();
+        }
+
         private void VulDeGrid()
         {
             brouwerViewSource =
@@ -67,6 +113,7 @@ namespace ADOCursus
             brouwerViewSource.Source = brouwersOb;
             labelTotalRowCount.Content = brouwerDataGrid.Items.Count;
             goUpdate();
+            brouwersOb.CollectionChanged += this.OnCollectionChanged;
         }
 
         private void goToFirstButton_Click(object sender, RoutedEventArgs e)
@@ -110,12 +157,17 @@ namespace ADOCursus
         }
         private void checkBoxPostcode0_Click(object sender, RoutedEventArgs e)
         {
+            //bidning van de postcodeTextBox
             Binding binding1 = BindingOperations.GetBinding(postcodeTextBox,
             TextBox.TextProperty);
             binding1.ValidationRules.Clear();
+
+            //binding van de gridboxColumn
             var binding2 = (postcodeColumn as DataGridBoundColumn).Binding as Binding;
             binding2.ValidationRules.Clear();
             brouwerDataGrid.RowValidationRules.Clear();
+
+            //nakijken of de checkbox is gecheckt en aan de hand daarvan bepalen welke validatie toe te passen
             switch (checkBoxPostcode0.IsChecked)
             {
                 case true:
@@ -136,6 +188,58 @@ namespace ADOCursus
             }
         }
 
+        private void testOpFouten_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            bool foutGevonden = false;
+            foreach (var c in gridDetail.Children)
+            {
+                if (c is AdornerDecorator)
+                {
+                    if (Validation.GetHasError(((AdornerDecorator)c).Child))
+                    {
+                        foutGevonden = true;
+                    }
+                }
+                else if (Validation.GetHasError((DependencyObject)c))
+                {
+                    foutGevonden = true;
+                }
+            }
+            foreach (var c in brouwerDataGrid.ItemsSource)
+            {
+                var d = brouwerDataGrid.ItemContainerGenerator.ContainerFromItem(c);
+                if (d is DataGridRow)
+                {
+                    if (Validation.GetHasError(d))
+                    {
+                        foutGevonden = true;
+                    }
+                }
+            }
+            if (foutGevonden)
+                e.Handled = true;
+        }
+
+        private void comboBoxPostCode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxPostCode.SelectedIndex == 0)
+                brouwerDataGrid.Items.Filter = null;
+            else
+            //brouwerDataGrid.Items.Filter = new Predicate<object>(PostCodeFilter);
+            {
+                brouwerDataGrid.Items.Filter = new Predicate<object>(x => ((Brouwer)x).Postcode == Convert.ToInt16(comboBoxPostCode.SelectedValue));
+            }
+
+            goUpdate();
+            labelTotalRowCount.Content = brouwerDataGrid.Items.Count;
+        }
+        /*
+        public bool PostCodeFilter(object br)
+        {
+            Brouwer b = br as Brouwer;
+            bool result = (b.Postcode == Convert.ToInt16(comboBoxPostCode.SelectedValue));
+            return result;
+        }*/
 
 
         private void goUpdate()

@@ -61,8 +61,9 @@
     <Compile Include="OverzichtBrouwers.xaml.cs">
       <DependentUpon>OverzichtBrouwers.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PostcodeRangeRule.cs" />
-    <Compile Include="PostcodeRangeRule0.cs" />
+    <Compile Include="Validatie\IngevuldGroterDanNul.cs" />
+    <Compile Include="Validatie\PostcodeRangeRule.cs" />
+    <Compile Include="Validatie\PostcodeRangeRule0.cs" />
     <Compile Include="RekeningInfoRaadplegen.xaml.cs">
       <DependentUpon>RekeningInfoRaadplegen.xaml</DependentUpon>
     </Compile>
@@ -144,6 +145,9 @@
       <Project>{764b44ef-7fa3-4a34-986b-f57472ed109f}</Project>
       <Name>AdoGemeenschap</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SaveHL.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
