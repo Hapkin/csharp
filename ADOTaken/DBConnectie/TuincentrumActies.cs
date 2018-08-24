@@ -228,7 +228,7 @@ namespace DBConnectie
                     MijnCommand.ExecuteNonQuery();
                     if (parNaam.Value.Equals(DBNull.Value))
                         throw new Exception("PLantgegevens niet gevonden...");
-                    PlantGegevens result = new PlantGegevens(parNaam.Value.ToString(), parSoort.Value.ToString(), parLeverancier.Value.ToString(), parKleur.Value.ToString(), (Decimal)parKostprijs.Value);
+                    PlantGegevens result = new PlantGegevens(plantNr, parNaam.Value.ToString(), parSoort.Value.ToString(), parLeverancier.Value.ToString(), parKleur.Value.ToString(), (Decimal)parKostprijs.Value);
                     return result;
 
 
@@ -257,21 +257,22 @@ namespace DBConnectie
                     {
                         MijnCommand.CommandText =
                             MijnCommand.CommandText =
-                            "SELECT Planten.Naam ,Soorten.Soort AS Soort ,Leveranciers.Naam AS Leverancier ,[Kleur] ,[VerkoopPrijs] FROM Tuincentrum.dbo.Planten INNER JOIN Tuincentrum.dbo.Soorten ON Soorten.SoortNr = Planten.SoortNr INNER JOIN Tuincentrum.dbo.Leveranciers ON Leveranciers.LevNr = Planten.Levnr WHERE Soorten.SoortNr = @soortNr";
+                            "SELECT Planten.PlantNr, Planten.Naam ,Soorten.Soort AS Soort ,Leveranciers.Naam AS Leverancier ,[Kleur] ,[VerkoopPrijs] FROM Tuincentrum.dbo.Planten INNER JOIN Tuincentrum.dbo.Soorten ON Soorten.SoortNr = Planten.SoortNr INNER JOIN Tuincentrum.dbo.Leveranciers ON Leveranciers.LevNr = Planten.Levnr WHERE Soorten.SoortNr = @soortNr";
                         var parZoals = MijnCommand.CreateParameter();
                         parZoals.ParameterName = "@soortNr";
                         parZoals.Value = keuzesoort.SoortNr;
                         MijnCommand.Parameters.Add(parZoals);
                     }
                     else
-                        MijnCommand.CommandText = 
-                            "SELECT Planten.Naam ,Soorten.Soort AS Soort ,Leveranciers.Naam AS Leverancier ,[Kleur] ,[VerkoopPrijs] FROM Tuincentrum.dbo.Planten INNER JOIN Tuincentrum.dbo.Soorten ON Soorten.SoortNr = Planten.SoortNr INNER JOIN Tuincentrum.dbo.Leveranciers ON Leveranciers.LevNr = Planten.Levnr";
+                        MijnCommand.CommandText =
+                            "SELECT Planten.PlantNr, Planten.Naam ,Soorten.Soort AS Soort ,Leveranciers.Naam AS Leverancier ,[Kleur] ,[VerkoopPrijs] FROM Tuincentrum.dbo.Planten INNER JOIN Tuincentrum.dbo.Soorten ON Soorten.SoortNr = Planten.SoortNr INNER JOIN Tuincentrum.dbo.Leveranciers ON Leveranciers.LevNr = Planten.Levnr";
 
                     MijnConnectie.Open();
                     using (var objPlant = MijnCommand.ExecuteReader())
                     {
                         //Int32 plantNr = objPlant.GetOrdinal("BrouwerNr");
                         //GetOrdinal => nakijken welke kolom op welk nummer zit
+                        Int32 kolomNrNr = objPlant.GetOrdinal("PlantNr");
                         Int32 kolomNrNaam = objPlant.GetOrdinal("Naam");
                         Int32 kolomNrSoort = objPlant.GetOrdinal("Soort");
                         Int32 kolomNrLeverancier = objPlant.GetOrdinal("Leverancier");
@@ -288,6 +289,7 @@ namespace DBConnectie
                                 decimal kprijs)*/
                             lPlanten.Add(
                                 new PlantGegevens(
+                                    objPlant.GetInt32(kolomNrNr), 
                                     objPlant.GetString(kolomNrNaam),
                                     objPlant.GetString(kolomNrSoort),
                                     objPlant.GetString(kolomNrLeverancier),

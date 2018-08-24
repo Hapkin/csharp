@@ -25,17 +25,25 @@ namespace ADOTaken
             InitializeComponent();
         }
 
+        private CollectionViewSource plantGegevensViewSource;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            CollectionViewSource plantGegevensViewSource =
-                (CollectionViewSource)(this.FindResource("plantGegevensViewSource"));
+            
             //System.Windows.Data.CollectionViewSource plantGegevensViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("")));
             VulcmbSoort();
             VulLstPlanten(null);
         }
+
+
+
+
         public List<Soort> lSoort = new List<Soort>();
         private void VulcmbSoort()
         {
+             
+            plantGegevensViewSource =
+                (CollectionViewSource)(this.FindResource("plantGegevensViewSource"));
+                
             var manager = new TuincentrumActies();
             lSoort = manager.GetLijstSoorten();
             cmbSoort.ItemsSource = lSoort;
