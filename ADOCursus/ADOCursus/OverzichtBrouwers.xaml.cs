@@ -29,7 +29,6 @@ namespace ADOCursus
         public OverzichtBrouwers()
         {
             InitializeComponent();
-            DataContext = this;
 
         }
 

@@ -21,7 +21,7 @@ namespace ADOCursus
             {
                 return ValidationResult.ValidResult;
             }
-            if (!decimal.TryParse(value.ToString(), style, cultureInfo, out getal))
+            if (!decimal.TryParse(value.ToString(), NumberStyles.Currency, cultureInfo, out getal))
             {
                 return new ValidationResult(false, "Waarde moet een getal zijn");
             }
