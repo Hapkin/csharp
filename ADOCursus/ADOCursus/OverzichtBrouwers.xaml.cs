@@ -29,6 +29,8 @@ namespace ADOCursus
         public OverzichtBrouwers()
         {
             InitializeComponent();
+            DataContext = this;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

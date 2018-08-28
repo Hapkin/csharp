@@ -25,50 +25,64 @@ namespace ADOTaken
     {
         public Oefening8_Datareader()
         {
+            
             InitializeComponent();
+            
+
         }
 
-        private CollectionViewSource plantGegevensViewSource;
+        //private CollectionViewSource plantGegevensViewSource;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             
             //System.Windows.Data.CollectionViewSource plantGegevensViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("")));
             VulcmbSoort();
-            //VulLstPlanten(null);
             var manager = new TuincentrumActies();
             lPlantenALL = manager.GetLijstPlanten(null);
             lPlanten = lPlantenALL;
-            lstPlanten.ItemsSource = lPlanten;
-            lstPlanten.DisplayMemberPath = "Naam";
 
+
+            //DataContext als laatste element zetten
+            this.DataContext = this;
         }
 
 
 
 
-        public List<Soort> lSoort = new List<Soort>();
+        private ObservableCollection<Soort> soortLijst = new ObservableCollection<Soort>();
+        
+
+        public ObservableCollection<Soort> lSoort
+        {
+            get { return soortLijst; }
+            set { soortLijst = value; }
+        }
+
         private void VulcmbSoort()
         {
              
-            plantGegevensViewSource =
-                (CollectionViewSource)(this.FindResource("plantGegevensViewSource"));
+            //plantGegevensViewSource =
+            //    (CollectionViewSource)(this.FindResource("plantGegevensViewSource"));
                 
             var manager = new TuincentrumActies();
             
             lSoort = manager.GetLijstSoorten();
             lSoort.Insert(0, (new Soort(0, "Alle Soorten", 0)));
 
-            cmbSoort.ItemsSource = lSoort;
-            cmbSoort.DisplayMemberPath = "Naam";
+
             cmbSoort.SelectedIndex=0;
         }
+
+        //lPlantenAll is de volledige planten lijst (hieruit worden bepaalde soorten gefilterd)
         private ObservableCollection<PlantGegevens> lPlantenALL = new ObservableCollection<PlantGegevens>();
         private ObservableCollection<PlantGegevens> plantenlijst;
 
         public ObservableCollection<PlantGegevens> lPlanten
         {
             get { return plantenlijst; }
-            set { plantenlijst = value; }
+            set { plantenlijst = value;
+                OnPropertyChanged("lPlanten");
+            }
         }
 
         private void VulLstPlanten(Soort gekozenSoort)
@@ -78,7 +92,7 @@ namespace ADOTaken
                 var lPlanten2 = (lPlantenALL.Where(x => x.Soort == gekozenSoort.Naam));
                 lPlanten = new ObservableCollection<PlantGegevens>(lPlanten2);
 
-                OnPropertyChanged("lPlanten");
+                
             }
             else
             {
@@ -136,5 +150,45 @@ namespace ADOTaken
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
+        {            
+
+            //List<Brouwer> resultaatBrouwers = new List<Brouwer>();
+            //var manager = new TuincentrumActies();
+
+
+            ////bewerkte brouwers
+            //foreach (Brouwer b in brouwersOb)
+            //{
+            //    if ((b.Changed == true) && (b.BrouwerNr != 0)) GewijzigdeBrouwers.Add(b);
+            //    b.Changed = false;
+            //}
+            //resultaatBrouwers.Clear();
+            //if (GewijzigdeBrouwers.Count() != 0)
+            //{
+            //    resultaatBrouwers = manager.SchrijfWijzigingen(GewijzigdeBrouwers);
+            //    if (resultaatBrouwers.Count > 0)
+            //    {
+            //        StringBuilder boodschap = new StringBuilder();
+            //        boodschap.Append("Niet gewijzigd: \n");
+            //        foreach (var b in resultaatBrouwers)
+            //        {
+            //            boodschap.Append("Nummer: " + b.BrouwerNr + " : " + b.BrNaam + " niet\n");
+            //        }
+            //        MessageBox.Show(boodschap.ToString());
+            //    }
+            //}
+            //MessageBox.Show(GewijzigdeBrouwers.Count - resultaatBrouwers.Count +
+            //" brouwer(s) gewijzigd in de database", "Info", MessageBoxButton.OK,
+            //MessageBoxImage.Information);
+
+            ////grid refreshen zodat de BrouwerNr aangepast wordt
+            //VulDeGrid();
+
+        }
+
+
     }
 }
+

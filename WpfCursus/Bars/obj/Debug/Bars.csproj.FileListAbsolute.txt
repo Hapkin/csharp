@@ -34,4 +34,4 @@ E:\users\Prog\GIT\Jo\WpfCursus\Bars\obj\Debug\Bars.Properties.Resources.resource
 E:\users\Prog\GIT\Jo\WpfCursus\Bars\obj\Debug\Bars.csproj.GenerateResource.Cache
 E:\users\Prog\GIT\Jo\WpfCursus\Bars\obj\Debug\Bars.exe
 E:\users\Prog\GIT\Jo\WpfCursus\Bars\obj\Debug\Bars.pdb
-C:\GIT\WpfCursus\Bars\obj\Debug\Bars.csprojResolveAssemblyReference.cache
+C:\GIT\WpfCursus\Bars\obj\Debug\Bars.csprojAssemblyReference.cache

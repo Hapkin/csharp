@@ -304,9 +304,9 @@ namespace DBConnectie
 
             return lPlanten;
         }
-        public List<Soort> GetLijstSoorten()
+        public ObservableCollection<Soort> GetLijstSoorten()
         {
-            List<Soort> lPlanten = new List<Soort>();
+            ObservableCollection<Soort> lPlanten = new ObservableCollection<Soort>();
             var manager = new DBTuincerntrum();
 
             using (var MijnConnectie = manager.GetConnection())
