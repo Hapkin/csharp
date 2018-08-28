@@ -151,40 +151,32 @@ namespace ADOTaken
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+
+
+        public List<PlantGegevens> GewijzigdePlanten = new List<PlantGegevens>();
         private void buttonSave_Click(object sender, RoutedEventArgs e)
-        {            
+        {
+            List<PlantGegevens> resultaatPlanten = new List<PlantGegevens>();
+            var manager = new TuincentrumActies();
 
-            //List<Brouwer> resultaatBrouwers = new List<Brouwer>();
-            //var manager = new TuincentrumActies();
-
-
-            ////bewerkte brouwers
-            //foreach (Brouwer b in brouwersOb)
-            //{
-            //    if ((b.Changed == true) && (b.BrouwerNr != 0)) GewijzigdeBrouwers.Add(b);
-            //    b.Changed = false;
-            //}
-            //resultaatBrouwers.Clear();
-            //if (GewijzigdeBrouwers.Count() != 0)
-            //{
-            //    resultaatBrouwers = manager.SchrijfWijzigingen(GewijzigdeBrouwers);
-            //    if (resultaatBrouwers.Count > 0)
-            //    {
-            //        StringBuilder boodschap = new StringBuilder();
-            //        boodschap.Append("Niet gewijzigd: \n");
-            //        foreach (var b in resultaatBrouwers)
-            //        {
-            //            boodschap.Append("Nummer: " + b.BrouwerNr + " : " + b.BrNaam + " niet\n");
-            //        }
-            //        MessageBox.Show(boodschap.ToString());
-            //    }
-            //}
-            //MessageBox.Show(GewijzigdeBrouwers.Count - resultaatBrouwers.Count +
-            //" brouwer(s) gewijzigd in de database", "Info", MessageBoxButton.OK,
-            //MessageBoxImage.Information);
-
-            ////grid refreshen zodat de BrouwerNr aangepast wordt
-            //VulDeGrid();
+            if (GewijzigdePlanten.Count() != 0)
+            {
+                resultaatPlanten = manager.SchrijfWijzigingen(GewijzigdePlanten);
+                if (resultaatPlanten.Count > 0)
+                {
+                    StringBuilder boodschap = new StringBuilder();
+                    boodschap.Append("Niet gewijzigd: \n");
+                    foreach (var b in resultaatPlanten)
+                    {
+                        boodschap.Append("Nummer: " + b.BrouwerNr + " : " + b.BrNaam + " niet\n");
+                    }
+                    MessageBox.Show(boodschap.ToString());
+                }
+            }
+            MessageBox.Show(GewijzigdePlanten.Count - GewijzigdePlanten.Count +
+            " plant(en) gewijzigd in de database", "Info", MessageBoxButton.OK,
+            MessageBoxImage.Information);
+            
 
         }
 
