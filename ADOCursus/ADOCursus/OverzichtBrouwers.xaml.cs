@@ -229,7 +229,7 @@ namespace ADOCursus
 
 
 
-        //SAVE, DELETE, UPDATE
+        #region SAVE, DELETE, UPDATE
         public ObservableCollection<Brouwer> brouwersOb = new ObservableCollection<Brouwer>();
         public List<Brouwer> OudeBrouwers = new List<Brouwer>();
         public List<Brouwer> NieuweBrouwers = new List<Brouwer>();
@@ -335,8 +335,9 @@ namespace ADOCursus
 
             OudeBrouwers.Clear();
             NieuweBrouwers.Clear();
+            #endregion
         }
 
-        
+
     }
 }

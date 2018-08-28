@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DBConnectie;
 using System.Data.Common;
 using System.Transactions;
+using System.Collections.ObjectModel;
 
 namespace DBConnectie
 {
@@ -242,9 +243,9 @@ namespace DBConnectie
 
 
 
-        public List<PlantGegevens> GetLijstPlanten(Soort keuzesoort)
+        public ObservableCollection<PlantGegevens> GetLijstPlanten(Soort keuzesoort)
         {
-            List<PlantGegevens> lPlanten = new List<PlantGegevens>();
+            ObservableCollection<PlantGegevens> lPlanten = new ObservableCollection<PlantGegevens>();
             var manager = new DBTuincerntrum();
 
             using (var MijnConnectie = manager.GetConnection())
