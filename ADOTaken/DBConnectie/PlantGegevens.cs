@@ -16,13 +16,33 @@ namespace DBConnectie
             Leverancier = leverancier;
             Kleur = kleur;
             Kostprijs = kprijs;
+            changed = false;
         }
-        public int Nummer { get; set; }
+        public int Nummer { get;
+            set; }
         public string Naam { get; set; }
         public string Soort { get; set; }
         public string Leverancier { get; set; }
-        public string Kleur { get; set; }
-        public decimal Kostprijs { get; set; }
+        private string kleurValue;
+
+        public string Kleur
+        {
+            get { return kleurValue; }
+            set { kleurValue = value;
+                changed = true;
+            }
+        }
+        private decimal prijsValue;
+
+        public decimal Kostprijs
+        {
+            get { return prijsValue; }
+            set { prijsValue = value;
+                changed = true;
+            }
+        }
+
+        public bool changed { get; set; }
 
     }
 }

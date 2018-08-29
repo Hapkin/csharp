@@ -14,7 +14,7 @@ namespace ADOCursus
         System.Globalization.CultureInfo cultureInfo)
         {
             decimal getal;
-            NumberStyles style = NumberStyles.Currency;
+            //NumberStyles style = NumberStyles.Currency;
 
             //mag niet ingevuld zijn?
             if (value == null || value.ToString() == string.Empty)

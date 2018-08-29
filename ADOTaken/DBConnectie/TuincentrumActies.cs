@@ -335,14 +335,65 @@ namespace DBConnectie
                                     objSoort.GetByte(kolomNrMagazijn)));
 
                         } // do while
-                    } // using rdrBrouwers
-                } // using comBrouwers
-            } // using conBieren
+                    }// using objSoort
+                } // using MijnCommand
+            } // using MijnConnectie
 
             return lPlanten;
         }
 
+        public List<PlantGegevens> SchrijfWijzigingen(List<PlantGegevens> aangepastePlanten)
+        {
+            List<PlantGegevens> nietDoorgevoerdePlanten = new List<PlantGegevens>();
+            var manager = new DBTuincerntrum();
+            using (var conBieren = manager.GetConnection())
+            {
+                using (var comUpdate = conBieren.CreateCommand())
+                {
+                    comUpdate.CommandType = CommandType.Text;
+                    comUpdate.CommandText = "UPDATE Planten SET Kleur = @kleur, VerkoopPrijs = @prijs WHERE PlantNr = @plantNr";
 
+                    var parPlantNr = comUpdate.CreateParameter();
+                    parPlantNr.ParameterName = "@plantNr";
+                    comUpdate.Parameters.Add(parPlantNr);
+
+                    var parPlantKleur = comUpdate.CreateParameter();
+                    parPlantKleur.ParameterName = "@kleur";
+                    comUpdate.Parameters.Add(parPlantKleur);
+
+                    var parPlantPrijs = comUpdate.CreateParameter();
+                    parPlantPrijs.ParameterName = "@prijs";
+                    comUpdate.Parameters.Add(parPlantPrijs);
+
+                    conBieren.Open();
+                    foreach (PlantGegevens eenPlant in aangepastePlanten)
+                    {
+                        try
+                        {
+                            parPlantNr.Value = eenPlant.Nummer;
+                            parPlantKleur.Value = eenPlant.Kleur;
+                            parPlantPrijs.Value = eenPlant.Kostprijs;
+
+                            // indien je een null naar de DB moet sturen
+                            //if (eenPlant.Omzet.HasValue)
+                            //{
+                            //    parOmzet.Value = eenPlant.Omzet;
+                            //}
+                            //else { parOmzet.Value = DBNull.Value; }
+                            
+
+                            if (comUpdate.ExecuteNonQuery() == 0)
+                                nietDoorgevoerdePlanten.Add(eenPlant);
+                        }
+                        catch (Exception)
+                        {
+                            nietDoorgevoerdePlanten.Add(eenPlant);
+                        }
+                    } // foreach
+                } // comUpdate
+            } // conBieren
+            return nietDoorgevoerdePlanten;
+        }
 
 
 

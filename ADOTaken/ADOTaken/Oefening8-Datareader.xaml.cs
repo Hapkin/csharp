@@ -100,26 +100,36 @@ namespace ADOTaken
                 OnPropertyChanged("lPlanten");
             }
 
-            //if(cmbSoort.SelectedIndex!=0)
-            //{ 
-            //var manager = new TuincentrumActies();
-            //lPlanten = manager.GetLijstPlanten(gekozenSoort);
-            //lstPlanten.ItemsSource= lPlanten;
-            //lstPlanten.DisplayMemberPath = "Naam";
-            //} else
-            //{
-            //    var manager = new TuincentrumActies();
-            //    lPlanten = manager.GetLijstPlanten(null);
-            //    lstPlanten.ItemsSource = lPlanten;
-            //    lstPlanten.DisplayMemberPath = "Naam";
-            //}
         }
 
 
         private void cmbSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (MijnPlant != null)
+            {
+                if (MijnPlant.changed)
+                    GewijzigdePlanten.Add(MijnPlant);
+            }
+            
+
+
+            if (GewijzigdePlanten.Count>0)
+            {
+                if (MessageBox.Show($"er zijn {GewijzigdePlanten.Count() } gewijzigde planten. /n wilt u deze saven?", "Save?", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.Yes)
+                    Save();
+
+                GewijzigdePlanten.Clear();
+                MijnPlant.changed = false;
+            }
+
+
             Soort gekozenSoort = (Soort)cmbSoort.SelectedItem;
+            
             VulLstPlanten(gekozenSoort);
+            BindingExpression expression = lstPlanten.GetBindingExpression(ListBox.ItemsSourceProperty);
+            expression.UpdateSource();
+            lstPlanten.SelectedIndex = 0;
+
         }
         private PlantGegevens mijnPlant;
 
@@ -134,8 +144,13 @@ namespace ADOTaken
 
         private void lstPlanten_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
+            if (MijnPlant != null)
+            {
+                if (MijnPlant.changed)
+                    GewijzigdePlanten.Add(MijnPlant);
+            }
             MijnPlant = (PlantGegevens)lstPlanten.SelectedItem;
-
         }
 
 
@@ -152,12 +167,20 @@ namespace ADOTaken
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-
         public List<PlantGegevens> GewijzigdePlanten = new List<PlantGegevens>();
+
         private void buttonSave_Click(object sender, RoutedEventArgs e)
+        {
+
+            Save();
+            
+
+        }
+        public void Save()
         {
             List<PlantGegevens> resultaatPlanten = new List<PlantGegevens>();
             var manager = new TuincentrumActies();
+
 
             if (GewijzigdePlanten.Count() != 0)
             {
@@ -166,21 +189,37 @@ namespace ADOTaken
                 {
                     StringBuilder boodschap = new StringBuilder();
                     boodschap.Append("Niet gewijzigd: \n");
-                    foreach (var b in resultaatPlanten)
+                    foreach (var misluktePlant in resultaatPlanten)
                     {
-                        boodschap.Append("Nummer: " + b.BrouwerNr + " : " + b.BrNaam + " niet\n");
+                        boodschap.Append("  - " + misluktePlant.Naam + "\n");
                     }
                     MessageBox.Show(boodschap.ToString());
                 }
             }
-            MessageBox.Show(GewijzigdePlanten.Count - GewijzigdePlanten.Count +
+            MessageBox.Show(GewijzigdePlanten.Count - resultaatPlanten.Count +
             " plant(en) gewijzigd in de database", "Info", MessageBoxButton.OK,
             MessageBoxImage.Information);
-            
-
+            GewijzigdePlanten.Clear();
+            MijnPlant.changed = false;
         }
 
+        private void MouseDownError(object sender, MouseButtonEventArgs e)
+        {
+            bool foutGevonden = false;
+            if (Validation.GetHasError(kleurTextBox)|| Validation.GetHasError(kostprijsTextBox))
+                foutGevonden = true;
 
+
+
+
+
+
+
+            if (foutGevonden)
+            { e.Handled = true;
+                MessageBox.Show("Gelieve de error op te lossen.");
+            }
+        }
     }
 }
 
