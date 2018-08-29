@@ -44,10 +44,14 @@
   <ItemGroup>
     <Compile Include="DBTuincerntrum.cs" />
     <Compile Include="Leverancier.cs" />
+    <Compile Include="LeverancierActies.cs" />
     <Compile Include="PlantGegevens.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Soort.cs" />
     <Compile Include="TuincentrumActies.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\LeverancierActies.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

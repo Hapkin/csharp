@@ -1,0 +1,33 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ADOTaken"
+        xmlns:DBConnectie="clr-namespace:DBConnectie;assembly=DBConnectie" x:Class="ADOTaken.Oef10_datagrid"
+        mc:Ignorable="d"
+        Title="Oef10_datagrid" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Window.Resources>
+        <CollectionViewSource x:Key="leverancierViewSource" d:DesignSource="{d:DesignInstance {x:Type DBConnectie:Leverancier}, CreateList=True}"/>
+    </Window.Resources>
+
+    <StackPanel Orientation="Vertical" DataContext="{StaticResource leverancierViewSource}">
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Kies postnummer" Width="150" />
+            <ComboBox Name="cmbPostNummers" Width="100" SelectionChanged="cmbPostNummers_SelectionChanged"/>
+        </StackPanel>
+        <DataGrid x:Name="leverancierDataGrid" 
+                  RowDetailsVisibilityMode="VisibleWhenSelected" EnableRowVirtualization="True" AutoGenerateColumns="False"
+                  Margin="0,0,0,0" Width="auto"
+                  ItemsSource="{Binding}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="levNrColumn" Header="Lev Nr" Binding="{Binding LevNr}" Width="1*"/>
+                <DataGridTextColumn x:Name="naamColumn" Header="Naam" Binding="{Binding Naam}" Width="2*"/>
+                <DataGridTextColumn x:Name="adresColumn" Header="Adres" Binding="{Binding Adres}"  Width="3*"/>
+                <DataGridTextColumn x:Name="postNrColumn" Header="Post Nr" Binding="{Binding PostNr}"  Width="2*" />
+                <DataGridTextColumn x:Name="woonplaatsColumn" Header="Woonplaats" Binding="{Binding Woonplaats}" Width="2*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </StackPanel>
+</Window>
