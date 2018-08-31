@@ -9,15 +9,25 @@ namespace DBConnectie
 {
     public class Leverancier
     {
-        public Leverancier(int nr, string naam, string adres, string postnr, string plaats)
+        public Leverancier(int nr, string naam, string adres, string postnr, string plaats, object nVersie)
         {
             LevNr = nr;
             Naam = naam;
             Adres = adres;
             PostNr = postnr;
             Woonplaats = plaats;
+            Versie = nVersie;
             Changed = false;
         }
+        private Object versieValue;
+
+        public object Versie
+        {
+            get { return versieValue; }
+            set { versieValue = value; }
+        }
+
+
         public Leverancier()
         { Changed = false; }
 

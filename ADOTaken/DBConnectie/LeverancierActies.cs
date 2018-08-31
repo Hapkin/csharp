@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
@@ -30,6 +31,7 @@ namespace DBConnectie
                         Int32 kolomAdres = reader.GetOrdinal("Adres");
                         Int32 kolomPostNr = reader.GetOrdinal("PostNr");
                         Int32 kolomWoonplaats = reader.GetOrdinal("Woonplaats");
+                        Int32 versiePos = reader.GetOrdinal("Versie");
 
                         while (reader.Read())
                         {
@@ -38,7 +40,8 @@ namespace DBConnectie
                                 reader.GetString(kolomNaam),
                                 reader.GetString(kolomAdres),
                                 reader.GetString(kolomPostNr),
-                                reader.GetString(kolomWoonplaats)));
+                                reader.GetString(kolomWoonplaats),
+                                reader.GetValue(versiePos)));
                         }
                     }//reader
                 }//mijncommand
@@ -148,7 +151,12 @@ namespace DBConnectie
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "UPDATE leveranciers SET Naam= @naam, Adres=@adres, PostNr=@postnr, Woonplaats=@gemeente WHERE LevNr = @levNr";
+                    command.CommandText = 
+                        "UPDATE leveranciers SET Naam= @naam, Adres=@adres, PostNr=@postnr, Woonplaats=@gemeente WHERE LevNr = @levNr AND Versie=@versie";
+
+                    var parVersie = command.CreateParameter();
+                    parVersie.ParameterName = "@versie";
+                    command.Parameters.Add(parVersie);
 
                     var parNaam = command.CreateParameter();
                     parNaam.ParameterName = "@naam";
@@ -157,7 +165,7 @@ namespace DBConnectie
                     parAdres.ParameterName = "@adres";
                     command.Parameters.Add(parAdres);
                     var parPostNr = command.CreateParameter();
-                    parPostNr.ParameterName = "@postcode";
+                    parPostNr.ParameterName = "@postnr";
                     command.Parameters.Add(parPostNr);
                     var parGemeente = command.CreateParameter();
                     parGemeente.ParameterName = "@gemeente";
@@ -179,12 +187,16 @@ namespace DBConnectie
                             parPostNr.Value = lev.PostNr;
                             parGemeente.Value = lev.Woonplaats;
                             parLevNr.Value = lev.LevNr;
-                            if (command.ExecuteNonQuery() == 0)
-                                mislukt.Add(lev);
-                        }
-                        catch (Exception)
-                        {
+                            parVersie.Value = lev.Versie;
 
+                            if (command.ExecuteNonQuery() == 0)
+                                throw new Exception("Iemand was je voor");
+                            //if (command.ExecuteNonQuery() == 0)
+                            //    mislukt.Add(lev);
+                        }
+                        catch (Exception e)
+                        {
+                            var a = e;
                             mislukt.Add(lev);
                         }
                     }

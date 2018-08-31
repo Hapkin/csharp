@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5BA3B34F-5372-482D-B24D-6EE2C7483AB6}</ProjectGuid>
+    <ProjectGuid>{C54821D2-5B7F-42D3-8865-BB84D8E8D52D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ADOCursus</RootNamespace>
-    <AssemblyName>ADOCursus</AssemblyName>
+    <RootNamespace>AdoWPF2</RootNamespace>
+    <AssemblyName>AdoWPF2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,7 +36,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,31 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="KlantToevoegen.xaml.cs">
-      <DependentUpon>KlantToevoegen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="OverzichtBrouwers.xaml.cs">
-      <DependentUpon>OverzichtBrouwers.xaml</DependentUpon>
-    </Compile>
     <Compile Include="StripFiguren.xaml.cs">
       <DependentUpon>StripFiguren.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Validatie\IngevuldGroterDanNul.cs" />
-    <Compile Include="Validatie\PostcodeRangeRule.cs" />
-    <Compile Include="Validatie\PostcodeRangeRule0.cs" />
-    <Compile Include="RekeningInfoRaadplegen.xaml.cs">
-      <DependentUpon>RekeningInfoRaadplegen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SaldoRekeningRaadplegen.xaml.cs">
-      <DependentUpon>SaldoRekeningRaadplegen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="test.xaml.cs">
-      <DependentUpon>test.xaml</DependentUpon>
-    </Compile>
-    <Page Include="KlantToevoegen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -92,35 +70,12 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Overschrijven.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="OverzichtBrouwers.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RekeningInfoRaadplegen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SaldoRekeningRaadplegen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="StripFiguren.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="test.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Overschrijven.xaml.cs">
-      <DependentUpon>Overschrijven.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -138,24 +93,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\AdoGemeenschap.Brouwer.datasource" />
-    <None Include="Properties\DataSources\AdoGemeenschap.Figuur.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AdoGemeenschap\AdoGemeenschap.csproj">
       <Project>{764b44ef-7fa3-4a34-986b-f57472ed109f}</Project>
       <Name>AdoGemeenschap</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="SaveHL.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

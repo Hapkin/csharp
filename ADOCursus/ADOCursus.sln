@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27428.2043
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoWPF", "ADOCursus\AdoWPF.csproj", "{5BA3B34F-5372-482D-B24D-6EE2C7483AB6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoGemeenschap", "AdoGemeenschap\AdoGemeenschap.csproj", "{764B44EF-7FA3-4A34-986B-F57472ED109F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoWPF2", "AdoWPF2\AdoWPF2.csproj", "{C54821D2-5B7F-42D3-8865-BB84D8E8D52D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{764B44EF-7FA3-4A34-986B-F57472ED109F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{764B44EF-7FA3-4A34-986B-F57472ED109F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{764B44EF-7FA3-4A34-986B-F57472ED109F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C54821D2-5B7F-42D3-8865-BB84D8E8D52D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C54821D2-5B7F-42D3-8865-BB84D8E8D52D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C54821D2-5B7F-42D3-8865-BB84D8E8D52D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C54821D2-5B7F-42D3-8865-BB84D8E8D52D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
