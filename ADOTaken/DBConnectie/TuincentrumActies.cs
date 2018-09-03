@@ -83,12 +83,12 @@ namespace DBConnectie
 
                         var par1 = MijnCommand.CreateParameter();
                         par1.ParameterName = "@leverancierID1";
-                        par1.Value = 14;
+                        par1.Value = leverancier1;
                         MijnCommand.Parameters.Add(par1);
 
                         var par2 = MijnCommand.CreateParameter();
                         par2.ParameterName = "@leverancierID2";
-                        par2.Value = 3;
+                        par2.Value = leverancier2;
                         MijnCommand.Parameters.Add(par2);
 
                         MijnConnectie.Open();
