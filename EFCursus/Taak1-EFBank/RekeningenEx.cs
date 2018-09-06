@@ -10,7 +10,7 @@ namespace Taak1_EFBank
     {
 
 
-        public void Storten(int bedrag)
+        public void Storten(decimal bedrag)
         {
             Saldo += bedrag; 
         }
