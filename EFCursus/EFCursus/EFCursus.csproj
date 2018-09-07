@@ -44,6 +44,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,7 +53,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boek.cs">
+      <DependentUpon>Opleidingen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Boek2.cs">
+      <DependentUpon>Opleidingen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BoekenCursus2.cs">
+      <DependentUpon>Opleidingen.tt</DependentUpon>
+    </Compile>
     <Compile Include="Campussen.cs">
+      <DependentUpon>Opleidingen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cursisten.cs">
+      <DependentUpon>Opleidingen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cursus.cs">
+      <DependentUpon>Opleidingen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cursus2.cs">
       <DependentUpon>Opleidingen.tt</DependentUpon>
     </Compile>
     <Compile Include="Docenten.cs">
@@ -76,6 +95,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Voorraad.cs">
+      <DependentUpon>Opleidingen.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

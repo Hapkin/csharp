@@ -4,10 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c1dae6fc57234bb28de6a4971d9729e7" Name="Diagram1" DisplayType="true">
+      <Diagram DiagramId="c1dae6fc57234bb28de6a4971d9729e7" Name="Diagram1" DisplayType="true" ZoomLevel="81">
         <EntityTypeShape EntityType="EFOpleidingenModel.Campussen" Width="1.875" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="EFOpleidingenModel.Docenten" Width="2.25" PointX="4.375" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="EFOpleidingenModel.FK__Docenten__Campus__1273C1CD" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.Voorraad" Width="1.5" PointX="8.375" PointY="1.5" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.Boek" Width="1.5" PointX="9" PointY="5.625" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.Boek2" Width="2" PointX="7.125" PointY="4" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.BoekenCursus2" Width="1.875" PointX="4.875" PointY="3.875" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.Cursisten" Width="1.5" PointX="10.25" PointY="1.25" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.Cursus" Width="1.5" PointX="11.75" PointY="5.625" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.Cursus2" Width="1.5" PointX="2.25" PointY="4.125" />
+        <AssociationConnector Association="EFOpleidingenModel.FK__BoekenCur__BoekN__31EC6D26" />
+        <AssociationConnector Association="EFOpleidingenModel.FK__BoekenCur__Cursu__32E0915F" />
+        <AssociationConnector Association="EFOpleidingenModel.FK__Cursisten__Mento__36B12243" />
+        <AssociationConnector Association="EFOpleidingenModel.BoekenCursussen" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,12 +36,12 @@ namespace Taak1_EFBank
 
 
 
-
+            Taak7KlantWijzigen();
 
             Console.ReadLine();
         }
 
-        public void Taak3()
+        static void Taak3()
         {
             using (var entities = new EFBankEntities())
             {
@@ -75,7 +76,7 @@ namespace Taak1_EFBank
         }
 
 
-        public void Taak4Storten()
+        static void Taak4Storten()
         {
             using (var entities = new EFBankEntities())
             {
@@ -108,7 +109,7 @@ namespace Taak1_EFBank
             }
         }
 
-        public void Taak5Verwijderen()
+        static void Taak5Verwijderen()
         {
             try
             {
@@ -134,6 +135,117 @@ namespace Taak1_EFBank
                         }
                     }
                 }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Tik een getal");
+            }
+        }
+
+        static void Taak6Overschrijven()
+        {
+            Console.WriteLine("rekening nr1: 123-4567890-02");
+            Console.WriteLine("rekening nr2: 234-5678901-69");
+            string rekening2 = "123-4567890-02";
+            string rekening1 = "234-5678901-69";
+
+            
+
+
+
+            try
+            {
+                using (var entities = new EFBankEntities())
+                {
+                    var oRekening1 = entities.Rekeningen.Find(rekening1);
+                    if (oRekening1 == null)
+                    {
+                        Console.WriteLine("Van-Rekening niet gevonden");
+                    }
+                    else
+                    {
+                        var oRekening2 = entities.Rekeningen.Find(rekening2);
+                        if (oRekening2 == null)
+                        {
+                            Console.WriteLine("Naar-Rekening niet gevonden");
+                        }
+                        else
+                        {
+                            //beide rekeningen bestaan
+                            Console.WriteLine("Hoeveel wil je overschrijven?");
+                            decimal bedrag = 0;
+                            while (bedrag <= 0)
+                            {
+                                Console.WriteLine("gelieve het bedrag in the geven");
+                                if (!decimal.TryParse(Console.ReadLine(), out bedrag))
+                                    bedrag = 0;
+                                else
+                                {
+                                    if (bedrag > oRekening1.Saldo)
+                                    {
+                                        Console.WriteLine("Saldo ontoereikend.");
+                                        bedrag = 0;
+                                    }
+                                }
+                                
+                            }
+
+                            //het bedrag is toereikend en positief
+                            Console.WriteLine($"Rekening-Saldo: {oRekening1.Saldo}");
+                            Console.WriteLine($"Rekening2-Saldo: {oRekening2.Saldo}");
+
+                            oRekening1.Saldo -= bedrag;
+                            oRekening2.Saldo += bedrag;
+
+                            Console.WriteLine("------------------- Nieuwe saldos");
+                            Console.WriteLine($"Rekening-Saldo: {oRekening1.Saldo}");
+                            Console.WriteLine($"Rekening2-Saldo: {oRekening2.Saldo}");
+
+
+
+
+                            entities.SaveChanges();
+                        }
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Tik een getal");
+            }
+
+
+
+
+
+
+
+        }
+
+        static void Taak7KlantWijzigen()
+        {
+            Console.Write("KlantNr:");
+            try
+            {
+                var klantNr = int.Parse(Console.ReadLine());
+                using (var entities = new EFBankEntities())
+                {
+                    var klant = entities.Klanten.Find(klantNr);
+                    if (klant == null)
+                    {
+                        Console.WriteLine("Klant niet gevonden");
+                    }
+                    else
+                    {
+                        Console.Write("Voornaam:");
+                        klant.Voornaam = Console.ReadLine();
+                        entities.SaveChanges();
+                    }
+                }
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                Console.WriteLine("Een andere gebruiker wijzigde deze klant");
             }
             catch (FormatException)
             {

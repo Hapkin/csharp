@@ -51,7 +51,7 @@
             <PropertyRef Name="KlantNr" />
           </Key>
           <Property Name="KlantNr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Voornaam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Voornaam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" ConcurrencyMode="Fixed" />
           <NavigationProperty Name="Rekeningen" Relationship="Self.FK__Rekeninge__Klant__1273C1CD" FromRole="Klanten" ToRole="Rekeningen" />
         </EntityType>
         <EntityType Name="Rekeningen">

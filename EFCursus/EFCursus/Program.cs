@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace EFCursus
 {
@@ -516,9 +518,11 @@ namespace EFCursus
                 Console.WriteLine("Tik een getal");
             }*/
 
+            //h9TransactieScope();
 
+            h11MeeropMeer();
 
-            Console.ReadLine();
+            Console.ReadKey();
         }
 
 
@@ -531,6 +535,294 @@ namespace EFCursus
                         select campus).ToList();
             }
         }
+
+        static void h9TransactieScope()
+        {
+            try
+            {
+                Console.Write("Artikel nr.: 10");
+                var artikelNr = int.Parse(Console.ReadLine());
+                Console.Write("Van magazijn nr.: 1");
+                var vanMagazijnNr = int.Parse(Console.ReadLine());
+                Console.Write("Naar magazijn nr: 2");
+                var naarMagazijnNr = int.Parse(Console.ReadLine());
+                Console.Write("Aantal stuks: (max 100)");
+                var aantalStuks = int.Parse(Console.ReadLine());
+                //VoorraadTransfer1(artikelNr, vanMagazijnNr, naarMagazijnNr, aantalStuks);
+                VoorraadTransfer2(artikelNr, vanMagazijnNr, naarMagazijnNr, aantalStuks);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Tik een getal");
+            }
+
+        }
+        static void VoorraadTransfer1(int artikelNr, int vanMagazijnNr, int naarMagazijnNr, int aantalStuks)
+        { //geen eigen transactiebeheer
+            using (var entities = new EFOpleidingenEntities())
+            {
+                var vanVoorraad = entities.Voorraden.Find(vanMagazijnNr, artikelNr);
+                if (vanVoorraad != null)
+                {
+                    if (vanVoorraad.AantalStuks >= aantalStuks) // (1)
+                    {
+                        vanVoorraad.AantalStuks -= aantalStuks; // (2)
+                        var naarVoorraad = entities.Voorraden.Find(naarMagazijnNr, artikelNr);
+                        if (naarVoorraad != null) // voorraad aanpassen
+                        {
+                            naarVoorraad.AantalStuks += aantalStuks;
+                        }
+                        else // nieuwe voorraad aanmaken
+                        {
+                            naarVoorraad = new Voorraad
+                            {
+                                ArtikelNr = artikelNr,
+                                MagazijnNr = naarMagazijnNr,
+                                AantalStuks = aantalStuks
+                            };
+                            entities.Voorraden.Add(naarVoorraad);
+                        }
+                        entities.SaveChanges(); // (3)
+                    }
+                    else
+                    {
+                        Console.WriteLine("Te weinig voorraad voor transfer");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Artikel niet gevonden in magazijn {0}", vanMagazijnNr);
+                }
+            }
+        }
+
+        static void VoorraadTransfer2(int artikelNr, int vanMagazijnNr, int naarMagazijnNr, int aantalStuks)
+        { //Repeatable read
+            var transactionOptions = new TransactionOptions
+            {
+                IsolationLevel = System.Transactions.IsolationLevel.RepeatableRead
+            };
+            using (var transactionScope = new TransactionScope(TransactionScopeOption.Required,
+            transactionOptions))
+            {
+                using (var entities = new EFOpleidingenEntities())
+                {
+                    var vanVoorraad = entities.Voorraden.Find(vanMagazijnNr, artikelNr);
+                    if (vanVoorraad != null)
+                    {
+                        if (vanVoorraad.AantalStuks >= aantalStuks)
+                        {
+                            vanVoorraad.AantalStuks -= aantalStuks;
+                            var naarVoorraad =
+                            entities.Voorraden.Find(naarMagazijnNr, artikelNr);
+                            if (naarVoorraad != null) // voorraad aanpassen
+                            {
+                                naarVoorraad.AantalStuks += aantalStuks;
+                            }
+                            else // nieuwe voorraad aanmaken
+                            {
+                                naarVoorraad = new Voorraad
+                                {
+                                    ArtikelNr = artikelNr,
+                                    MagazijnNr = naarMagazijnNr,
+                                    AantalStuks = aantalStuks
+                                };
+                                entities.Voorraden.Add(naarVoorraad);
+                            }
+                            entities.SaveChanges();
+                            transactionScope.Complete();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Te weinig voorraad voor transfer");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Artikel niet gevonden in magazijn {0}",
+                        vanMagazijnNr);
+                    }
+                }
+            }
+        }
+
+        static void h10RecordLocking()
+        {
+            try
+            {
+                Console.Write("Artikel nr.:");
+                var artikelNr = int.Parse(Console.ReadLine());
+                Console.Write("Magazijn nr.:");
+                var magazijnNr = int.Parse(Console.ReadLine());
+                Console.Write("Aantal stuks toevoegen:");
+                var aantalStuks = int.Parse(Console.ReadLine());
+                VoorraadBijvulling2(artikelNr, magazijnNr, aantalStuks);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Tik een getal");
+            }
+
+        }
+        static void VoorraadBijvulling1(int artikelNr, int magazijnNr, int aantalStuks)
+        {
+            using (var entities = new EFOpleidingenEntities())
+            {
+                var voorraad = entities.Voorraden.Find(magazijnNr, artikelNr);
+                if (voorraad != null)
+                {
+                    voorraad.AantalStuks += aantalStuks;
+                    Console.WriteLine("Pas nu de voorraad aan met de Server Explorer," +
+                    " druk daarna op Enter");
+                    Console.ReadLine();
+                    entities.SaveChanges();
+                }
+                else
+                {
+                    Console.WriteLine("Voorraad niet gevonden");
+                }
+            }
+        }
+        static void VoorraadBijvulling2(int artikelNr, int magazijnNr, int aantalStuks)
+        {
+            using (var entities = new EFOpleidingenEntities())
+            {
+                var voorraad = entities.Voorraden.Find(magazijnNr, artikelNr);
+                if (voorraad != null)
+                {
+                    voorraad.AantalStuks += aantalStuks;
+                    Console.WriteLine("Pas nu de voorraad aan in de Server Explorer," +
+                        " druk daarna op Enter");
+                    Console.ReadLine();
+                    try
+                    {
+                        entities.SaveChanges();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        Console.WriteLine("Voorraad werd door andere applicatie aangepast.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Voorraad niet gevonden");
+                }
+            }
+        }
+
+        static void h11MeeropMeer()
+        {
+            //lees per boek welke cursussen
+            using (var entities = new EFOpleidingenEntities())
+            {
+                var query = from boek in entities.Boeken.Include("Cursussen")
+                            orderby boek.Titel
+                            select boek;
+                foreach (var boek in query)
+                {
+                    Console.WriteLine(boek.Titel);
+                    foreach (var cursus in boek.Cursussen)
+                    {
+                        Console.WriteLine("\t{0}", cursus.Naam);
+                    }
+                }
+            }
+            //lees per cursus welke boeken 
+            using (var entities = new EFOpleidingenEntities())
+            {
+                var query = from cursus in entities.Cursussen.Include("Boeken")
+                            orderby cursus.Naam
+                            select cursus;
+                foreach (var cursus in query)
+                {
+                    Console.WriteLine(cursus.Naam);
+                    foreach (var boek in cursus.Boeken)
+                    {
+                        Console.WriteLine("\t{0}", boek.Titel);
+                    }
+                }
+            }
+
+
+            //maak een nieuw boek en koppel aan cursus Oracle
+            /*using (var entities = new EFOpleidingenEntities())
+            {
+                var nieuwBoek = new Boek
+                {
+                    ISBNNr = "0-0788210-6-1",
+                    Titel = "Oracle Backup & Recovery Handbook"
+                };
+                var oracleCursus = (from cursus in entities.Cursussen
+                                    where cursus.Naam == "Oracle"
+                                    select cursus).FirstOrDefault();
+                if (oracleCursus != null)
+                {
+                    oracleCursus.Boeken.Add(nieuwBoek);
+                    entities.SaveChanges();
+                }
+                else
+                {
+                    Console.WriteLine("cursus Oracle niet gevonden");
+                }
+            }*/
+            Console.WriteLine("===============================================");
+            //met de tussentabel veel op veel
+            using (var entities = new EFOpleidingenEntities())
+            {
+                var query = from cursus2 in entities.Cursussen2.Include("BoekenCursussen2.Boek2") // (1)
+                            orderby cursus2.Naam
+                            select cursus2;
+                foreach (var cursus in query)
+                {
+                    Console.WriteLine(cursus.Naam);
+                    foreach (var boekCursus in cursus.BoekenCursussen2)
+                    {
+                        Console.WriteLine("\t{0}:{1}", boekCursus.VolgNr, boekCursus.Boek2.Titel);
+                    }
+                }
+            }
+
+
+            var nieuwBoek = new Boek2() { ISBNNr = "0-201-70431-5", Titel = "Modern C++ Design" };
+            var transactionOptions = new TransactionOptions
+            {
+                IsolationLevel = IsolationLevel.Serializable
+            };
+            using (var transactionScope = new TransactionScope(TransactionScopeOption.Required,
+            transactionOptions))
+            {
+                using (var entities = new EFOpleidingenEntities())
+                {
+                    // Cursus C++ ophalen
+                    // én het hoogste volgnr. van boek gebruikt in die cursus.
+                    // Met transactie met isolation level Serializable
+                    // kan daarna niemand anders een boek toevoegen aan C++ cursus
+                    // en is het nieuwe volgnr gelijk aan 1 + hoogst gelezen volgnr
+                    var query = from cursus2 in entities.Cursussen2.Include("BoekenCursussen2")
+                                where cursus2.Naam == "C++"
+                                select new
+                                {
+                                    Cursus = cursus2,
+                                    HoogsteVolgnr = cursus2.BoekenCursussen2.Max(boekCursus => boekCursus.VolgNr)
+                                };
+                    var queryResult = query.FirstOrDefault();
+                    if (queryResult != null)
+                    {
+                        entities.BoekenCursussen2.Add(new BoekenCursus2
+                        {
+                            Boek2 = nieuwBoek,
+                            Cursus2 = queryResult.Cursus,
+                            VolgNr = queryResult.HoogsteVolgnr + 1
+                        });
+                        entities.SaveChanges();
+                    }
+                    transactionScope.Complete();
+                }
+            }
+
+
+        }
+
 
 
 
