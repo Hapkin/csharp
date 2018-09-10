@@ -8,6 +8,12 @@
         <EntityTypeShape EntityType="EFBankModel.Klanten" Width="2" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="EFBankModel.Rekeningen" Width="2.375" PointX="4.875" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="EFBankModel.FK__Rekeninge__Klant__1273C1CD" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EFBankModel.Personeel" Width="1.5" PointX="0.75" PointY="3.75" />
+        <AssociationConnector Association="EFBankModel.FK__Personeel__Manag__239E4DCF" />
+        <EntityTypeShape EntityType="EFBankModel.Zichtrekening" Width="1.5" PointX="5.125" PointY="4.125" />
+        <EntityTypeShape EntityType="EFBankModel.Spaarrekening" Width="1.5" PointX="8.125" PointY="3.75" />
+        <InheritanceConnector EntityType="EFBankModel.Zichtrekening" />
+        <InheritanceConnector EntityType="EFBankModel.Spaarrekening" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

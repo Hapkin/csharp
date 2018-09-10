@@ -12,27 +12,19 @@ namespace EFCursus
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class EFOpleidingenEntities : DbContext
+
+    public partial class EFOpleidingenTPHEntities : DbContext
     {
-        public EFOpleidingenEntities()
-            : base("name=EFOpleidingenEntities")
+        public EFOpleidingenTPHEntities()
+            : base("name=EFOpleidingenEntities1")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
-        public virtual DbSet<Campussen> Campussen { get; set; }
-        public virtual DbSet<Docenten> Docenten { get; set; }
-        public virtual DbSet<Voorraad> Voorraden { get; set; }
-        public virtual DbSet<Boek> Boeken { get; set; }
-        public virtual DbSet<Boek2> Boeken2 { get; set; }
-        public virtual DbSet<BoekenCursus2> BoekenCursussen2 { get; set; }
-        public virtual DbSet<Cursist> Cursisten { get; set; }
-        public virtual DbSet<Cursus> Cursussen { get; set; }
-        public virtual DbSet<Cursus2> Cursussen2 { get; set; }
+
+        public virtual DbSet<TPHCursus> TPHCursussen { get; set; }
     }
 }

@@ -251,7 +251,7 @@
           <EntitySet Name="Boeken" EntityType="EFOpleidingenModel.Boek" />
           <EntitySet Name="Boeken2" EntityType="EFOpleidingenModel.Boek2" />
           <EntitySet Name="BoekenCursussen2" EntityType="EFOpleidingenModel.BoekenCursus2" />
-          <EntitySet Name="Cursisten" EntityType="EFOpleidingenModel.Cursisten" />
+          <EntitySet Name="Cursisten" EntityType="EFOpleidingenModel.Cursist" />
           <EntitySet Name="Cursussen" EntityType="EFOpleidingenModel.Cursus" />
           <EntitySet Name="Cursussen2" EntityType="EFOpleidingenModel.Cursus2" />
           <AssociationSet Name="FK__BoekenCur__BoekN__31EC6D26" Association="EFOpleidingenModel.FK__BoekenCur__BoekN__31EC6D26">
@@ -311,7 +311,7 @@
           <NavigationProperty Name="Boek2" Relationship="EFOpleidingenModel.FK__BoekenCur__BoekN__31EC6D26" FromRole="BoekenCursussen2" ToRole="Boeken2" />
           <NavigationProperty Name="Cursus2" Relationship="EFOpleidingenModel.FK__BoekenCur__Cursu__32E0915F" FromRole="BoekenCursussen2" ToRole="Cursussen2" />
         </EntityType>
-        <EntityType Name="Cursisten">
+        <EntityType Name="Cursist">
           <Key>
             <PropertyRef Name="CursistNr" />
           </Key>
@@ -319,8 +319,8 @@
           <Property Name="Voornaam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Familienaam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MentorNr" Type="Int32" />
-          <NavigationProperty Name="Cursisten1" Relationship="EFOpleidingenModel.FK__Cursisten__Mento__36B12243" FromRole="Cursisten" ToRole="Cursisten1" />
-          <NavigationProperty Name="Cursisten2" Relationship="EFOpleidingenModel.FK__Cursisten__Mento__36B12243" FromRole="Cursisten1" ToRole="Cursisten" />
+          <NavigationProperty Name="Beschermelingen" Relationship="EFOpleidingenModel.FK__Cursisten__Mento__36B12243" FromRole="Cursisten" ToRole="Cursisten1" />
+          <NavigationProperty Name="Mentor" Relationship="EFOpleidingenModel.FK__Cursisten__Mento__36B12243" FromRole="Cursisten1" ToRole="Cursisten" />
         </EntityType>
         <EntityType Name="Cursus">
           <Key>
@@ -363,8 +363,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Cursisten__Mento__36B12243">
-          <End Type="EFOpleidingenModel.Cursisten" Role="Cursisten" Multiplicity="0..1" />
-          <End Type="EFOpleidingenModel.Cursisten" Role="Cursisten1" Multiplicity="*" />
+          <End Type="EFOpleidingenModel.Cursist" Role="Cursisten" Multiplicity="0..1" />
+          <End Type="EFOpleidingenModel.Cursist" Role="Cursisten1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cursisten">
               <PropertyRef Name="CursistNr" />
@@ -446,7 +446,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cursisten">
-            <EntityTypeMapping TypeName="EFOpleidingenModel.Cursisten">
+            <EntityTypeMapping TypeName="EFOpleidingenModel.Cursist">
               <MappingFragment StoreEntitySet="Cursisten">
                 <ScalarProperty Name="MentorNr" ColumnName="MentorNr" />
                 <ScalarProperty Name="Familienaam" ColumnName="Familienaam" />

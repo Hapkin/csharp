@@ -72,12 +72,21 @@
       <DependentUpon>EFBank.tt</DependentUpon>
     </Compile>
     <Compile Include="KlantenEx.cs" />
+    <Compile Include="Personeel.cs">
+      <DependentUpon>EFBank.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rekeningen.cs">
       <DependentUpon>EFBank.tt</DependentUpon>
     </Compile>
     <Compile Include="RekeningenEx.cs" />
+    <Compile Include="Spaarrekening.cs">
+      <DependentUpon>EFBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Zichtrekening.cs">
+      <DependentUpon>EFBank.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

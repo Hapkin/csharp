@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="18569f4584ba476ab5f953582616771b" Name="Diagram1">
+        <EntityTypeShape EntityType="EFOpleidingenModelTPT.TPTCursus" Width="1.5" PointX="4.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFOpleidingenModelTPT.TPTKlassikaleCursus" Width="1.5" PointX="6.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFOpleidingenModelTPT.TPTZelfstudieCursus" Width="1.5" PointX="2.625" PointY="2.25" IsExpanded="true" />
+        <InheritanceConnector EntityType="EFOpleidingenModelTPT.TPTZelfstudieCursus" />
+        <InheritanceConnector EntityType="EFOpleidingenModelTPT.TPTKlassikaleCursus" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

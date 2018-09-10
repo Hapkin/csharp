@@ -12,12 +12,7 @@ namespace Taak1_EFBank
     using System;
     using System.Collections.Generic;
     
-    public abstract partial class Rekeningen
+    public partial class Spaarrekening : Rekeningen
     {
-        public string RekeningNr { get; set; }
-        public int KlantNr { get; set; }
-        public decimal Saldo { get; set; }
-    
-        public virtual Klanten Klanten { get; set; }
     }
 }

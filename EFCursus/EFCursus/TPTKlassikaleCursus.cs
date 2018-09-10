@@ -7,17 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Taak1_EFBank
+namespace EFCursus
 {
     using System;
     using System.Collections.Generic;
     
-    public abstract partial class Rekeningen
+    public partial class TPTKlassikaleCursus : TPTCursus
     {
-        public string RekeningNr { get; set; }
-        public int KlantNr { get; set; }
-        public decimal Saldo { get; set; }
-    
-        public virtual Klanten Klanten { get; set; }
+        public System.DateTime Van { get; set; }
+        public System.DateTime Tot { get; set; }
     }
 }

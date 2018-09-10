@@ -36,11 +36,13 @@ namespace Taak1_EFBank
 
 
 
-            Taak7KlantWijzigen();
+            //Taak7KlantWijzigen();
+            taak9InheritanceRekeningen();
 
             Console.ReadLine();
         }
 
+        /*
         static void Taak3()
         {
             using (var entities = new EFBankEntities())
@@ -73,7 +75,7 @@ namespace Taak1_EFBank
                     Console.WriteLine("Tik een getal");
                 }
             }
-        }
+        }*/
 
 
         static void Taak4Storten()
@@ -252,5 +254,59 @@ namespace Taak1_EFBank
                 Console.WriteLine("Tik een getal");
             }
         }
+
+        static void taak8Personeel()
+        {
+            using (var entities = new EFBankEntities())
+            {
+
+
+                var query = (from Mederwerkers in entities.Personeel
+                            where Mederwerkers.Manager == null
+                            select Mederwerkers).ToList();
+
+
+                //foreach (var item in query)
+                //{
+                //    Console.WriteLine(item.Voornaam);
+                //    item.Mederwerkers.ToList().ForEach(i => Console.WriteLine(i.Voornaam));
+                //}
+
+
+                taak8Afbeelden(query, 0);
+            }
+        }
+        static void taak8Afbeelden(List<Personeel> personeel, int insprong)
+        {
+            foreach (var personeelslid in personeel)
+            {
+                Console.Write(new String('\t', insprong));
+                Console.WriteLine(personeelslid.Voornaam);
+                if (personeelslid.Mederwerkers.Count != 0)
+                {
+                    taak8Afbeelden(personeelslid.Mederwerkers.ToList(), insprong + 1);
+                }
+            }
+
+        }
+
+
+        static void taak9InheritanceRekeningen()
+        {
+            using (var entities = new EFBankEntities())
+            {
+                var query = from rekening in entities.Rekeningen
+                            //orderby rekening.GetType()
+                            where rekening is Zichtrekening
+                            select rekening; 
+                            
+                foreach (var rekening in query)
+                {
+                    Console.WriteLine($"{rekening.RekeningNr}: saldo={rekening.Saldo } type: {rekening.GetType().Name}");
+                }
+            }
+
+        }
+        
     }
 }

@@ -65,7 +65,7 @@
     <Compile Include="Campussen.cs">
       <DependentUpon>Opleidingen.tt</DependentUpon>
     </Compile>
-    <Compile Include="Cursisten.cs">
+    <Compile Include="Cursist.cs">
       <DependentUpon>Opleidingen.tt</DependentUpon>
     </Compile>
     <Compile Include="Cursus.cs">
@@ -93,8 +93,80 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Opleidingen.edmx</DependentUpon>
     </Compile>
+    <Compile Include="OpleidingenTPC.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpleidingenTPC.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpleidingenTPC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpleidingenTPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpleidingenTPC.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpleidingenTPC.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OpleidingenTPH.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpleidingenTPH.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpleidingenTPH.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpleidingenTPH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpleidingenTPH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpleidingenTPH.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OpleidingenTPT.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpleidingenTPT.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpleidingenTPT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpleidingenTPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpleidingenTPT.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpleidingenTPT.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TPCCursus.cs">
+      <DependentUpon>OpleidingenTPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TPCKlassikaleCursus.cs">
+      <DependentUpon>OpleidingenTPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TPCZelfstudieCursus.cs">
+      <DependentUpon>OpleidingenTPC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TPHCursus.cs">
+      <DependentUpon>OpleidingenTPH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TPHKlassikaleCursus.cs">
+      <DependentUpon>OpleidingenTPH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TPHZelfstudieCursus.cs">
+      <DependentUpon>OpleidingenTPH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TPTCursus.cs">
+      <DependentUpon>OpleidingenTPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TPTKlassikaleCursus.cs">
+      <DependentUpon>OpleidingenTPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TPTZelfstudieCursus.cs">
+      <DependentUpon>OpleidingenTPT.tt</DependentUpon>
+    </Compile>
     <Compile Include="Voorraad.cs">
       <DependentUpon>Opleidingen.tt</DependentUpon>
     </Compile>
@@ -109,6 +181,27 @@
     <None Include="Opleidingen.edmx.diagram">
       <DependentUpon>Opleidingen.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="OpleidingenTPC.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OpleidingenTPC.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="OpleidingenTPC.edmx.diagram">
+      <DependentUpon>OpleidingenTPC.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="OpleidingenTPH.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OpleidingenTPH.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="OpleidingenTPH.edmx.diagram">
+      <DependentUpon>OpleidingenTPH.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="OpleidingenTPT.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OpleidingenTPT.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="OpleidingenTPT.edmx.diagram">
+      <DependentUpon>OpleidingenTPT.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +214,36 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Opleidingen.edmx</DependentUpon>
       <LastGenOutput>Opleidingen.cs</LastGenOutput>
+    </Content>
+    <Content Include="OpleidingenTPC.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OpleidingenTPC.edmx</DependentUpon>
+      <LastGenOutput>OpleidingenTPC.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="OpleidingenTPC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OpleidingenTPC.edmx</DependentUpon>
+      <LastGenOutput>OpleidingenTPC.cs</LastGenOutput>
+    </Content>
+    <Content Include="OpleidingenTPH.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OpleidingenTPH.edmx</DependentUpon>
+      <LastGenOutput>OpleidingenTPH.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="OpleidingenTPH.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OpleidingenTPH.edmx</DependentUpon>
+      <LastGenOutput>OpleidingenTPH.cs</LastGenOutput>
+    </Content>
+    <Content Include="OpleidingenTPT.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OpleidingenTPT.edmx</DependentUpon>
+      <LastGenOutput>OpleidingenTPT.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="OpleidingenTPT.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OpleidingenTPT.edmx</DependentUpon>
+      <LastGenOutput>OpleidingenTPT.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

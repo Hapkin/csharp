@@ -7,26 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EFCursus
+namespace Taak1_EFBank
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Cursisten
+    public partial class Personeel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cursisten()
+        public Personeel()
         {
-            this.Cursisten1 = new HashSet<Cursisten>();
+            this.Mederwerkers = new HashSet<Personeel>();
         }
     
-        public int CursistNr { get; set; }
+        public int PersoneelsNr { get; set; }
         public string Voornaam { get; set; }
-        public string Familienaam { get; set; }
-        public Nullable<int> MentorNr { get; set; }
+        public Nullable<int> ManagerNr { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cursisten> Cursisten1 { get; set; }
-        public virtual Cursisten Cursisten2 { get; set; }
+        public virtual ICollection<Personeel> Mederwerkers { get; set; }
+        public virtual Personeel Manager { get; set; }
     }
 }

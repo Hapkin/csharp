@@ -520,7 +520,7 @@ namespace EFCursus
 
             //h9TransactieScope();
 
-            h11MeeropMeer();
+            h12Inheritance3();
 
             Console.ReadKey();
         }
@@ -767,6 +767,7 @@ namespace EFCursus
             }*/
             Console.WriteLine("===============================================");
             //met de tussentabel veel op veel
+            /*
             using (var entities = new EFOpleidingenEntities())
             {
                 var query = from cursus2 in entities.Cursussen2.Include("BoekenCursussen2.Boek2") // (1)
@@ -819,12 +820,223 @@ namespace EFCursus
                     transactionScope.Complete();
                 }
             }
+            */
+
+            //  1 op 8 relatie binnen dezelfde tAbel
+            using (var entities = new EFOpleidingenEntities())
+            {
+                var query = from cursist in entities.Cursisten
+                            where cursist.Mentor == null
+                            orderby cursist.Voornaam, cursist.Familienaam
+                            select cursist;
+                foreach (var cursist in query)
+                {
+                    Console.WriteLine("{0} {1}", cursist.Voornaam, cursist.Familienaam);
+                }
+            }
+            using (var entities = new EFOpleidingenEntities())
+            {
+                var query = from cursist in entities.Cursisten.Include("Mentor")
+                            where cursist.Mentor != null
+                            orderby cursist.Voornaam, cursist.Familienaam
+                            select cursist;
+                foreach (var cursist in query)
+                {
+                    var mentor = cursist.Mentor;
+                    Console.WriteLine("{0} {1}: {2} {3}", cursist.Voornaam, cursist.Familienaam,
+                    mentor.Voornaam, mentor.Familienaam);
+                }
+            }
+
+
+            using (var entities = new EFOpleidingenEntities())
+            {
+                var query = from mentor in entities.Cursisten.Include("Beschermelingen")
+                            where mentor.Beschermelingen.Count != 0
+                            orderby mentor.Voornaam, mentor.Familienaam
+                            select mentor;
+                foreach (var mentor in query)
+                {
+                    Console.WriteLine("{0} {1}", mentor.Voornaam, mentor.Familienaam);
+                    foreach (var beschermeling in mentor.Beschermelingen)
+                    {
+                        Console.WriteLine("\t{0} {1}", beschermeling.Voornaam,
+                        beschermeling.Familienaam);
+                    }
+                }
+            }
+
+            //beschermeling toevoegen... dus EF is slim genoeg om zelf cursist6 aan te passen ook al doe je een actie op crusist5
+            using (var entities = new EFOpleidingenEntities())
+            {
+                var cursist5 = entities.Cursisten.Find(5);
+                if (cursist5 != null)
+                {
+                    var cursist6 = entities.Cursisten.Find(6);
+                    if (cursist6 != null)
+                    {
+                        cursist5.Beschermelingen.Add(cursist6);
+                        entities.SaveChanges();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Cursist 6 niet gevonden");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Cursist 5 niet gevonden");
+                }
+            }
+
+
+
+
 
 
         }
 
 
+        //1 een abstracte tabel voor de parent class  
+        static void h12Inheritance1()
+        {
 
+            
+
+            //werken met parent en child classes
+            using (var entities = new EFOpleidingenTPCEntities())
+            {
+                var query = from cursus in entities.TPCCursussen select cursus;
+
+                var queryL = from cursus in entities.TPCCursussen
+                            where cursus is TPCKlassikaleCursus
+                            select cursus;
+            }
+            //toon alle cursussen
+            using (var entities = new EFOpleidingenTPCEntities())
+            {
+                /*var query = from cursus in entities.TPCCursussen
+                            orderby cursus.Naam
+                            select cursus;
+                foreach (var cursus in query)
+                {
+                    Console.WriteLine(cursus.Naam + ' ' + cursus.GetType().Name);
+                }
+                */
+                //toon enkel klassikalecursussen
+                /*
+                var query2 = from cursus in entities.TPCCursussen
+                            where cursus is TPCKlassikaleCursus
+                            orderby cursus.Naam
+                            select cursus;
+                foreach (var cursus in query2)
+                {
+                    Console.WriteLine(cursus.Naam);
+                }
+                */
+
+                //nieuwe zelfstudie toevoegen
+                
+                Console.WriteLine("Voor aanpassing:");
+                var query3 = from cursus in entities.TPCCursussen
+                            where cursus is TPCZelfstudieCursus
+                            orderby cursus.Naam
+                            select cursus;
+                foreach (var cursus in query3)
+                {
+                    Console.WriteLine(cursus.Naam);
+                }
+                entities.TPCCursussen.Add(new TPCZelfstudieCursus
+                { Naam = "Spaanse correspondentie", Duurtijd = 6 });
+                entities.SaveChanges();
+                Console.WriteLine("\nNa aanpassing:");
+                query3 = from cursus in entities.TPCCursussen
+                        where cursus is TPCZelfstudieCursus
+                        orderby cursus.Naam
+                        select cursus;
+                foreach (var cursus in query3)
+                {
+                    Console.WriteLine(cursus.Naam);
+                }
+                
+
+
+
+            }
+
+
+        }
+
+        //2 Hierbij bevat de database één table voor alle classes uit de inheritance hiërarchy.
+        //dit was met die mappings enzo... niet zo makkelijk om aan te maken
+        static void h12Inheritance2()
+        {
+            //alles uitlezen en tonen welke tpye
+            using (var entities = new EFOpleidingenTPHEntities())
+            {
+                var query = from cursus in entities.TPHCursussen
+                            orderby cursus.Naam
+                            select cursus;
+                foreach (var cursus in query)
+                {
+                    Console.WriteLine("{0}: {1}", cursus.Naam, cursus.GetType().Name);
+                }
+            }
+            //1 soort lezen
+            using (var entities = new EFOpleidingenTPHEntities())
+            {
+                var query = from cursus in entities.TPHCursussen
+                            where cursus is TPHZelfstudieCursus
+                            orderby cursus.Naam
+                            select cursus;
+                foreach (var cursus in query)
+                {
+                    Console.WriteLine(cursus.Naam);
+                }
+            }
+            //toevoegen
+            using (var entities = new EFOpleidingenTPHEntities())
+            {
+                entities.TPHCursussen.Add(new TPHZelfstudieCursus
+                { Naam = "Duitse correspondentie", Duurtijd = 6 });
+                entities.SaveChanges();
+            }
+
+        }
+
+        //3 Table per type
+        static void h12Inheritance3()
+        {
+            using (var entities = new EFOpleidingenTPTEntities())
+            {
+                var query = from cursus in entities.TPTCursussen
+                            orderby cursus.Naam
+                            select cursus;
+                foreach (var cursus in query)
+                {
+                    Console.WriteLine("{0}: {1}", cursus.Naam, cursus.GetType().Name);
+                }
+            }
+
+            using (var entities = new EFOpleidingenTPTEntities())
+            {
+                var query = from cursus in entities.TPTCursussen
+                            where !(cursus is TPTZelfstudieCursus)
+                            orderby cursus.Naam
+                            select cursus;
+                foreach (var cursus in query)
+                {
+                    Console.WriteLine(cursus.Naam);
+                }
+            }
+
+            using (var entities = new EFOpleidingenTPTEntities())
+            {
+                entities.TPTCursussen.Add(new TPTZelfstudieCursus
+                { Naam = "Italiaanse correspondentie", Duurtijd = 6 });
+                entities.SaveChanges();
+            }
+        }
 
     }
 
