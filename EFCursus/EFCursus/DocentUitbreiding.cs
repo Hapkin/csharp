@@ -10,11 +10,11 @@ namespace EFCursus
     {
         
 
-        public string Naam
-        {
-            get { return Voornaam + " " + Familienaam; }
+        //public string Naam
+        //{
+        //    get { return Voornaam + " " + Familienaam; }
             
-        }
+        //}
 
         public void Opslag(decimal bedrag)
         {

@@ -520,7 +520,10 @@ namespace EFCursus
 
             //h9TransactieScope();
 
-            h12Inheritance3();
+            //h12Inheritance3();
+            //h13ComplexTypes(); is leeg
+            //h14Enums();
+            h15Views();
 
             Console.ReadKey();
         }
@@ -827,24 +830,24 @@ namespace EFCursus
             {
                 var query = from cursist in entities.Cursisten
                             where cursist.Mentor == null
-                            orderby cursist.Voornaam, cursist.Familienaam
+                            orderby cursist.Naam.Voornaam, cursist.Naam.Familienaam
                             select cursist;
                 foreach (var cursist in query)
                 {
-                    Console.WriteLine("{0} {1}", cursist.Voornaam, cursist.Familienaam);
+                    Console.WriteLine("{0} {1}", cursist.Naam.Voornaam, cursist.Naam.Familienaam);
                 }
             }
             using (var entities = new EFOpleidingenEntities())
             {
                 var query = from cursist in entities.Cursisten.Include("Mentor")
                             where cursist.Mentor != null
-                            orderby cursist.Voornaam, cursist.Familienaam
+                            orderby cursist.Naam.Voornaam, cursist.Naam.Familienaam
                             select cursist;
                 foreach (var cursist in query)
                 {
                     var mentor = cursist.Mentor;
-                    Console.WriteLine("{0} {1}: {2} {3}", cursist.Voornaam, cursist.Familienaam,
-                    mentor.Voornaam, mentor.Familienaam);
+                    Console.WriteLine("{0} {1}: {2} {3}", cursist.Naam.Voornaam, cursist.Naam.Familienaam,
+                    mentor.Naam.Voornaam, mentor.Naam.Familienaam);
                 }
             }
 
@@ -853,15 +856,15 @@ namespace EFCursus
             {
                 var query = from mentor in entities.Cursisten.Include("Beschermelingen")
                             where mentor.Beschermelingen.Count != 0
-                            orderby mentor.Voornaam, mentor.Familienaam
+                            orderby mentor.Naam.Voornaam, mentor.Naam.Familienaam
                             select mentor;
                 foreach (var mentor in query)
                 {
-                    Console.WriteLine("{0} {1}", mentor.Voornaam, mentor.Familienaam);
+                    Console.WriteLine("{0} {1}", mentor.Naam.Voornaam, mentor.Naam.Familienaam);
                     foreach (var beschermeling in mentor.Beschermelingen)
                     {
-                        Console.WriteLine("\t{0} {1}", beschermeling.Voornaam,
-                        beschermeling.Familienaam);
+                        Console.WriteLine("\t{0} {1}", beschermeling.Naam.Voornaam,
+                        beschermeling.Naam.Familienaam);
                     }
                 }
             }
@@ -1037,6 +1040,56 @@ namespace EFCursus
                 entities.SaveChanges();
             }
         }
+
+
+        static void h14Enums()
+        {
+            using (var entities = new EFOpleidingenEntities())
+            {
+                /*foreach (var docent in entities.Docenten)
+                {
+                    Console.WriteLine("{0}:{1}", docent.Naam, docent.Geslacht);
+                }*/
+            
+                entities.Docenten.Add
+                (new Docenten
+                {
+                    Naam = new Naam { Voornaam = "Brigitta", Familienaam = "Roos" },
+                    Wedde = 2000,
+                    Geslacht = Geslacht.Vrouw,
+                    CampusNr = 1
+                }
+                );
+                entities.SaveChanges();
+            }
+
+        }
+
+        static void h15Views()
+        {
+            using (var entities = new EFOpleidingenEntities())
+            {
+                var query = from bestBetaaldeDocentPerCampus
+                in entities.BestBetaaldeDocentenPerCampus
+                            orderby bestBetaaldeDocentPerCampus.CampusNr,
+                            bestBetaaldeDocentPerCampus.Voornaam,
+                            bestBetaaldeDocentPerCampus.Familienaam
+                            select bestBetaaldeDocentPerCampus;
+                var vorigCampusNr = 0;
+                foreach (var bestbetaaldeDocentPerCampus in query)
+                {
+                    if (bestbetaaldeDocentPerCampus.CampusNr != vorigCampusNr)
+                    {
+                        Console.WriteLine("{0} {1} Grootste wedde:",
+                        bestbetaaldeDocentPerCampus.Naam, bestbetaaldeDocentPerCampus.GrootsteWedde);
+                        vorigCampusNr = bestbetaaldeDocentPerCampus.CampusNr;
+                    }
+                    Console.WriteLine("\t{0} {1}",
+                    bestbetaaldeDocentPerCampus.Voornaam, bestbetaaldeDocentPerCampus.Familienaam);
+                }
+            }
+        }
+
 
     }
 

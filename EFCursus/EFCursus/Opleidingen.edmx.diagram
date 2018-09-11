@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c1dae6fc57234bb28de6a4971d9729e7" Name="Diagram1" DisplayType="true" ZoomLevel="81">
+      <Diagram DiagramId="c1dae6fc57234bb28de6a4971d9729e7" Name="Diagram1" DisplayType="true" ZoomLevel="89">
         <EntityTypeShape EntityType="EFOpleidingenModel.Campussen" Width="1.875" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="EFOpleidingenModel.Docenten" Width="2.25" PointX="4.375" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="EFOpleidingenModel.FK__Docenten__Campus__1273C1CD" ManuallyRouted="false" />
@@ -19,6 +19,7 @@
         <AssociationConnector Association="EFOpleidingenModel.FK__BoekenCur__Cursu__32E0915F" />
         <AssociationConnector Association="EFOpleidingenModel.FK__Cursisten__Mento__36B12243" />
         <AssociationConnector Association="EFOpleidingenModel.BoekenCursussen" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.BestBetaaldeDocentenPerCampus" Width="1.5" PointX="0.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

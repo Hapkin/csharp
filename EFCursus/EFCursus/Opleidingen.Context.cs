@@ -34,5 +34,6 @@ namespace EFCursus
         public virtual DbSet<Cursist> Cursisten { get; set; }
         public virtual DbSet<Cursus> Cursussen { get; set; }
         public virtual DbSet<Cursus2> Cursussen2 { get; set; }
+        public virtual DbSet<BestBetaaldeDocentenPerCampus> BestBetaaldeDocentenPerCampus { get; set; }
     }
 }

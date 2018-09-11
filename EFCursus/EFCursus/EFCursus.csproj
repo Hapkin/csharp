@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BestBetaaldeDocentenPerCampus.cs">
+      <DependentUpon>Opleidingen.tt</DependentUpon>
+    </Compile>
     <Compile Include="Boek.cs">
       <DependentUpon>Opleidingen.tt</DependentUpon>
     </Compile>
@@ -78,6 +81,13 @@
       <DependentUpon>Opleidingen.tt</DependentUpon>
     </Compile>
     <Compile Include="DocentUitbreiding.cs" />
+    <Compile Include="Geslacht.cs">
+      <DependentUpon>Opleidingen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Naam.cs">
+      <DependentUpon>Opleidingen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NaamUitbreiding.cs" />
     <Compile Include="Opleidingen.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

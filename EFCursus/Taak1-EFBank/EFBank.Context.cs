@@ -28,5 +28,6 @@ namespace Taak1_EFBank
         public virtual DbSet<Klanten> Klanten { get; set; }
         public virtual DbSet<Rekeningen> Rekeningen { get; set; }
         public virtual DbSet<Personeel> Personeel { get; set; }
+        public virtual DbSet<TotaleSaldoPerKlant> TotaleSaldoPerKlant { get; set; }
     }
 }

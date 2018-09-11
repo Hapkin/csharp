@@ -81,6 +81,7 @@
           <Property Name="Familienaam" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Wedde" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="CampusNr" Type="int" Nullable="false" />
+          <Property Name="Geslacht" Type="int" />
         </EntityType>
         <EntityType Name="Voorraden">
           <Key>
@@ -92,6 +93,23 @@
           <Property Name="AantalStuks" Type="int" Nullable="false" />
           <Property Name="RekNr" Type="int" Nullable="false" />
           <Property Name="Aangepast" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EFOpleidingen.dbo.BestBetaaldeDocentenPerCampus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BestBetaaldeDocentenPerCampus">
+          <Key>
+            <PropertyRef Name="CampusNr" />
+            <PropertyRef Name="Naam" />
+            <PropertyRef Name="DocentNr" />
+            <PropertyRef Name="Voornaam" />
+            <PropertyRef Name="Familienaam" />
+          </Key>
+          <Property Name="CampusNr" Type="int" Nullable="false" />
+          <Property Name="Naam" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GrootsteWedde" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DocentNr" Type="int" Nullable="false" />
+          <Property Name="Voornaam" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Familienaam" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK__BoekenCur__BoekN__29572725">
           <End Role="Boeken" Type="Self.Boeken" Multiplicity="1" />
@@ -176,6 +194,16 @@
           <EntitySet Name="Cursussen2" EntityType="Self.Cursussen2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Docenten" EntityType="Self.Docenten" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Voorraden" EntityType="Self.Voorraden" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BestBetaaldeDocentenPerCampus" EntityType="Self.BestBetaaldeDocentenPerCampus" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BestBetaaldeDocentenPerCampus].[CampusNr] AS [CampusNr], 
+    [BestBetaaldeDocentenPerCampus].[Naam] AS [Naam], 
+    [BestBetaaldeDocentenPerCampus].[GrootsteWedde] AS [GrootsteWedde], 
+    [BestBetaaldeDocentenPerCampus].[DocentNr] AS [DocentNr], 
+    [BestBetaaldeDocentenPerCampus].[Voornaam] AS [Voornaam], 
+    [BestBetaaldeDocentenPerCampus].[Familienaam] AS [Familienaam]
+    FROM [dbo].[BestBetaaldeDocentenPerCampus] AS [BestBetaaldeDocentenPerCampus]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__BoekenCur__BoekN__29572725" Association="Self.FK__BoekenCur__BoekN__29572725">
             <End Role="Boeken" EntitySet="Boeken" />
             <End Role="BoekenCursussen" EntitySet="BoekenCursussen" />
@@ -222,11 +250,11 @@
             <PropertyRef Name="DocentNr" />
           </Key>
           <Property Name="DocentNr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Voornaam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Familienaam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Wedde" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="CampusNr" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Campus" Relationship="Self.FK__Docenten__Campus__1273C1CD" FromRole="Docenten" ToRole="Campussen" />
+          <Property Name="Naam" Type="EFOpleidingenModel.Naam" Nullable="false" />
+          <Property Name="Geslacht" Type="EFOpleidingenModel.Geslacht" />
         </EntityType>
         <Association Name="FK__Docenten__Campus__1273C1CD">
           <End Role="Campussen" Type="Self.Campussen" Multiplicity="1" />
@@ -270,6 +298,7 @@
             <End Role="Boeken" EntitySet="Boeken" />
             <End Role="Cursussen" EntitySet="Cursussen" />
           </AssociationSet>
+          <EntitySet Name="BestBetaaldeDocentenPerCampus" EntityType="EFOpleidingenModel.BestBetaaldeDocentenPerCampus" />
         </EntityContainer>
         <EntityType Name="Voorraad">
           <Key>
@@ -316,11 +345,10 @@
             <PropertyRef Name="CursistNr" />
           </Key>
           <Property Name="CursistNr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Voornaam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Familienaam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MentorNr" Type="Int32" />
           <NavigationProperty Name="Beschermelingen" Relationship="EFOpleidingenModel.FK__Cursisten__Mento__36B12243" FromRole="Cursisten" ToRole="Cursisten1" />
           <NavigationProperty Name="Mentor" Relationship="EFOpleidingenModel.FK__Cursisten__Mento__36B12243" FromRole="Cursisten1" ToRole="Cursisten" />
+          <Property Name="Naam" Type="EFOpleidingenModel.Naam" Nullable="false" />
         </EntityType>
         <EntityType Name="Cursus">
           <Key>
@@ -378,6 +406,29 @@
           <End Type="EFOpleidingenModel.Boek" Role="Boeken" Multiplicity="*" />
           <End Type="EFOpleidingenModel.Cursus" Role="Cursussen" Multiplicity="*" />
         </Association>
+        <ComplexType Name="Naam">
+          <Property Type="String" Name="Voornaam" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Familienaam" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <EnumType Name="Geslacht">
+          <Member Name="Man" Value="1" />
+          <Member Name="Vrouw" Value="2" />
+        </EnumType>
+        <EntityType Name="BestBetaaldeDocentenPerCampus">
+          <Key>
+            <PropertyRef Name="CampusNr" />
+            <PropertyRef Name="Naam" />
+            <PropertyRef Name="DocentNr" />
+            <PropertyRef Name="Voornaam" />
+            <PropertyRef Name="Familienaam" />
+          </Key>
+          <Property Name="CampusNr" Type="Int32" Nullable="false" />
+          <Property Name="Naam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GrootsteWedde" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="DocentNr" Type="Int32" Nullable="false" />
+          <Property Name="Voornaam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Familienaam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -399,11 +450,14 @@
           <EntitySetMapping Name="Docenten">
             <EntityTypeMapping TypeName="EFOpleidingenModel.Docenten">
               <MappingFragment StoreEntitySet="Docenten">
+                <ScalarProperty Name="Geslacht" ColumnName="Geslacht" />
                 <ScalarProperty Name="DocentNr" ColumnName="DocentNr" />
-                <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
-                <ScalarProperty Name="Familienaam" ColumnName="Familienaam" />
                 <ScalarProperty Name="Wedde" ColumnName="Wedde" />
                 <ScalarProperty Name="CampusNr" ColumnName="CampusNr" />
+                <ComplexProperty Name="Naam">
+                  <ScalarProperty Name="Familienaam" ColumnName="Familienaam" />
+                  <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
+                </ComplexProperty>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -449,9 +503,11 @@
             <EntityTypeMapping TypeName="EFOpleidingenModel.Cursist">
               <MappingFragment StoreEntitySet="Cursisten">
                 <ScalarProperty Name="MentorNr" ColumnName="MentorNr" />
-                <ScalarProperty Name="Familienaam" ColumnName="Familienaam" />
-                <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
                 <ScalarProperty Name="CursistNr" ColumnName="CursistNr" />
+                <ComplexProperty Name="Naam">
+                  <ScalarProperty Name="Familienaam" ColumnName="Familienaam" />
+                  <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
+                </ComplexProperty>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -479,6 +535,18 @@
               <ScalarProperty Name="BoekNr" ColumnName="BoekNr" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="BestBetaaldeDocentenPerCampus">
+            <EntityTypeMapping TypeName="EFOpleidingenModel.BestBetaaldeDocentenPerCampus">
+              <MappingFragment StoreEntitySet="BestBetaaldeDocentenPerCampus">
+                <ScalarProperty Name="Familienaam" ColumnName="Familienaam" />
+                <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
+                <ScalarProperty Name="DocentNr" ColumnName="DocentNr" />
+                <ScalarProperty Name="GrootsteWedde" ColumnName="GrootsteWedde" />
+                <ScalarProperty Name="Naam" ColumnName="Naam" />
+                <ScalarProperty Name="CampusNr" ColumnName="CampusNr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

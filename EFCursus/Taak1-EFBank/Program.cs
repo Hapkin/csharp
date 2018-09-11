@@ -37,7 +37,9 @@ namespace Taak1_EFBank
 
 
             //Taak7KlantWijzigen();
-            taak9InheritanceRekeningen();
+            //taak8Personeel();
+            //taak9InheritanceRekeningen();
+            taak10Views();
 
             Console.ReadLine();
         }
@@ -151,7 +153,7 @@ namespace Taak1_EFBank
             string rekening2 = "123-4567890-02";
             string rekening1 = "234-5678901-69";
 
-            
+
 
 
 
@@ -189,7 +191,7 @@ namespace Taak1_EFBank
                                         bedrag = 0;
                                     }
                                 }
-                                
+
                             }
 
                             //het bedrag is toereikend en positief
@@ -262,8 +264,8 @@ namespace Taak1_EFBank
 
 
                 var query = (from Mederwerkers in entities.Personeel
-                            where Mederwerkers.Manager == null
-                            select Mederwerkers).ToList();
+                             where Mederwerkers.Manager == null
+                             select Mederwerkers).ToList();
 
 
                 //foreach (var item in query)
@@ -296,10 +298,10 @@ namespace Taak1_EFBank
             using (var entities = new EFBankEntities())
             {
                 var query = from rekening in entities.Rekeningen
-                            //orderby rekening.GetType()
+                                //orderby rekening.GetType()
                             where rekening is Zichtrekening
-                            select rekening; 
-                            
+                            select rekening;
+
                 foreach (var rekening in query)
                 {
                     Console.WriteLine($"{rekening.RekeningNr}: saldo={rekening.Saldo } type: {rekening.GetType().Name}");
@@ -307,6 +309,22 @@ namespace Taak1_EFBank
             }
 
         }
-        
+
+        static void taak10Views()
+        {
+            using (var entities = new EFBankEntities())
+            {
+                var query = from TotaleSaldoPerKlant
+                            in entities.TotaleSaldoPerKlant
+                            orderby TotaleSaldoPerKlant.KlantNr,
+                            TotaleSaldoPerKlant.Voornaam
+                            select TotaleSaldoPerKlant;
+                foreach (var klant in query)
+                {
+                    Console.WriteLine($"{klant.KlantNr} {klant.Voornaam}: {klant.TotaleSaldo}");
+                }
+            }
+
+        }
     }
 }

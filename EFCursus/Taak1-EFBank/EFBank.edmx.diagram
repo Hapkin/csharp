@@ -14,6 +14,7 @@
         <EntityTypeShape EntityType="EFBankModel.Spaarrekening" Width="1.5" PointX="8.125" PointY="3.75" />
         <InheritanceConnector EntityType="EFBankModel.Zichtrekening" />
         <InheritanceConnector EntityType="EFBankModel.Spaarrekening" />
+        <EntityTypeShape EntityType="EFBankModel.TotaleSaldoPerKlant" Width="1.5" PointX="0.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
