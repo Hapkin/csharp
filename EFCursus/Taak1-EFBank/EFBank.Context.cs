@@ -12,6 +12,8 @@ namespace Taak1_EFBank
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class EFBankEntities : DbContext
     {
@@ -29,5 +31,14 @@ namespace Taak1_EFBank
         public virtual DbSet<Rekeningen> Rekeningen { get; set; }
         public virtual DbSet<Personeel> Personeel { get; set; }
         public virtual DbSet<TotaleSaldoPerKlant> TotaleSaldoPerKlant { get; set; }
+    
+        public virtual int AdministratieveKost(Nullable<decimal> kost)
+        {
+            var kostParameter = kost.HasValue ?
+                new ObjectParameter("Kost", kost) :
+                new ObjectParameter("Kost", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AdministratieveKost", kostParameter);
+        }
     }
 }

@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AantalDocentenPerVoornaam_Result.cs">
+      <DependentUpon>Opleidingen.tt</DependentUpon>
+    </Compile>
     <Compile Include="BestBetaaldeDocentenPerCampus.cs">
       <DependentUpon>Opleidingen.tt</DependentUpon>
     </Compile>
@@ -66,6 +69,9 @@
       <DependentUpon>Opleidingen.tt</DependentUpon>
     </Compile>
     <Compile Include="Campussen.cs">
+      <DependentUpon>Opleidingen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CampussenVanTotPostCode_Result.cs">
       <DependentUpon>Opleidingen.tt</DependentUpon>
     </Compile>
     <Compile Include="Cursist.cs">

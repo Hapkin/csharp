@@ -64,6 +64,9 @@ warning 6002: The table/view 'EFBank.dbo.TotaleSaldoPerKlant' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AdministratieveKost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Kost" Type="decimal" Mode="In" />
+        </Function>
         <EntityContainer Name="EFBankModelStoreContainer">
           <EntitySet Name="Klanten" EntityType="Self.Klanten" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personeel" EntityType="Self.Personeel" Schema="dbo" store:Type="Tables" />
@@ -130,6 +133,9 @@ warning 6002: The table/view 'EFBank.dbo.TotaleSaldoPerKlant' does not have a pr
             <End Role="Personeel1" EntitySet="Personeel" />
           </AssociationSet>
           <EntitySet Name="TotaleSaldoPerKlant" EntityType="EFBankModel.TotaleSaldoPerKlant" />
+          <FunctionImport Name="AdministratieveKost">
+            <Parameter Name="Kost" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Personeel">
           <Key>
@@ -219,6 +225,7 @@ warning 6002: The table/view 'EFBank.dbo.TotaleSaldoPerKlant' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AdministratieveKost" FunctionName="EFBankModel.Store.AdministratieveKost" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

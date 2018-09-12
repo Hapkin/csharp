@@ -12,6 +12,8 @@ namespace EFCursus
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class EFOpleidingenEntities : DbContext
     {
@@ -35,5 +37,54 @@ namespace EFCursus
         public virtual DbSet<Cursus> Cursussen { get; set; }
         public virtual DbSet<Cursus2> Cursussen2 { get; set; }
         public virtual DbSet<BestBetaaldeDocentenPerCampus> BestBetaaldeDocentenPerCampus { get; set; }
+    
+        public virtual ObjectResult<Campussen> CampussenVanTotPostCode(string vanPostCode, string totPostCode)
+        {
+            var vanPostCodeParameter = vanPostCode != null ?
+                new ObjectParameter("VanPostCode", vanPostCode) :
+                new ObjectParameter("VanPostCode", typeof(string));
+    
+            var totPostCodeParameter = totPostCode != null ?
+                new ObjectParameter("TotPostCode", totPostCode) :
+                new ObjectParameter("TotPostCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Campussen>("CampussenVanTotPostCode", vanPostCodeParameter, totPostCodeParameter);
+        }
+    
+        public virtual ObjectResult<Campussen> CampussenVanTotPostCode(string vanPostCode, string totPostCode, MergeOption mergeOption)
+        {
+            var vanPostCodeParameter = vanPostCode != null ?
+                new ObjectParameter("VanPostCode", vanPostCode) :
+                new ObjectParameter("VanPostCode", typeof(string));
+    
+            var totPostCodeParameter = totPostCode != null ?
+                new ObjectParameter("TotPostCode", totPostCode) :
+                new ObjectParameter("TotPostCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Campussen>("CampussenVanTotPostCode", mergeOption, vanPostCodeParameter, totPostCodeParameter);
+        }
+    
+        public virtual ObjectResult<AantalDocentenPerVoornaam_Result> AantalDocentenPerVoornaam()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AantalDocentenPerVoornaam_Result>("AantalDocentenPerVoornaam");
+        }
+    
+        public virtual int WeddeVerhoging(Nullable<decimal> percentage)
+        {
+            var percentageParameter = percentage.HasValue ?
+                new ObjectParameter("Percentage", percentage) :
+                new ObjectParameter("Percentage", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("WeddeVerhoging", percentageParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> AantalDocentenMetFamilienaam(string familienaam)
+        {
+            var familienaamParameter = familienaam != null ?
+                new ObjectParameter("Familienaam", familienaam) :
+                new ObjectParameter("Familienaam", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("AantalDocentenMetFamilienaam", familienaamParameter);
+        }
     }
 }

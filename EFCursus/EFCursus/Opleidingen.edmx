@@ -183,6 +183,17 @@ warning 6002: The table/view 'EFOpleidingen.dbo.BestBetaaldeDocentenPerCampus' d
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AantalDocentenMetFamilienaam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Familienaam" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AantalDocentenPerVoornaam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CampussenVanTotPostCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VanPostCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="TotPostCode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="WeddeVerhoging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Percentage" Type="decimal" Mode="In" />
+        </Function>
         <EntityContainer Name="EFOpleidingenModelStoreContainer">
           <EntitySet Name="Boeken" EntityType="Self.Boeken" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Boeken2" EntityType="Self.Boeken2" Schema="dbo" store:Type="Tables" />
@@ -299,6 +310,17 @@ warning 6002: The table/view 'EFOpleidingen.dbo.BestBetaaldeDocentenPerCampus' d
             <End Role="Cursussen" EntitySet="Cursussen" />
           </AssociationSet>
           <EntitySet Name="BestBetaaldeDocentenPerCampus" EntityType="EFOpleidingenModel.BestBetaaldeDocentenPerCampus" />
+          <FunctionImport Name="CampussenVanTotPostCode" EntitySet="Campussen" ReturnType="Collection(EFOpleidingenModel.Campussen)">
+            <Parameter Name="VanPostCode" Mode="In" Type="String" />
+            <Parameter Name="TotPostCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AantalDocentenPerVoornaam" ReturnType="Collection(EFOpleidingenModel.AantalDocentenPerVoornaam_Result)" />
+          <FunctionImport Name="WeddeVerhoging">
+          <Parameter Name="Percentage" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="AantalDocentenMetFamilienaam" ReturnType="Collection(Int32)">
+            <Parameter Name="Familienaam" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Voorraad">
           <Key>
@@ -429,6 +451,18 @@ warning 6002: The table/view 'EFOpleidingen.dbo.BestBetaaldeDocentenPerCampus' d
           <Property Name="Voornaam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Familienaam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="CampussenVanTotPostCode_Result">
+          <Property Type="Int32" Name="CampusNr" Nullable="false" />
+          <Property Type="String" Name="Naam" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Straat" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="HuisNr" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="PostCode" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Gemeente" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="AantalDocentenPerVoornaam_Result">
+          <Property Type="String" Name="Voornaam" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Aantal" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -547,6 +581,18 @@ warning 6002: The table/view 'EFOpleidingen.dbo.BestBetaaldeDocentenPerCampus' d
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CampussenVanTotPostCode" FunctionName="EFOpleidingenModel.Store.CampussenVanTotPostCode">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AantalDocentenPerVoornaam" FunctionName="EFOpleidingenModel.Store.AantalDocentenPerVoornaam">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EFOpleidingenModel.AantalDocentenPerVoornaam_Result">
+                <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
+                <ScalarProperty Name="Aantal" ColumnName="Aantal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WeddeVerhoging" FunctionName="EFOpleidingenModel.Store.WeddeVerhoging" />
+          <FunctionImportMapping FunctionImportName="AantalDocentenMetFamilienaam" FunctionName="EFOpleidingenModel.Store.AantalDocentenMetFamilienaam" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

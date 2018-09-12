@@ -39,8 +39,9 @@ namespace Taak1_EFBank
             //Taak7KlantWijzigen();
             //taak8Personeel();
             //taak9InheritanceRekeningen();
+            //
             taak10Views();
-
+            taak11StoredP();
             Console.ReadLine();
         }
 
@@ -326,5 +327,25 @@ namespace Taak1_EFBank
             }
 
         }
+
+        static void taak11StoredP()
+        {
+
+            decimal kost;
+            Console.WriteLine("Hoeveel is de administratieve kost?");
+            if (decimal.TryParse(Console.ReadLine(), out kost))
+            {
+                using (var entities = new EFBankEntities())
+                {
+                    entities.AdministratieveKost(kost);
+                    Console.WriteLine("{0} administratieve kosten afgetrokken", kost);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Tik een getal");
+            }
+        }
+
     }
 }

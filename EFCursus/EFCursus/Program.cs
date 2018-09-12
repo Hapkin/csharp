@@ -523,7 +523,8 @@ namespace EFCursus
             //h12Inheritance3();
             //h13ComplexTypes(); is leeg
             //h14Enums();
-            h15Views();
+            //h15Views();
+            h16StoredProcedure();
 
             Console.ReadKey();
         }
@@ -904,7 +905,7 @@ namespace EFCursus
         static void h12Inheritance1()
         {
 
-            
+
 
             //werken met parent en child classes
             using (var entities = new EFOpleidingenTPCEntities())
@@ -912,8 +913,8 @@ namespace EFCursus
                 var query = from cursus in entities.TPCCursussen select cursus;
 
                 var queryL = from cursus in entities.TPCCursussen
-                            where cursus is TPCKlassikaleCursus
-                            select cursus;
+                             where cursus is TPCKlassikaleCursus
+                             select cursus;
             }
             //toon alle cursussen
             using (var entities = new EFOpleidingenTPCEntities())
@@ -939,12 +940,12 @@ namespace EFCursus
                 */
 
                 //nieuwe zelfstudie toevoegen
-                
+
                 Console.WriteLine("Voor aanpassing:");
                 var query3 = from cursus in entities.TPCCursussen
-                            where cursus is TPCZelfstudieCursus
-                            orderby cursus.Naam
-                            select cursus;
+                             where cursus is TPCZelfstudieCursus
+                             orderby cursus.Naam
+                             select cursus;
                 foreach (var cursus in query3)
                 {
                     Console.WriteLine(cursus.Naam);
@@ -954,14 +955,14 @@ namespace EFCursus
                 entities.SaveChanges();
                 Console.WriteLine("\nNa aanpassing:");
                 query3 = from cursus in entities.TPCCursussen
-                        where cursus is TPCZelfstudieCursus
-                        orderby cursus.Naam
-                        select cursus;
+                         where cursus is TPCZelfstudieCursus
+                         orderby cursus.Naam
+                         select cursus;
                 foreach (var cursus in query3)
                 {
                     Console.WriteLine(cursus.Naam);
                 }
-                
+
 
 
 
@@ -1050,7 +1051,7 @@ namespace EFCursus
                 {
                     Console.WriteLine("{0}:{1}", docent.Naam, docent.Geslacht);
                 }*/
-            
+
                 entities.Docenten.Add
                 (new Docenten
                 {
@@ -1090,7 +1091,44 @@ namespace EFCursus
             }
         }
 
+        static void h16StoredProcedure()
+        {
+            using (var entities = new EFOpleidingenEntities())
+            {
+                foreach (var campus in entities.CampussenVanTotPostCode("8000", "8999"))
+                {
+                    Console.WriteLine("{0}: {1}", campus.Naam, campus.PostCode);
+                }
 
+                /*foreach (var voornaamAantal in entities.AantalDocentenPerVoornaam())
+                {
+                    Console.WriteLine("{0} {1}", voornaamAantal.Voornaam, voornaamAantal.Aantal);
+                }*/
+            }
+            /*Console.Write("Opslagpercentage:");
+            decimal percentage;
+            if (decimal.TryParse(Console.ReadLine(), out percentage))
+            {
+                using (var entities = new EFOpleidingenEntities())
+                {
+                    var aantalDocentenAangepast = entities.WeddeVerhoging(percentage);
+                    Console.WriteLine("{0} docenten aangepast", aantalDocentenAangepast);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Tik een getal");
+            }*/
+
+
+            Console.Write("Familienaam:");
+            var familienaam = Console.ReadLine();
+            using (var entities = new EFOpleidingenEntities())
+            {
+                var aantalDocenten = entities.AantalDocentenMetFamilienaam(familienaam);
+                Console.WriteLine("{0} docent(en)", aantalDocenten.First());
+            }
+        }
     }
 
 }
