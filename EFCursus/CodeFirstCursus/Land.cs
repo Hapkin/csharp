@@ -8,15 +8,11 @@ using System.Threading.Tasks;
 
 namespace CodeFirstCursus
 {
-    [Table("Campussen")] // using System.ComponentModel.DataAnnotations.Schema;
-    public class Campus
+    [Table("Landen")]
+    public class Land
     {
-        public int CampusId { get; set; }
-        [Required]
-        [StringLength(50)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public string LandCode { get; set; }
         public string Naam { get; set; }
-
-        public Adres Adres { get; set; }
-
     }
 }
