@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c1dae6fc57234bb28de6a4971d9729e7" Name="Diagram1" DisplayType="true" ZoomLevel="81">
+        <EntityTypeShape EntityType="EFOpleidingenModel.Campussen" Width="1.875" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.Docenten" Width="2.25" PointX="3.125" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="EFOpleidingenModel.FK__Docenten__Campus__1273C1CD" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.Voorraad" Width="1.5" PointX="5.875" PointY="0.5" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.Boek" Width="1.5" PointX="8.25" PointY="3.125" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.Boek2" Width="2" PointX="5.625" PointY="3.125" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.BoekenCursus2" Width="1.875" PointX="2.875" PointY="2.875" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.Cursist" Width="1.5" PointX="8.25" PointY="0.5" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.Cursus" Width="1.5" PointX="10.5" PointY="3.25" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.Cursus2" Width="1.5" PointX="0.5" PointY="3" />
+        <AssociationConnector Association="EFOpleidingenModel.FK__BoekenCur__BoekN__31EC6D26" />
+        <AssociationConnector Association="EFOpleidingenModel.FK__BoekenCur__Cursu__32E0915F" />
+        <AssociationConnector Association="EFOpleidingenModel.FK__Cursisten__Mento__36B12243" />
+        <AssociationConnector Association="EFOpleidingenModel.BoekenCursussen" />
+        <EntityTypeShape EntityType="EFOpleidingenModel.BestBetaaldeDocentenPerCampus" Width="1.5" PointX="10.5" PointY="0.5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

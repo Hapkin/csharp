@@ -12,3 +12,17 @@ C:\GIT\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.csproj.GenerateResource.cache
 C:\GIT\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.csproj.CoreCompileInputs.cache
 C:\GIT\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.exe
 C:\GIT\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.pdb
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\bin\Debug\HobbyLijst.exe.config
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\bin\Debug\HobbyLijst.exe
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\bin\Debug\HobbyLijst.pdb
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.csprojResolveAssemblyReference.cache
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\obj\Debug\MainWindow.g.cs
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\obj\Debug\App.g.cs
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst_MarkupCompile.cache
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst_MarkupCompile.lref
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\obj\Debug\MainWindow.baml
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.g.resources
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.Properties.Resources.resources
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.csproj.GenerateResource.Cache
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.exe
+E:\users\Prog\GIT\Jo\WpfCursus\HobbyLijst\obj\Debug\HobbyLijst.pdb

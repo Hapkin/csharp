@@ -13,6 +13,9 @@ namespace MVVMVoorbeeld
     /// </summary>
     public partial class App : Application
     {
+<<<<<<< HEAD
+    }
+=======
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -24,4 +27,5 @@ namespace MVVMVoorbeeld
         }
     }
     
+>>>>>>> Jo
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27428.2043
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCursus", "WpfCursus\WpfCursus.csproj", "{5B57E8AF-ADA6-4DD2-AD1C-07F2E6A3AF28}"
 EndProject
@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpleidingenDragDrop", "Ople
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RibbonControl", "RibbonControl\RibbonControl.csproj", "{9BA3A8E8-5F54-4093-A681-48BB0C4E8CDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMVoorbeeld", "MVVMVoorbeeld\MVVMVoorbeeld.csproj", "{64020BCB-550F-4AAE-9C8D-057040FA6A5E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMVoorbeeld", "MVVMVoorbeeld\MVVMVoorbeeld.csproj", "{E99C86CD-7B13-4B0A-9F12-033582A50D34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMHobby", "MVVMHobby\MVVMHobby.csproj", "{A1179F3F-3110-4F22-91F2-DCCE31F91B39}"
 EndProject
@@ -79,10 +79,10 @@ Global
 		{9BA3A8E8-5F54-4093-A681-48BB0C4E8CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BA3A8E8-5F54-4093-A681-48BB0C4E8CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BA3A8E8-5F54-4093-A681-48BB0C4E8CDD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64020BCB-550F-4AAE-9C8D-057040FA6A5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64020BCB-550F-4AAE-9C8D-057040FA6A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64020BCB-550F-4AAE-9C8D-057040FA6A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64020BCB-550F-4AAE-9C8D-057040FA6A5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E99C86CD-7B13-4B0A-9F12-033582A50D34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E99C86CD-7B13-4B0A-9F12-033582A50D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E99C86CD-7B13-4B0A-9F12-033582A50D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E99C86CD-7B13-4B0A-9F12-033582A50D34}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A1179F3F-3110-4F22-91F2-DCCE31F91B39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A1179F3F-3110-4F22-91F2-DCCE31F91B39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1179F3F-3110-4F22-91F2-DCCE31F91B39}.Release|Any CPU.ActiveCfg = Release|Any CPU

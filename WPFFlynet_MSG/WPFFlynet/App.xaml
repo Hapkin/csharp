@@ -1,0 +1,29 @@
+﻿<Application 
+    x:Class="WPFFlynet.App" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    d1p1:Ignorable="d" 
+    
+    xmlns:local="clr-namespace:WPFFlynet" 
+    xmlns:views="clr-namespace:WPFFlynet.View"
+    xmlns:vm="clr-namespace:WPFFlynet.ViewModel" 
+    
+    
+    
+    >
+  <Application.Resources>
+        <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
+        <DataTemplate DataType="{x:Type vm:CertificatenVM}">
+            <views:CertificatenView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PersoneelVM}">
+            <views:PersoneelView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:VluchtenVM}">
+            <views:VluchtenView />
+        </DataTemplate>
+    </Application.Resources>
+</Application>
+ <!-- StartupUri="View/FlynetMainWindow.xaml" -->

@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EFOpleidingenModelTPT.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TPTCursussen">
+          <Key>
+            <PropertyRef Name="CursusNr" />
+          </Key>
+          <Property Name="CursusNr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naam" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TPTKlassikaleCursussen">
+          <Key>
+            <PropertyRef Name="CursusNr" />
+          </Key>
+          <Property Name="CursusNr" Type="int" Nullable="false" />
+          <Property Name="Van" Type="datetime" Nullable="false" />
+          <Property Name="Tot" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TPTZelfstudieCursussen">
+          <Key>
+            <PropertyRef Name="CursusNr" />
+          </Key>
+          <Property Name="CursusNr" Type="int" Nullable="false" />
+          <Property Name="Duurtijd" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__TPTKlassi__Cursu__5165187F">
+          <End Role="TPTCursussen" Type="Self.TPTCursussen" Multiplicity="1" />
+          <End Role="TPTKlassikaleCursussen" Type="Self.TPTKlassikaleCursussen" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TPTCursussen">
+              <PropertyRef Name="CursusNr" />
+            </Principal>
+            <Dependent Role="TPTKlassikaleCursussen">
+              <PropertyRef Name="CursusNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TPTZelfst__Cursu__5441852A">
+          <End Role="TPTCursussen" Type="Self.TPTCursussen" Multiplicity="1" />
+          <End Role="TPTZelfstudieCursussen" Type="Self.TPTZelfstudieCursussen" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TPTCursussen">
+              <PropertyRef Name="CursusNr" />
+            </Principal>
+            <Dependent Role="TPTZelfstudieCursussen">
+              <PropertyRef Name="CursusNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EFOpleidingenModelTPTStoreContainer">
+          <EntitySet Name="TPTCursussen" EntityType="Self.TPTCursussen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPTKlassikaleCursussen" EntityType="Self.TPTKlassikaleCursussen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPTZelfstudieCursussen" EntityType="Self.TPTZelfstudieCursussen" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TPTKlassi__Cursu__5165187F" Association="Self.FK__TPTKlassi__Cursu__5165187F">
+            <End Role="TPTCursussen" EntitySet="TPTCursussen" />
+            <End Role="TPTKlassikaleCursussen" EntitySet="TPTKlassikaleCursussen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TPTZelfst__Cursu__5441852A" Association="Self.FK__TPTZelfst__Cursu__5441852A">
+            <End Role="TPTCursussen" EntitySet="TPTCursussen" />
+            <End Role="TPTZelfstudieCursussen" EntitySet="TPTZelfstudieCursussen" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EFOpleidingenModelTPT" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TPTCursus" Abstract="true">
+          <Key>
+            <PropertyRef Name="CursusNr" />
+          </Key>
+          <Property Name="CursusNr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TPTKlassikaleCursus" BaseType="EFOpleidingenModelTPT.TPTCursus">
+          <Property Name="Van" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Tot" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TPTZelfstudieCursus" BaseType="EFOpleidingenModelTPT.TPTCursus">
+          <Property Name="Duurtijd" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EFOpleidingenTPTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TPTCursussen" EntityType="EFOpleidingenModelTPT.TPTCursus" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EFOpleidingenModelTPTStoreContainer" CdmEntityContainer="EFOpleidingenTPTEntities">
+          <EntitySetMapping Name="TPTCursussen">
+            <EntityTypeMapping TypeName="IsTypeOf(EFOpleidingenModelTPT.TPTCursus)">
+              <MappingFragment StoreEntitySet="TPTCursussen">
+                <ScalarProperty Name="CursusNr" ColumnName="CursusNr" />
+                <ScalarProperty Name="Naam" ColumnName="Naam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(EFOpleidingenModelTPT.TPTZelfstudieCursus)">
+              <MappingFragment StoreEntitySet="TPTZelfstudieCursussen">
+                <ScalarProperty Name="Duurtijd" ColumnName="Duurtijd" />
+                <ScalarProperty Name="CursusNr" ColumnName="CursusNr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(EFOpleidingenModelTPT.TPTKlassikaleCursus)">
+              <MappingFragment StoreEntitySet="TPTKlassikaleCursussen">
+                <ScalarProperty Name="Tot" ColumnName="Tot" />
+                <ScalarProperty Name="Van" ColumnName="Van" />
+                <ScalarProperty Name="CursusNr" ColumnName="CursusNr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

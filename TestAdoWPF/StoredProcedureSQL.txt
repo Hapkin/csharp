@@ -1,0 +1,15 @@
+CREATE PROCEDURE NieuweFilmToevoegen
+(
+@titel nvarchar(50),
+@genreNr Int,
+@inVoorraad int,
+@uitVoorraad int,
+@prijs money,
+@totaalVerhuurd int
+)
+AS
+insert into Films(Titel,GenreNr,InVoorraad,UitVoorraad,Prijs,TotaalVerhuurd) 
+values (@titel, @genreNr, @inVoorraad ,@uitVoorraad ,@prijs,@totaalVerhuurd);
+select @@identity
+
+

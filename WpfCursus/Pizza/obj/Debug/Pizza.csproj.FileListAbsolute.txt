@@ -13,3 +13,17 @@ C:\GIT\WpfCursus\Pizza\obj\Debug\Pizza.csproj.CoreCompileInputs.cache
 C:\GIT\WpfCursus\Pizza\obj\Debug\Pizza.exe
 C:\GIT\WpfCursus\Pizza\obj\Debug\Pizza.pdb
 C:\GIT\WpfCursus\Pizza\obj\Debug\Pizza.csprojResolveAssemblyReference.cache
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\bin\Debug\Pizza.exe.config
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\bin\Debug\Pizza.exe
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\bin\Debug\Pizza.pdb
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\obj\Debug\Pizza.csprojResolveAssemblyReference.cache
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\obj\Debug\PizzaWindow.g.cs
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\obj\Debug\App.g.cs
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\obj\Debug\Pizza_MarkupCompile.cache
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\obj\Debug\Pizza_MarkupCompile.lref
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\obj\Debug\PizzaWindow.baml
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\obj\Debug\Pizza.g.resources
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\obj\Debug\Pizza.Properties.Resources.resources
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\obj\Debug\Pizza.csproj.GenerateResource.Cache
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\obj\Debug\Pizza.exe
+E:\users\Prog\GIT\Jo\WpfCursus\Pizza\obj\Debug\Pizza.pdb

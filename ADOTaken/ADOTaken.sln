@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADOTaken", "ADOTaken\ADOTaken.csproj", "{104725F7-7DE9-4A8F-825A-40284B3E937C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBConnectie", "DBConnectie\DBConnectie.csproj", "{831F78B4-C640-414A-B095-41E3A4329A66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiuserTest", "MultiuserTest\MultiuserTest.csproj", "{216A7DBE-6CD6-4723-9C39-C8A4CD56C9A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{104725F7-7DE9-4A8F-825A-40284B3E937C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{104725F7-7DE9-4A8F-825A-40284B3E937C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{104725F7-7DE9-4A8F-825A-40284B3E937C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{104725F7-7DE9-4A8F-825A-40284B3E937C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{831F78B4-C640-414A-B095-41E3A4329A66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831F78B4-C640-414A-B095-41E3A4329A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831F78B4-C640-414A-B095-41E3A4329A66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831F78B4-C640-414A-B095-41E3A4329A66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{216A7DBE-6CD6-4723-9C39-C8A4CD56C9A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{216A7DBE-6CD6-4723-9C39-C8A4CD56C9A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{216A7DBE-6CD6-4723-9C39-C8A4CD56C9A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{216A7DBE-6CD6-4723-9C39-C8A4CD56C9A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {41C602F2-98D5-4A33-A634-28F98770C6D5}
+	EndGlobalSection
+EndGlobal

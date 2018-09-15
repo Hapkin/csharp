@@ -1,0 +1,95 @@
+﻿<Window x:Class="WPFFlynet.View.FlynetMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFFlynet"
+        xmlns:vm="clr-namespace:WPFFlynet.ViewModel"
+        mc:Ignorable="d"
+        Title="Flynet: the new airport" Height="650" Width="850"
+         DataContext="{Binding Main,
+                              Source={StaticResource Locator}}"
+        >
+<!--
+    <Window.DataContext>
+        <vm:FlynetMainVM />
+    </Window.DataContext>
+-->
+    <DockPanel>
+        <ToolBarTray IsLocked="True" DockPanel.Dock="Top">
+
+            <ToolBar Name="MenuBalk" >
+
+                <Button 
+                    Command="{Binding CertificatenViewCommand}"
+                    Background="White">
+                    <StackPanel Height="75" Width="75">
+                        <Image Width="64" Source="pack://application:,,,/Img/certificaten.png"></Image>
+                        <TextBlock FontSize="9" TextAlignment="Center">Certificaten</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button 
+                    Command="{Binding PersoneelViewCommand}"
+                    Background="White">
+                    <StackPanel Height="75" Width="75">
+                        <Image Width="64" Height="64" Source="pack://application:,,,/Img/personeel.png"></Image>
+                        <TextBlock FontSize="9" TextAlignment="Center">Personeel</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button 
+                    Command="{Binding VluchtenViewCommand}"
+                    Background="White">
+                    <StackPanel Height="75" Width="75">
+                        <Image Width="64" Height="64" Source="pack://application:,,,/Img/vluchten.png"></Image>
+                        <TextBlock FontSize="9" TextAlignment="Center">Vluchten</TextBlock>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+
+        <!--BOTTOMBAR-->
+
+        <StatusBar DockPanel.Dock="Bottom" Height="24">
+            <StatusBarItem
+                Name="Status" 
+                DockPanel.Dock="Left" 
+                HorizontalContentAlignment="Left" 
+                HorizontalAlignment="Left">
+                <StatusBarItem.Content>
+                    
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="cert: {0} | personeel: {1} | vliegtuigen: {2} | maatschappijen: {3} | vluchten: {4} ">
+                                <Binding Path="lCertificaten.Count" />
+                                <Binding Path="lPersoneel.Count" />
+                                <Binding Path="lVliegtuigen.Count" />
+                                <Binding Path="lVliegMaatschappijen.Count" />
+                                <Binding Path="lVluchten.Count" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    
+                </StatusBarItem.Content>
+            </StatusBarItem>
+            <StatusBarItem 
+                Name="Copyright" 
+                DockPanel.Dock="Right" 
+                Width="50" 
+                HorizontalContentAlignment="Right" 
+                HorizontalAlignment="Right"
+                >©Flynet
+            </StatusBarItem>
+
+        </StatusBar>
+
+
+        <!--INHOUD-->
+        <Grid>
+            <!--<Grid.DataContext><ViewModel:</Grid.DataContext>-->
+            <ContentControl Content="{Binding CurrentViewModel}" />
+        </Grid>
+
+
+    </DockPanel>
+</Window>

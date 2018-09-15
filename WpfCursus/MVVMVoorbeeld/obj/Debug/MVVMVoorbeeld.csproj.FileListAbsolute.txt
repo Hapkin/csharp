@@ -1,3 +1,31 @@
+<<<<<<< HEAD
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\obj\Debug\MVVMVoorbeeld.csprojResolveAssemblyReference.cache
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\obj\Debug\App.g.cs
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\obj\Debug\MVVMVoorbeeld_MarkupCompile.cache
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\obj\Debug\MVVMVoorbeeld_MarkupCompile.lref
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\obj\Debug\MVVMVoorbeeld.exe
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\obj\Debug\MVVMVoorbeeld.pdb
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\MVVMVoorbeeld.exe.config
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\MVVMVoorbeeld.exe
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\MVVMVoorbeeld.pdb
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\CommonServiceLocator.dll
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\GalaSoft.MvvmLight.dll
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\System.Windows.Interactivity.dll
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\GalaSoft.MvvmLight.pdb
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\GalaSoft.MvvmLight.xml
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\bin\Debug\GalaSoft.MvvmLight.Platform.xml
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\obj\Debug\MVVMVoorbeeld.g.resources
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\obj\Debug\MVVMVoorbeeld.Properties.Resources.resources
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\obj\Debug\MVVMVoorbeeld.csproj.GenerateResource.Cache
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\obj\Debug\View\TextBoxView.g.cs
+E:\users\Prog\GIT\Jo\WpfCursus\MVVMVoorbeeld\obj\Debug\View\TextBoxView.baml
+=======
 C:\GIT\WpfCursus\MVVMVoorbeeld\bin\Debug\MVVMVoorbeeld.exe.config
 C:\GIT\WpfCursus\MVVMVoorbeeld\bin\Debug\MVVMVoorbeeld.exe
 C:\GIT\WpfCursus\MVVMVoorbeeld\bin\Debug\MVVMVoorbeeld.pdb
@@ -30,3 +58,4 @@ C:\GIT\WpfCursus\MVVMVoorbeeld\obj\Debug\View\TextBoxView2.g.cs
 C:\GIT\WpfCursus\MVVMVoorbeeld\obj\Debug\View\TextBoxView2.baml
 C:\GIT\WpfCursus\MVVMVoorbeeld\obj\Debug\View\PrintPreview.g.cs
 C:\GIT\WpfCursus\MVVMVoorbeeld\obj\Debug\View\PrintPreview.baml
+>>>>>>> Jo

@@ -12,3 +12,16 @@ C:\GIT\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.csproj.CoreCompil
 C:\GIT\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.exe
 C:\GIT\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.pdb
 C:\GIT\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.csprojResolveAssemblyReference.cache
+E:\users\Prog\GIT\Jo\WpfCursus\RegenboogDragDrop\bin\Debug\RegenboogDragDrop.exe.config
+E:\users\Prog\GIT\Jo\WpfCursus\RegenboogDragDrop\bin\Debug\RegenboogDragDrop.exe
+E:\users\Prog\GIT\Jo\WpfCursus\RegenboogDragDrop\bin\Debug\RegenboogDragDrop.pdb
+E:\users\Prog\GIT\Jo\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.csprojResolveAssemblyReference.cache
+E:\users\Prog\GIT\Jo\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogWindow.baml
+E:\users\Prog\GIT\Jo\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogWindow.g.cs
+E:\users\Prog\GIT\Jo\WpfCursus\RegenboogDragDrop\obj\Debug\App.g.cs
+E:\users\Prog\GIT\Jo\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop_MarkupCompile.cache
+E:\users\Prog\GIT\Jo\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.g.resources
+E:\users\Prog\GIT\Jo\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.Properties.Resources.resources
+E:\users\Prog\GIT\Jo\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.csproj.GenerateResource.Cache
+E:\users\Prog\GIT\Jo\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.exe
+E:\users\Prog\GIT\Jo\WpfCursus\RegenboogDragDrop\obj\Debug\RegenboogDragDrop.pdb

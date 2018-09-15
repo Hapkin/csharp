@@ -4,11 +4,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+<<<<<<< HEAD
+    <ProjectGuid>{E99C86CD-7B13-4B0A-9F12-033582A50D34}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MVVMVoorbeeld</RootNamespace>
+    <AssemblyName>MVVMVoorbeeld</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+=======
     <ProjectGuid>{64020BCB-550F-4AAE-9C8D-057040FA6A5E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>MVVMVoorbeeld</RootNamespace>
     <AssemblyName>MVVMVoorbeeld</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+>>>>>>> Jo
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -69,6 +77,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+<<<<<<< HEAD
+    <Compile Include="View\TextBoxView.xaml.cs">
+      <DependentUpon>TextBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Converters.cs" />
+=======
     <Compile Include="Model\TekstMetOpmaak.cs" />
     <Compile Include="ViewModel\Converters.cs" />
     <Compile Include="ViewModel\TekstMetOpmaakVM.cs" />
@@ -81,10 +95,13 @@
     <Compile Include="View\TextBoxView.xaml.cs">
       <DependentUpon>TextBoxView.xaml</DependentUpon>
     </Compile>
+>>>>>>> Jo
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+<<<<<<< HEAD
+=======
     <Page Include="View\PrintPreview.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -93,6 +110,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+>>>>>>> Jo
     <Page Include="View\TextBoxView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -125,6 +143,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+<<<<<<< HEAD
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+=======
   <ItemGroup />
+>>>>>>> Jo
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
