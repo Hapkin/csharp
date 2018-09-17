@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{803D00A3-BFC6-44B2-89BE-8C95B8642607}</ProjectGuid>
+    <ProjectGuid>{F7664746-3017-4351-819B-1748D597A805}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CodeFirstCursus</RootNamespace>
-    <AssemblyName>CodeFirstCursus</AssemblyName>
+    <RootNamespace>Taak12_CodeFirst</RootNamespace>
+    <AssemblyName>Taak12-CodeFirst</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -50,29 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adres.cs" />
-    <Compile Include="ASSCampus.cs" />
-    <Compile Include="ASSCursist.cs" />
-    <Compile Include="ASSInstructeur.cs" />
-    <Compile Include="ASSVerantwoordelijkheid.cs" />
-    <Compile Include="Campus.cs" />
-    <Compile Include="EFCFContext.cs" />
-    <Compile Include="Instructeur.cs" />
-    <Compile Include="Land.cs" />
+    <Compile Include="CFContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TPCCursus.cs" />
-    <Compile Include="TPCKlassikaleCursus.cs" />
-    <Compile Include="TPCZelfstudieCursus.cs" />
-    <Compile Include="TPHCursus.cs" />
-    <Compile Include="TPHKlassikaleCursus.cs" />
-    <Compile Include="TPHZelfstudieCursus.cs" />
-    <Compile Include="TPTCursus.cs" />
-    <Compile Include="TPTKlassikaleCursus.cs" />
-    <Compile Include="TPTZelfstudieCursus.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
