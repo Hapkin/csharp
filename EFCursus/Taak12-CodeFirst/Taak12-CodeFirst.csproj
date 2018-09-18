@@ -50,7 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CFContext.cs" />
+    <Compile Include="DB\Artikel.cs" />
+    <Compile Include="DB\Artikelgroep.cs" />
+    <Compile Include="DB\CFContext.cs" />
+    <Compile Include="DB\FoodArtikel.cs" />
+    <Compile Include="DB\Leverancier.cs" />
+    <Compile Include="DB\NonFoodArtikel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
