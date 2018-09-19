@@ -20,24 +20,21 @@ namespace Taak12_CodeFirst.DB
         public DbSet<Leverancier> Leveranciers { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            /*
-             modelBuilder.Entity<TPHKlassikaleCursus>().Map(m => m.Requires("Soort").HasValue("K")); 
-            modelBuilder.Entity<TPHZelfstudieCursus>().Map(m => m.Requires("Soort").HasValue("Z"));
-            */
-            
             modelBuilder.Entity<FoodArtikel>().Map(m => m.MapInheritedProperties());
             modelBuilder.Entity<NonFoodArtikel>().Map(m => m.MapInheritedProperties());
 
 
-            modelBuilder.Entity<Artikel>() 
+
+            modelBuilder.Entity<Artikel>()
                 .HasMany(i => i.Leveranciers)
-                .WithMany(v => v.Artikels) 
+                .WithMany(v => v.Artikels)
                 .Map(c => c.ToTable("ArtikelsPerLeveranciers")
-                .MapLeftKey("ArtikelId") 
+                .MapLeftKey("ArtikelId")
                 .MapRightKey("LeverancierId"));
 
-            //modelBuilder.Entity<Artikel>()
-            //    .HasOptional(i => i.ArtikelgroepId);
+            /*modelBuilder.Entity<Artikel>()
+                .HasOptional(i => i.Artikelgroep);
+              */
 
         }
     }

@@ -19,6 +19,7 @@ namespace Taak12_CodeFirst.DB
 
         public virtual ICollection<Leverancier> Leveranciers { get; set; } // (3)
 
+        public virtual Artikelgroep Artikelgroep { get; set; }
         public int? ArtikelgroepId { get; set; }
     }
 }

@@ -16,6 +16,6 @@ namespace Taak12_CodeFirst.DB
         public string Naam { get; set; }
 
 
-        
+        public ICollection<Artikel> Artikels { get; set; }
     }
 }

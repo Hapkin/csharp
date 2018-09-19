@@ -15,6 +15,8 @@ namespace Taak12_CodeFirst
             //tijdens opbouw
             System.Data.Entity.Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CFContext>());
 
+
+            
             using (var context = new CFContext())
             {
                 //artikelgroep
@@ -23,15 +25,17 @@ namespace Taak12_CodeFirst
 
 
                 //artikels
-                Artikel a1 = new FoodArtikel { Naam = "banaan", Houdbaarheid = 10 };
+                Artikel a1 = new FoodArtikel { Naam = "banaan", Houdbaarheid = 10, ArtikelgroepId = 1 };
+                
+
                 context.Artikels.Add(a1);
 
-                Artikel a2= new NonFoodArtikel { Naam = "banaan", Garantie = 15 };
+                Artikel a2= new NonFoodArtikel { Naam = "gsm", Garantie = 15 };
                 context.Artikels.Add(a2);
+                
+                
 
-                context.SaveChanges();
-
-                //artikelgroep.Artikels.Add(a1);
+                
 
 
 
@@ -40,6 +44,8 @@ namespace Taak12_CodeFirst
                 
                 context.SaveChanges();
             }
+            
+
 
             Console.WriteLine("--done--");
             Console.ReadKey();
