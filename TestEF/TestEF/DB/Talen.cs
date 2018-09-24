@@ -15,6 +15,7 @@ namespace TestEF.DB
             Landen = new HashSet<Landen>();
         }
 
+
         [Key]
         [StringLength(3)]
         public string TaalCode { get; set; }

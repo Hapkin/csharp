@@ -13,5 +13,15 @@ namespace MVC_Voorbeeld1.Controllers
         {
             return View();
         }
+        public ActionResult List()
+        {
+            return View();
+        }
+        public ActionResult Read(int? id)
+        {
+            //lees in de database het filiaal waarvan de id gelijk is aan de waarde
+            //van de parameter id
+            return View();
+        }
     }
 }
