@@ -1,8 +1,10 @@
-﻿using System;
+﻿using MVC_Voorbeeld2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace MVC_Voorbeeld2.Controllers
 {
@@ -10,7 +12,13 @@ namespace MVC_Voorbeeld2.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            //return View();
+            return View(new Persoon { Voornaam = "Eddy", Familienaam = "Wally" });
+            /*string woord = "data";
+            return View((object)woord);  //cast als object anders zoekt hij de pagina data.cshtml
+            */
+            
+            
         }
 
         public ActionResult About()
@@ -26,5 +34,18 @@ namespace MVC_Voorbeeld2.Controllers
 
             return View();
         }
+
+        public ActionResult Palindroom(string woord)
+        {
+            char[] omgekeerd = woord.ToCharArray();
+            Array.Reverse(omgekeerd);
+            string achtersteveuren = new string(omgekeerd);
+            if (woord == achtersteveuren)
+                ViewBag.palindroom = true;
+            else
+                ViewBag.palindroom = false;
+            ViewBag.ingetiktwoord = woord;
+            return View(); 
+}
     }
 }

@@ -1,0 +1,14 @@
+﻿@model List<MVC_Voorbeeld2.Models.Werknemer>
+
+@{
+    ViewBag.Title = "AlleWerknemers";
+}
+
+<h2>Alle werknemers</h2>
+<ul>
+    @foreach (var werknemer in Model)
+    {
+        <li>@werknemer.Voornaam verdient @werknemer.Wedde</li>
+    }
+</ul>
+

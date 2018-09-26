@@ -1,0 +1,40 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+@* dit is commentaar *@
+<h2>hallo</h2>
+<h2>Countdown</h2>
+@{
+    var getal = 10;
+    while (getal > 0)
+    {
+        <p>@getal</p>
+        getal--;
+    }
+}
+
+Het resultaat van (1+2*5+0.5) is @(1 + 2 * 5 + 0.5)
+
+@for (var teller = 0; teller < 10; teller++)
+{
+    <p>@teller</p>
+}
+Dit is het @@-teken
+@("Sien & Maria")
+
+
+@{  /* Met Random().Next(1,11) genereer je een random getal tussen 1 en 10. */ }
+@if (new Random().Next(1, 11) == 7)
+{
+    <text>Het is zeven</text>
+    @: Je hebt geluk
+}
+else
+{
+    <text>Het is geen zeven</text>
+    @: Een andere keer misschien
+}
+

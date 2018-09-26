@@ -1,0 +1,47 @@
+﻿@* using MVC_Voorbeeld2.Models*@
+
+
+
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">lalala</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>No</h2>
+        <p>
+            @{
+                var i = 0;
+                var j = 1;
+                var tussen = 0;
+                <h2>Rij van Fibonacci</h2>
+            <p>
+                @i, @j @while (tussen < 100)
+                {
+                    tussen = i + j;
+                    if (tussen < 100)
+                    {@:, @tussen
+                }
+                i = j;
+                j = tussen;
+            }
+            </p> }
+
+
+            </p>
+            <p><a class="btn btn-default" href="./Werknemer/index/">Oef 1  &raquo;</a></p>
+        </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p></p>
+        <p><a class="btn btn-default" href="./Home/Palindroom?woord=lepel">= &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Alle werknemers</h2>
+        <p></p>
+        <p><a class="btn btn-default" href="./Werknemer/Lijst">Alle werknemers &raquo;</a></p>
+    </div>
+</div>
