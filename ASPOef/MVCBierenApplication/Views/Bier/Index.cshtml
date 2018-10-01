@@ -1,0 +1,17 @@
+﻿@model List<MVCBierenApplication.Models.Bier>
+<h2>Alle bieren</h2>
+@foreach (var bier in Model)
+{
+    @bier.ID@:. @bier.Naam
+    @: (@bier.Alcohol
+    @:%)
+    <br />
+}
+
+    <h3>@@:  wordt gebruikt om letterlijk weer te geven zonder tags binnenin een stuk code (if, foreach,...)</h3>
+@if (0 == 0)
+{
+@:... hallo, dit is een test
+}
+
+

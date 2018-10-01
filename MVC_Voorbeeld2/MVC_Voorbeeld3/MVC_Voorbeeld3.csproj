@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{196B13C6-8C9C-4309-8BD2-CFB2123CFB73}</ProjectGuid>
+    <ProjectGuid>{47E43CFC-173A-4C5A-9117-4D4C493CCA92}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MVC_Voorbeeld2</RootNamespace>
-    <AssemblyName>MVC_Voorbeeld2</AssemblyName>
+    <RootNamespace>MVC_Voorbeeld3</RootNamespace>
+    <AssemblyName>MVC_Voorbeeld3</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -147,14 +147,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FiliaalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\WerknemerController.cs" />
+    <Compile Include="Controllers\TimeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Persoon.cs" />
-    <Compile Include="Models\Werknemer.cs" />
+    <Compile Include="Models\Filiaal.cs" />
+    <Compile Include="Models\HoofdZetel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FiliaalService.cs" />
+    <Compile Include="Services\HoofdZetelService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -170,6 +173,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="App_Code\MyHelpers.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -195,10 +199,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Werknemer\AndereNaam.cshtml" />
-    <Content Include="Views\Home\Palindroom.cshtml" />
-    <Content Include="Views\Werknemer\AlleWerknemers.cshtml" />
-    <Content Include="Views\Shared\_AndereLayout.cshtml" />
+    <Content Include="Views\Filiaal\Index.cshtml" />
+    <Content Include="Views\Filiaal\HoofdZetel.cshtml" />
+    <Content Include="Views\Filiaal\Filialen.cshtml" />
+    <Content Include="Views\Filiaal\FilialenVanaf2Miljoen.cshtml" />
+    <Content Include="Views\Time\ShowTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -232,9 +237,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>63864</DevelopmentServerPort>
+          <DevelopmentServerPort>64657</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:63864/</IISUrl>
+          <IISUrl>http://localhost:64657/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

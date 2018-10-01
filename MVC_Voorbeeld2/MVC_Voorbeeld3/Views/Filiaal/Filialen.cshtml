@@ -1,0 +1,23 @@
+﻿
+<h2>Filialen</h2>
+<ul>
+    @foreach (var filiaal in Model)
+    {
+        @*<li>@filiaal.ID @filiaal.Naam @filiaal.Gebouwd @filiaal.Waarde</li>*@
+    <li>
+        @*@filiaal.ID @filiaal.Naam @MyHelpers.Milieuscore(filiaal.Gebouwd) @filiaal.Waarde*@
+        @filiaal.ID @filiaal.Naam @Milieuscore123(filiaal.Gebouwd)
+    </li>
+    }
+</ul>
+
+
+
+@* je kan een helper via App_Code aanmaken of rechtstreeks in een view zoals hieronder *@
+@helper Milieuscore123(DateTime datum)
+{
+    if (datum.Year < 1980)
+    {<span>**</span> }
+    else
+    { <span>***</span>}
+}
