@@ -1,17 +1,25 @@
-﻿@model List<MVCBierenApplication.Models.Bier>
+﻿@*@using MVCBierenApplication.Models
+
+    @model List<Bier>
+    <h2>Alle bieren</h2>
+    @foreach (var bier in Model)
+    {
+        <p>@Html.DisplayFor(m => bier.ID) @bier.Naam @Html.DisplayFor(m => bier.Alcohol)</p>
+    }
+
+        <h3>@@:  wordt gebruikt om letterlijk weer te geven zonder tags binnenin een stuk code (if, foreach,...)</h3>
+    @if (0 == 0)
+    {
+    @:... hallo, dit is een test
+    }*@
+
+
+@model List<MVCBierenApplication.Models.Bier>
 <h2>Alle bieren</h2>
 @foreach (var bier in Model)
 {
-    @bier.ID@:. @bier.Naam
-    @: (@bier.Alcohol
-    @:%)
-    <br />
+    var url = "Verwijderen/" + bier.ID;
+    <p>
+        @Html.DisplayFor(m => bier.ID) @bier.Naam @Html.DisplayFor(m => bier.Alcohol) <a href="@url"><img src="~/Images/delete.png" alt="verwijderen" /></a>
+    </p>
 }
-
-    <h3>@@:  wordt gebruikt om letterlijk weer te geven zonder tags binnenin een stuk code (if, foreach,...)</h3>
-@if (0 == 0)
-{
-@:... hallo, dit is een test
-}
-
-

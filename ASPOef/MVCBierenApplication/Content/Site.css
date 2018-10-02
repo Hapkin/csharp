@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.groen { color: green; }
+
+.geel { color: yellow; }
+
+.oranje { color: orange; }
+
+.rood { color: red; }

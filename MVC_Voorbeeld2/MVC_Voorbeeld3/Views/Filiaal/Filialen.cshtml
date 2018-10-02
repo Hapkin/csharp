@@ -1,15 +1,33 @@
 ﻿
+@model List<MVC_Voorbeeld3.Models.Filiaal>
 <h2>Filialen</h2>
 <ul>
     @foreach (var filiaal in Model)
     {
         @*<li>@filiaal.ID @filiaal.Naam @filiaal.Gebouwd @filiaal.Waarde</li>*@
-    <li>
-        @*@filiaal.ID @filiaal.Naam @MyHelpers.Milieuscore(filiaal.Gebouwd) @filiaal.Waarde*@
-        @filiaal.ID @filiaal.Naam @Milieuscore123(filiaal.Gebouwd)
-    </li>
+        <li>
+            @*@filiaal.ID @filiaal.Naam @MyHelpers.Milieuscore(filiaal.Gebouwd) @filiaal.Waarde*@
+            @filiaal.ID @filiaal.Naam @Milieuscore123(filiaal.Gebouwd)
+        </li>
+        <li>
+            @filiaal.ID @filiaal.Naam @MyHelpers.Milieuscore(filiaal.Gebouwd)
+            @(String.Format("{0:yyyy}", filiaal.Gebouwd)) @(String.Format("{0:#,##0.00}", filiaal.Waarde))
+        </li>
+        <li>
+            @filiaal.ID @filiaal.Naam @MyHelpers.Milieuscore(filiaal.Gebouwd)
+            @Html.DisplayFor(m => filiaal.Gebouwd) @Html.DisplayFor(m => filiaal.Waarde)
+        </li>
+        var url = "Verwijderen/" + filiaal.ID;
+        <li>
+            @filiaal.ID @filiaal.Naam @MyHelpers.Milieuscore(filiaal.Gebouwd)
+            @Html.DisplayFor(m => filiaal.Gebouwd) @Html.DisplayFor(m => filiaal.Waarde)
+            @Html.DisplayFor(m => filiaal.Eigenaar)
+            <a href="@url">Verwijderen</a>
+        </li>
+    
     }
 </ul>
+
 
 
 
