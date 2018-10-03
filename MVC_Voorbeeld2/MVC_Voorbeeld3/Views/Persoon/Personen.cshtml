@@ -1,0 +1,41 @@
+﻿@using MVC_Voorbeeld3.Models
+@model List<Persoon>
+
+@{
+    ViewBag.Title = "Personen";
+}
+
+<h2>Personen</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Voornaam</th>
+            <th>Familienaam</th>
+            <th>Score</th>
+            <th>Wedde</th>
+            <th>Paswoord</th>
+            <th>Geboren</th>
+            <th>Gehuwd</th>
+            <th>Opmerkingen</th>
+            <th>Geslacht</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var persoon in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => persoon.ID)</td>
+                <td>@Html.DisplayFor(m => persoon.Voornaam)</td>
+                <td>@Html.DisplayFor(m => persoon.Familienaam)</td>
+                <td>@Html.DisplayFor(m => persoon.Score)</td>
+                <td>@Html.DisplayFor(m => persoon.Wedde)</td>
+                <td>@Html.DisplayFor(m => persoon.Paswoord)</td>
+                <td>@Html.DisplayFor(m => persoon.Geboren)</td>
+                <td>@Html.DisplayFor(m => persoon.Gehuwd)</td>
+                <td>@Html.DisplayFor(m => persoon.Opmerkingen)</td>
+                <td>@Html.DisplayFor(m => persoon.Geslacht)</td>
+            </tr>
+        }
+    </tbody>
+</table>

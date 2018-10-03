@@ -17,14 +17,31 @@
             @filiaal.ID @filiaal.Naam @MyHelpers.Milieuscore(filiaal.Gebouwd)
             @Html.DisplayFor(m => filiaal.Gebouwd) @Html.DisplayFor(m => filiaal.Waarde)
         </li>
+
         var url = "Verwijderen/" + filiaal.ID;
+        
         <li>
             @filiaal.ID @filiaal.Naam @MyHelpers.Milieuscore(filiaal.Gebouwd)
             @Html.DisplayFor(m => filiaal.Gebouwd) @Html.DisplayFor(m => filiaal.Waarde)
             @Html.DisplayFor(m => filiaal.Eigenaar)
-            <a href="@url">Verwijderen</a>
+        
+            
+            
+    @*<a href="@url">Verwijderen</a>*@
+
+            @Html.ActionLink("Verwijderen", "Verwijderen", new { ID = filiaal.ID })
         </li>
     
+    }
+</ul>
+<ul>
+    @foreach (var filiaal in Model)
+    {
+        var url = Url.Action("Verwijderen", "Filiaal", new { ID = filiaal.ID });
+    <li>
+        @filiaal.ID @filiaal.Naam
+        <a href="@url"><img src="~/Images/delete.png" alt="delete" /></a>
+    </li>
     }
 </ul>
 

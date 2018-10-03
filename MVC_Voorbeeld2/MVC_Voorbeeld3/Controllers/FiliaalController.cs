@@ -20,15 +20,15 @@ namespace MVC_Voorbeeld3.Controllers
         {
             var hoofdZetel = hoofdZetelService.Read();
             ViewBag.hoofdZetel = hoofdZetel;
-            var filialen = filiaalService.FindAll();
-            return View(filialen);
+            var lFilialen = filiaalService.FindAll();
+            return View(lFilialen);
         }
         public ActionResult Filialen()
         {
             var hoofdZetel = hoofdZetelService.Read();
             ViewBag.hoofdZetel = hoofdZetel;
-            var filialen = filiaalService.FindAll();
-            return View("Index", filialen);
+            var lFilialen = filiaalService.FindAll();
+            return View("Index", lFilialen);
         }
 
         public ActionResult Verwijderen(int id)
@@ -44,7 +44,8 @@ namespace MVC_Voorbeeld3.Controllers
             //een tijdelijke variable maken terwijl deze al verwijderd wordt...
             this.TempData["filiaal"] = filiaal;
             filiaalService.Delete(id);
-            return Redirect("~/Filiaal/Verwijderd");
+            //return Redirect("~/Filiaal/Verwijderd");
+            return RedirectToAction("Verwijderd");
         }
         public ActionResult Verwijderd()
         {
