@@ -67,5 +67,29 @@ namespace MVC_Voorbeeld3.Services
         {
             return personen[id];
         }
+        public void Delete(int id)
+        {
+            personen.Remove(id);
+        }
+        public void Opslag(decimal vanWedde, decimal totWedde, decimal percentage)
+        {
+            foreach (var p in
+            (from persoon in personen.Values
+             where persoon.Wedde >= vanWedde && persoon.Wedde <= totWedde
+             select persoon) //linq-query selecteert personen op basis van wedde
+            )
+            {
+                p.Wedde += p.Wedde * percentage / 100;
+            }
+        }
+
+
+        public List<Persoon> VanTotWedde(decimal van, decimal tot)
+        {
+            return (from persoon in personen.Values
+                    where persoon.Wedde >= van && persoon.Wedde <= tot
+                    orderby persoon.Wedde
+                    select persoon).ToList();
+        }
     }
 }
