@@ -52,3 +52,7 @@ input {
 .validation-summary-valid {
     display: none;
 }
+input, textarea, select {
+    display: block;
+    margin-bottom: 10px;
+}

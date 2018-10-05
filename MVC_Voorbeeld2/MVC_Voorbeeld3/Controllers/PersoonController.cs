@@ -89,5 +89,47 @@ namespace MVC_Voorbeeld3.Controllers
             }
             return View("VanTotWedde", form);
         }
+
+        [HttpGet]
+        public ActionResult Toevoegen()
+        {
+            var persoon = new Persoon();
+            persoon.Geslacht = Geslacht.Vrouw;
+            //defaultwaarde voor Geslacht 
+            return View(persoon);
+        }
+
+
+        [HttpPost]
+        public ActionResult Toevoegen(Persoon p)
+        {
+
+            if (this.ModelState.IsValid)
+            {
+
+                persoonService.Add(p);
+                return RedirectToAction("Index");
+            }
+            else
+                return View(p);  // indien not valid ga je terug naar de view pagina en worden de formfields terug ingevuld
+        }
+
+        [HttpGet]
+        public ActionResult EditForm(int id)
+        {
+            return View(persoonService.FindByID(id));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Persoon p)
+        {
+            if (this.ModelState.IsValid)
+            {
+                persoonService.Update(p);
+                return RedirectToAction("Index");
+            }
+            else
+                return View("EditForm", p);
+        }
     }
 }

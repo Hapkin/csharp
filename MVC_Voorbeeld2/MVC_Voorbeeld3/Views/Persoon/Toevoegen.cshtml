@@ -1,0 +1,60 @@
+﻿@using MVC_Voorbeeld3.Models;
+@model Persoon
+@{
+    ViewBag.Title = "Toevoegen";
+}
+<h2>Persoon toevoegen</h2>
+@*using (Html.BeginForm())
+    => indien het uitvoeren van de toevoeging ook via deze pagina verloopt via post moet je niets specifieren*@
+@using (Html.BeginForm("Toevoegen", "Persoon", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.Voornaam)
+    @*Html.TextBoxFor(m => m.Voornaam)*@
+    @Html.EditorFor(m => m.Voornaam)
+    @Html.LabelFor(m => m.Familienaam)
+    @Html.EditorFor(m => m.Familienaam)
+    @Html.LabelFor(m => m.Score)
+    @Html.EditorFor(m => m.Score)
+    @Html.LabelFor(m => m.Wedde)
+    @Html.EditorFor(m => m.Wedde)
+    @Html.LabelFor(m => m.Paswoord)
+    @Html.PasswordFor(m => m.Paswoord)
+    @Html.LabelFor(m => m.HerhaalPaswoord)
+    @Html.PasswordFor(m => m.HerhaalPaswoord)
+    @Html.LabelFor(m => m.Geboren)
+    @Html.EditorFor(m => m.Geboren)
+    @Html.LabelFor(m => m.rekeningNummer)
+    @Html.EditorFor(m => m.rekeningNummer)
+
+    <div>
+        @Html.EditorFor(m => m.Gehuwd, new { @class = "check-box" })
+        @Html.LabelFor(m => m.Gehuwd)
+    </div>
+
+    <hr />
+    @Html.LabelFor(m => m.Opmerkingen)
+    @Html.TextAreaFor(m => m.Opmerkingen)
+    <br />
+    @Html.LabelFor(m => m.Geslacht)
+    @*Html.DropDownListFor(m => m.Geslacht,
+        new SelectList(new[] { Geslacht.Man, Geslacht.Vrouw }))
+
+        ZIE Views/Shared/EditorTemplates/Geslacht.cshtml
+
+    *@
+    @Html.EditorFor(m => m.Geslacht)
+
+    @Html.EditorFor(m => m.Adres)
+    @Html.LabelFor(m => m.Adres.Straat)
+    @Html.EditorFor(m => m.Adres.Straat)
+
+
+    @*Html.EditorForModel()*@
+    @* maakt heel het formulier standaard op *@
+    <br />
+    <input type="submit" value="toevoegen" class="btn btn-primary" />
+
+    @Html.ValidationSummary()
+}
+
+<hr />
