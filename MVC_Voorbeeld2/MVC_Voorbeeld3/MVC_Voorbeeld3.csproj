@@ -173,6 +173,7 @@
     <Compile Include="Services\HoofdZetelService.cs" />
     <Compile Include="Services\PersoonService.cs" />
     <Compile Include="VerledenAttribute.cs" />
+    <Compile Include="WeddeScoreAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -222,6 +223,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jqueryFixes.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

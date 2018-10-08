@@ -11,6 +11,7 @@ namespace MVC_Voorbeeld3.Models
         Man,
         Vrouw
     }
+    [WeddeScore]
     public class Persoon
     {
         [DisplayFormat(DataFormatString = "{0:d}")]
@@ -29,7 +30,8 @@ namespace MVC_Voorbeeld3.Models
 
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
-        [Verleden(ErrorMessage = "Geboortedatum moet in het verleden liggen")] // => 
+        //[Verleden(ErrorMessage = "Geboortedatum moet in het verleden liggen")] // => VerledenAttribute.cs
+        [System.Web.Mvc.Remote("ValidateDOB", "Persoon")] // => zie persoonscontroller... ValidateDOB
         public DateTime Geboren { get; set; }
         public bool Gehuwd { get; set; }
         [DataType(DataType.MultilineText)]

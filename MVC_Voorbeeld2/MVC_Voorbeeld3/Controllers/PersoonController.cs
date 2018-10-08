@@ -2,6 +2,7 @@
 using MVC_Voorbeeld3.Services;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -130,6 +131,28 @@ namespace MVC_Voorbeeld3.Controllers
             }
             else
                 return View("EditForm", p);
+        }
+
+
+
+        public JsonResult ValidateDOB(string Geboren)
+        {
+            DateTime parsedDOB;
+            if (!DateTime.TryParseExact(Geboren, "yyyy-mm-dd",
+            CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDOB))
+            {
+                return Json("Gelieve een geldige datum in te voeren (dd/mm/jjjj) !",
+                JsonRequestBehavior.AllowGet);
+            }
+            else if (DateTime.Now < parsedDOB)
+            {
+                return Json("Voer een datum uit het verleden in !",
+                JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }
