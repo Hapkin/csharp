@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Voorbeeld2", "MVC_Voorb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Voorbeeld3", "MVC_Voorbeeld3\MVC_Voorbeeld3.csproj", "{47E43CFC-173A-4C5A-9117-4D4C493CCA92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Tuincentrum2", "MVC_Tuincentrum2\MVC_Tuincentrum2.csproj", "{A450D314-716F-4E23-B70F-3D7E3C13CE55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{47E43CFC-173A-4C5A-9117-4D4C493CCA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47E43CFC-173A-4C5A-9117-4D4C493CCA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47E43CFC-173A-4C5A-9117-4D4C493CCA92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A450D314-716F-4E23-B70F-3D7E3C13CE55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A450D314-716F-4E23-B70F-3D7E3C13CE55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A450D314-716F-4E23-B70F-3D7E3C13CE55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A450D314-716F-4E23-B70F-3D7E3C13CE55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

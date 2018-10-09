@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{13DF423D-898A-4DD5-A6B2-5B738F9D95C2}</ProjectGuid>
+    <ProjectGuid>{A450D314-716F-4E23-B70F-3D7E3C13CE55}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MVCBierenApplication</RootNamespace>
-    <AssemblyName>MVCBierenApplication</AssemblyName>
+    <RootNamespace>MVC_Tuincentrum2</RootNamespace>
+    <AssemblyName>MVC_Tuincentrum2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -147,15 +155,19 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="AlcoholGrenzenAttribute.cs" />
-    <Compile Include="Controllers\BierController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeveranciersController.cs" />
+    <Compile Include="Controllers\PlantenController.cs" />
+    <Compile Include="Controllers\SoortenController.cs" />
+    <Compile Include="DB\EFTuincentrum.cs" />
+    <Compile Include="DecimalModelBinder.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Bier.cs" />
+    <Compile Include="DB\Leveranciers.cs" />
+    <Compile Include="DB\Planten.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BierenService.cs" />
+    <Compile Include="DB\Soorten.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -166,8 +178,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="img\biertempel.png" />
-    <Content Include="img\delete.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -183,6 +193,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jqueryFixes.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -198,14 +209,25 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Bier\Index.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\kleuren.cshtml" />
-    <Content Include="Views\Bier\Verwijderen.cshtml" />
-    <Content Include="Views\Bier\Verwijderd.cshtml" />
-    <Content Include="Views\Bier\Toevoegen.cshtml" />
+    <Content Include="Views\Soorten\Create.cshtml" />
+    <Content Include="Views\Soorten\Delete.cshtml" />
+    <Content Include="Views\Soorten\Details.cshtml" />
+    <Content Include="Views\Soorten\Edit.cshtml" />
+    <Content Include="Views\Soorten\Index.cshtml" />
+    <Content Include="Views\Leveranciers\Create.cshtml" />
+    <Content Include="Views\Leveranciers\Delete.cshtml" />
+    <Content Include="Views\Leveranciers\Details.cshtml" />
+    <Content Include="Views\Leveranciers\Edit.cshtml" />
+    <Content Include="Views\Leveranciers\Index.cshtml" />
+    <Content Include="Views\Planten\Create.cshtml" />
+    <Content Include="Views\Planten\Delete.cshtml" />
+    <Content Include="Views\Planten\Details.cshtml" />
+    <Content Include="Views\Planten\Edit.cshtml" />
+    <Content Include="Views\Planten\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -236,9 +258,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57610</DevelopmentServerPort>
+          <DevelopmentServerPort>49153</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57610/</IISUrl>
+          <IISUrl>http://localhost:65521/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

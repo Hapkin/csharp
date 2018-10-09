@@ -24,3 +24,36 @@
         <a href="@url"><img src="~/img/delete.png" alt="delete" /></a>
     </p>
 }
+
+<p>@Html.ActionLink("Bier toevoegen", "Toevoegen")</p>
+
+
+
+
+
+<h2>Alle bieren</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Naam</th>
+            <th>Alcohol</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bier in Model)
+        {
+            var url = Url.Action("Verwijderen", "Bier", new { ID = bier.ID });
+            <tr>
+                <td>@Html.DisplayFor(m => bier.ID)</td>
+                <td>@bier.Naam</td>
+                <td>@Html.DisplayFor(m => bier.Alcohol)</td>
+                <td>
+                    <a href="@url"><img src="~/img/delete.png" alt="verwijderen" /></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.ActionLink("Bier toevoegen", "Toevoegen", new { area = "" }, new { @class = "btn btn-primary" })

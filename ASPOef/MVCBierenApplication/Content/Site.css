@@ -30,3 +30,44 @@ textarea {
 .oranje { color: orange; }
 
 .rood { color: red; }
+
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #ff0000;
+    display: block;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+input, textarea, select {
+    display: block;
+    margin-bottom: 10px;
+}

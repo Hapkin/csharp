@@ -12,6 +12,8 @@ namespace MVC_Voorbeeld3
     {
         protected void Application_Start()
         {
+            
+
             //standaard
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
