@@ -14,8 +14,8 @@
     }*@
 
 
-@model List<MVCBierenApplication.Models.Bier>
-<h2>Alle bieren</h2>
+@model List<MVCBierenApplication.DB.Bier>
+@*<h2>Alle bieren</h2>
 @foreach (var bier in Model)
 {
     var url = Url.Action("Verwijderen", "Bier", new { ID = bier.ID });
@@ -25,7 +25,7 @@
     </p>
 }
 
-<p>@Html.ActionLink("Bier toevoegen", "Toevoegen")</p>
+<p>@Html.ActionLink("Bier toevoegen", "Toevoegen")</p>*@
 
 
 
@@ -47,9 +47,16 @@
             var url = Url.Action("Verwijderen", "Bier", new { ID = bier.ID });
             <tr>
                 <td>@Html.DisplayFor(m => bier.ID)</td>
-                <td>@bier.Naam</td>
+                <td>@Html.DisplayFor(m => bier.Naam)</td>
+                @if (bier.Alcohol != null)
+                {
                 <td>@Html.DisplayFor(m => bier.Alcohol)</td>
-                <td>
+                }
+                else
+                {
+                    <td />
+                }
+                    <td>
                     <a href="@url"><img src="~/img/delete.png" alt="verwijderen" /></a>
                 </td>
             </tr>

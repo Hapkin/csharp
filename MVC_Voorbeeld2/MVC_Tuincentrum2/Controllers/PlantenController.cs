@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -131,6 +132,26 @@ namespace MVC_Tuincentrum2.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        [HttpGet]
+        public ViewResult Uploaden(int id)
+        {
+            return View(id);
+        }
+
+        [HttpPost]
+        public ActionResult FotoUpload(int id)
+        {
+            if (Request.Files.Count > 0)
+            {
+                var foto = Request.Files[0];
+                var absoluutPadNaarDir = this.HttpContext.Server.MapPath("~/Images/Fotos");
+                var absoluutPadNaarFoto = Path.Combine(absoluutPadNaarDir, id + ".jpg");
+                foto.SaveAs(absoluutPadNaarFoto);
+            }
+            return RedirectToAction("Index");
         }
     }
 }

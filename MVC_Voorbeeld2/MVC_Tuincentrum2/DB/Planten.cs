@@ -30,6 +30,7 @@ namespace MVC_Tuincentrum2.DB
         [StringLength(10)]
         public string Kleur { get; set; }
 
+        //[HiddenInput()]
         [Column(TypeName = "money")]
         [Range(0, 1000)]
         public decimal VerkoopPrijs { get; set; }

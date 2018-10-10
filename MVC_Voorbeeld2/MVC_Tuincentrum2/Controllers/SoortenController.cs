@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC_Tuincentrum2.DB;
+using MVC_Tuincentrum2.Models;
+using MVC_Tuincentrum2.Services;
 
 namespace MVC_Tuincentrum2.Controllers
 {
@@ -123,5 +125,34 @@ namespace MVC_Tuincentrum2.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        #region zoekformulier
+        // GET: /Soort/Zoekform
+        // Models/ZoekSoortViewModel.cs
+        private SoortService soortService = new SoortService();
+        public ViewResult ZoekForm()
+        {
+            return View(new ZoekSoortViewModel());
+        }
+
+        public ViewResult BeginNaam(ZoekSoortViewModel form)
+        {
+            //if (this.ModelState.IsValid)
+            //{
+            //    var query = from soort in db.Soorten
+            //                where soort.Soort.StartsWith(form.beginNaam)
+            //                orderby soort.Soort
+            //                select soort;
+            //    var soorten = query.ToList();
+            //    form.Soorten = soorten;
+
+            //}
+            //return View("ZoekForm", form);
+            if (this.ModelState.IsValid)
+                form.Soorten = soortService.FindByBeginNaam(form.beginNaam);
+            return View("ZoekForm", form);
+        }
+        #endregion
     }
 }
