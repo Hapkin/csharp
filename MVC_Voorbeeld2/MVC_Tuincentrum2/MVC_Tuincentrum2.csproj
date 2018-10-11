@@ -159,8 +159,10 @@
     <Compile Include="Controllers\LeveranciersController.cs" />
     <Compile Include="Controllers\PlantenController.cs" />
     <Compile Include="Controllers\SoortenController.cs" />
+    <Compile Include="Controllers\StatistiekController.cs" />
     <Compile Include="DB\EFTuincentrum.cs" />
     <Compile Include="DecimalModelBinder.cs" />
+    <Compile Include="Filters\StatistiekActionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -169,6 +171,16 @@
     <Compile Include="Models\ZoekSoortViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DB\Soorten.cs" />
+    <Compile Include="Resources\Teksten.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Teksten.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Teksten.fr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Teksten.fr.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\SoortService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +192,26 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\bevestig.png" />
+    <Content Include="Images\biertempel.png" />
+    <Content Include="Images\default.jpg" />
+    <Content Include="Images\delete.png" />
+    <Content Include="Images\edit.png" />
+    <Content Include="Images\eigendom.png" />
+    <Content Include="Images\francais.png" />
+    <Content Include="Images\gehuurd.png" />
+    <Content Include="Images\kruisdistel.jpg" />
+    <Content Include="Images\mandje.png" />
+    <Content Include="Images\nederlands.png" />
+    <Content Include="Images\nieuweklant.png" />
+    <Content Include="Images\reserveren.png" />
+    <Content Include="Images\rhododendron.jpg" />
+    <Content Include="Images\Security.sql" />
+    <Content Include="Images\sering.jpg" />
+    <Content Include="Images\ster.png" />
+    <Content Include="Images\tuincentrum.png" />
+    <Content Include="Images\voorstellingen.png" />
+    <Content Include="Images\vuurdoorn.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -228,6 +260,7 @@
     <Content Include="Views\Planten\Index.cshtml" />
     <Content Include="Views\Soorten\ZoekForm.cshtml" />
     <Content Include="Views\Planten\Uploaden.cshtml" />
+    <Content Include="Views\Statistiek\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -245,6 +278,18 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Teksten.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Teksten.fr.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Teksten.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Teksten.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

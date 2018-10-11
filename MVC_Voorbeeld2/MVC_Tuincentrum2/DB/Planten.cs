@@ -31,8 +31,9 @@ namespace MVC_Tuincentrum2.DB
         public string Kleur { get; set; }
 
         //[HiddenInput()]
+        [Display(ResourceType = typeof(Resources.Teksten), Name = "Verkoopprijs")]
         [Column(TypeName = "money")]
-        [Range(0, 1000)]
+        [Range(0, 1000, ErrorMessageResourceType = typeof(Resources.Teksten), ErrorMessageResourceName = "RangePrijs")]
         public decimal VerkoopPrijs { get; set; }
 
         [ScaffoldColumn(false)]

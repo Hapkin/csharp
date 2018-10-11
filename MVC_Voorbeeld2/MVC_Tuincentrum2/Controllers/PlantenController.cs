@@ -8,9 +8,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC_Tuincentrum2.DB;
+using MVC_Tuincentrum2.Filters;
 
 namespace MVC_Tuincentrum2.Controllers
 {
+    //[StatistiekActionFilter]
     public class PlantenController : Controller
     {
         private EFTuincentrum db = new EFTuincentrum();
@@ -64,6 +66,7 @@ namespace MVC_Tuincentrum2.Controllers
             return View(planten);
         }
 
+        [StatistiekActionFilter]
         // GET: Planten/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -152,6 +155,13 @@ namespace MVC_Tuincentrum2.Controllers
                 foto.SaveAs(absoluutPadNaarFoto);
             }
             return RedirectToAction("Index");
+        }
+        public ContentResult ImageOrDefault(int id)
+        {
+            var imagePath = "/Images/Fotos/" + id + ".jpg";
+            var imageSrc = System.IO.File.Exists(HttpContext.Server.MapPath("~/" + imagePath))
+            ? imagePath : "/Images/default.jpg";
+            return Content(imageSrc);
         }
     }
 }

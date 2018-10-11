@@ -35,7 +35,13 @@
         </dd>
         <dt>Afbeelding</dt>
         <dd>
-            <img src="~/Images/Fotos/@(Model.PlantNr).jpg" alt="@Model.Naam"
+            @{
+                var imagesource = Html.Action("ImageOrDefault", "Planten", new
+                {
+                    id = Model.PlantNr
+                });
+            }
+            <img src="@Url.Content("~"+imagesource.ToString())" alt="@Model.Naam"
                  height="64" />
         </dd>
     </dl>
