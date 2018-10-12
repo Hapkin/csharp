@@ -10,6 +10,7 @@ using MVC_Tuincentrum2.DB;
 
 namespace MVC_Tuincentrum2.Controllers
 {
+    //[OverrideActionFilters]
     public class LeveranciersController : Controller
     {
         private EFTuincentrum db = new EFTuincentrum();
@@ -21,6 +22,7 @@ namespace MVC_Tuincentrum2.Controllers
         }
 
         // GET: Leveranciers/Details/5
+        [OverrideActionFilters]
         public ActionResult Details(int? id)
         {
             if (id == null)

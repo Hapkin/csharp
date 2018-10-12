@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MVC_Tuincentrum2.Controllers
 {
+    [OverrideActionFilters]
     public class StatistiekController : Controller
     {
         // GET: Statistiek

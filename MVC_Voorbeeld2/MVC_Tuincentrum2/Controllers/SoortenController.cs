@@ -19,6 +19,7 @@ namespace MVC_Tuincentrum2.Controllers
         // GET: Soorten
         public ActionResult Index()
         {
+
             return View(db.Soorten.ToList());
         }
 
