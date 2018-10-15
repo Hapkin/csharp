@@ -1,0 +1,38 @@
+﻿@model List<MVC_Tuincentrum2.DB.Planten>
+@{
+                /**/
+
+                ViewBag.Title = "PrijsLijst";
+}
+<h2>PrijsLijst</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Naam</th>
+            <th>
+                VerkoopPrijs (BTW @ViewBag.Btw)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Naam)
+    </td>
+    <td>
+        @if (ViewBag.Btw == "inclusief")
+        {
+            decimal prijs = item.VerkoopPrijs * 1.21m;
+            @Html.DisplayFor(modelItem => prijs)
+        }
+        else
+        {
+            @Html.DisplayFor(modelItem => item.VerkoopPrijs)
+        }
+    </td>
+</tr>
+}
+    </tbody>
+</table>

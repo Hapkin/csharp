@@ -125,5 +125,28 @@ namespace MVC_Tuincentrum2.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [Route("Leveranciers/{postnr?}")]
+        //[Route("Leveranciers/{postnr=8500}")]
+        public ActionResult FindLeveranciersMetPostNr(string postnr)
+        {
+            //List<Leveranciers> leveranciersLijst = new List<Leveranciers>();
+            //leveranciersLijst = (from leverancier in db.Leveranciers
+            //                     where leverancier.PostNr == postnr
+            //                     select leverancier).ToList();
+            //ViewBag.postnr = postnr;
+            //return View(leveranciersLijst);
+            if (postnr == null)
+                return View("Index", db.Leveranciers.ToList());
+            else
+            {
+                List<Leveranciers> leveranciersLijst = new List<Leveranciers>();
+                leveranciersLijst = (from leverancier in db.Leveranciers
+                                     where leverancier.PostNr == postnr
+                                     select leverancier).ToList();
+                ViewBag.postnr = postnr;
+                return View(leveranciersLijst);
+            }
+        }
     }
 }

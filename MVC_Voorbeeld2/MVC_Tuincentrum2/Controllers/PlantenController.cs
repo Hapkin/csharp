@@ -163,5 +163,88 @@ namespace MVC_Tuincentrum2.Controllers
             ? imagePath : "/Images/default.jpg";
             return Content(imageSrc);
         }
+
+
+
+        public ActionResult FindPlantenBySoortNaam(string soortnaam)
+        {
+            List<Planten> plantenLijst = new List<Planten>();
+            plantenLijst = (from plant in db.Planten.Include("Soorten")
+                            where plant.Soorten.Soort.StartsWith(soortnaam)
+                            select plant).ToList();
+            return View(plantenLijst);
+        }
+        public ActionResult FindPlantenByLeverancier(int? levnr)
+        {
+            List<Planten> plantenLijst = new List<Planten>();
+            plantenLijst = (from plant in db.Planten.Include("Leveranciers")
+                            where plant.Leveranciers.LevNr == levnr
+                            select plant).ToList();
+            return View(plantenLijst);
+        }
+
+
+
+
+        public ActionResult FindPlantenBetweenPrijzen(decimal minPrijs, decimal maxPrijs)
+        {
+            List<Planten> plantenLijst = new List<Planten>();
+            plantenLijst = (from plant in db.Planten
+                            where plant.VerkoopPrijs >= minPrijs &&
+                            plant.VerkoopPrijs <= maxPrijs
+                            select plant).ToList();
+            ViewBag.minprijs = minPrijs;
+            ViewBag.maxprijs = maxPrijs;
+            return View(plantenLijst);
+        }
+        public ActionResult FindPlantenVanEenKleur(string kleur)
+        {
+            List<Planten> plantenLijst = new List<Planten>();
+            plantenLijst = (from plant in db.Planten
+                            where plant.Kleur == kleur
+                            select plant).ToList();
+            ViewBag.kleur = kleur;
+            return View(plantenLijst);
+        }
+
+
+
+
+
+        [Route("plantinfo/{id:int}")]
+        public ActionResult FindPlantById(int id)
+        {
+            var plant = db.Planten.Find(id);
+            if (plant != null)
+                return View("Details", plant);
+            else
+            {
+                var planten =
+                db.Planten.Include(p => p.Leveranciers).Include(p => p.Soorten);
+                return View("Index", planten.ToList());
+            }
+        }
+        [Route("plantinfo/{naam}")]
+        public ActionResult FindPlantByName(string naam)
+        {
+            var plant = (from p in db.Planten
+                         where p.Naam == naam
+                         select p).FirstOrDefault();
+            if (plant != null)
+                return View("Details", plant);
+            else
+            {
+                var planten =
+                db.Planten.Include(p => p.Leveranciers).Include(p => p.Soorten);
+                return View("Index", planten.ToList());
+            }
+        }
+
+        [Route("plantenprijzen/{btw:values(inclusief|exclusief)}", Name = "btwinex")]
+        public ActionResult PrijsLijst(string btw)
+        {
+            ViewBag.Btw = btw;
+            return View(db.Planten.ToList());
+        }
     }
 }

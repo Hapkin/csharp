@@ -1,0 +1,28 @@
+﻿@model List<MVC_Tuincentrum2.DB.Planten>
+@{
+    ViewBag.Title = "FindPlantenBySoortNaam";
+}
+<h2>FindPlantenBySoortNaam</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Naam</th>
+            <th>Soort</th>
+            <th>Leverancier</th>
+            <th>Kleur</th>
+            <th>Prijs</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Naam)</td>
+                <td>@Html.DisplayFor(modelItem => item.Soorten.Soort)</td>
+                <td>@Html.DisplayFor(modelItem => item.Leveranciers.Naam)</td>
+                <td>@Html.DisplayFor(modelItem => item.Kleur)</td>
+                <td>@Html.DisplayFor(modelItem => item.VerkoopPrijs)</td>
+            </tr>
+        }
+    </tbody>
+</table>
