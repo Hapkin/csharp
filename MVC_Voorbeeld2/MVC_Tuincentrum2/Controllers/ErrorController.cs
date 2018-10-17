@@ -9,6 +9,7 @@ namespace MVC_Tuincentrum2.Controllers
     public class ErrorController : Controller
     {
         // GET: Error
+
         public ActionResult Index()
         {
             return View();
