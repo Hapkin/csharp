@@ -1,0 +1,84 @@
+﻿@model MVC_Test.Models.VerhurenVM
+
+@{
+    ViewBag.Title = "Verhuren";
+}
+
+<h2>Verhuren</h2>
+
+@if (Model.hetGenre == null)
+{
+    <p class="lead alert">Klik op het gewenste GENRE</p>
+}
+
+<ul class="nav nav-pills">
+    @foreach (var genre in Model.lGenres)
+    {
+
+        var url = Url.Action("Verhuren", "Verhuren", new { id = genre.GenreNr });
+        if (Model.hetGenre != null && Model.hetGenre.GenreNaam.Equals(genre.GenreNaam))
+        {
+            <li class="active">
+                <a href="@url">@genre.GenreNaam</a>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a href="@url">@genre.GenreNaam</a>
+            </li>
+        }
+    }
+</ul>
+
+@if (Model.hetGenre != null)
+{
+
+
+
+    @*<br />@Model.lFilms.Count();*@
+    <h3>@Model.hetGenre.GenreNaam</h3>
+    if (Model.lFilms.Count() > 0)
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Titel</th>
+                    <th>Prijs</th>
+                    <th>In Voorraad</th>
+                    <th>Huren</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var film in Model.lFilms)
+                {
+                    <tr>
+                        <td class="col-md-3">@film.Titel</td>
+                        <td class="col-md-1"> @Html.DisplayFor(m => film.Prijs) </td>
+                        <td class="col-md-1">@film.InVoorraad</td>
+                        @if (film.InVoorraad > 0)
+                        {
+                            var Gekozenfilm = film;
+                            var urlHuren = Url.Action("Toevoegen", "verhuren", new { id = Gekozenfilm.BandNr });
+                            <td class="col-md-1">
+                                <a href="@urlHuren">Huren</a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="col-md-1"></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="alert alert-warning">
+            Er zijn geen films van dit genre beschikbaar.
+        </p>
+    }
+}
+
+    

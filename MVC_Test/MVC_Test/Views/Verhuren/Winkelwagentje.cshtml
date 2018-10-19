@@ -1,0 +1,39 @@
+﻿@using MVC_Test.Models
+@using MVC_Test.DB
+
+@{
+    ViewBag.Title = "Winkelwagentje";
+    List<Film> lFilms = (List<Film>)Session["cart"];
+    int i = 0;
+}
+
+<h2>Winkelwagentje</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Titel</th>
+            <th>Prijs</th>
+            <th>Verwijderen</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (Film film in lFilms)
+        {
+            
+            var urlVerwijderen = Url.Action("Verwijderen", "verhuren", new { id = i});
+            <tr>
+                <td class="col-md-3">@film.Titel</td>
+                <td class="col-md-1"> @Html.DisplayFor(m => film.Prijs) </td>
+                <td class="col-md-1">
+                    <a href="@urlVerwijderen">verwijderen</a>
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>
+<a href="~/Verhuren/Verhuren/" class="btn btn-default">Verder winkelen</a>
+<a href="~/Verhuren/Afrekenen/" class="btn btn-default">Afrekenen</a>
+

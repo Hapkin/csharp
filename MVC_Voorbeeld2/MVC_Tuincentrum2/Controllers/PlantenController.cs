@@ -102,6 +102,7 @@ namespace MVC_Tuincentrum2.Controllers
             return View(planten);
         }
 
+
         // GET: Planten/Delete/5
         public ActionResult Delete(int? id)
         {

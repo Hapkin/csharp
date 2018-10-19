@@ -1,0 +1,62 @@
+﻿@if (ViewBag.Title != "Home Page")
+{
+    if (Session["klant"] == null)
+    { Context.Response.Redirect("~/HOME/Index"); }
+}
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("VDAB Movies", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-text">@ViewBag.Title</li>
+                    @if (Session["cart"] != null)
+                    {
+                        <li class="nav navbar-nav"> @Html.ActionLink("Afrekenen?", "Winkelwagentje", "Verhuren") </li>
+                    }
+                    @if (Session["klant"] != null)
+                    {
+
+                        <li class="nav navbar-nav"> @Html.ActionLink("Uitloggen?", "Uitloggen", "Home") </li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="container body-content">
+        <img src="~/Images/videoVerhuur.jpg" />
+        @RenderBody()
+        <hr />
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
