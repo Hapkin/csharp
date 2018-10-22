@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MVC_Test.DB;
+using MVC_Test.Models;
 
 namespace MVC_Test.Services
 {
@@ -54,7 +55,7 @@ namespace MVC_Test.Services
 
 
 
-        public Klant InloggenKlant(Klant testklant)
+        public Klant InloggenKlant(LoginVM testklant)
         {
             using (EFVideoVerhuur DB = new EFVideoVerhuur())
             {
@@ -62,7 +63,7 @@ namespace MVC_Test.Services
                 //Klant query = (Klant)from klant in DB.Klanten
                 //            where klant.Naam.ToLower() == testklant.Naam.ToLower() //&& klant.PostCode == testklant.PostCode
                 //            select klant;
-                Klant klant = DB.Klanten.FirstOrDefault(x => x.Naam == testklant.Naam && x.PostCode == testklant.PostCode);
+                Klant klant = DB.Klanten.FirstOrDefault(x => x.Naam == testklant.Naam && x.PostCode == testklant.Postcode);
 
 
                 return klant;

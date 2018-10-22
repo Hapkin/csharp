@@ -17,7 +17,6 @@ namespace MVC_Test.Controllers
         // GET: Verhuren
         public ActionResult Index()
         {
-            //return View();
             return View("Verhuren");
         }
         public ActionResult Verhuren(int? id)
@@ -36,17 +35,17 @@ namespace MVC_Test.Controllers
         }
         public ActionResult Winkelwagentje()
         {
-
-            return View();
+            WinkelWagenVM VM = new WinkelWagenVM();
+            List<Film> gekozenFilms = (List<Film>)Session["cart"];
+            VM.lFilms = gekozenFilms;
+            VM.klant = (Klant)Session["klant"];
+            return View(VM);
         }
 
         public ActionResult Verwijderen(int id)
         {
-            //Film gekozenfilm = DB.GetSelectedFilm(id);
             List<Film> li = (List<Film>)Session["cart"];
-            //li.Remove(gekozenfilm);
             li.RemoveAt(id);
-
             Session["cart"] = li;
 
             return RedirectToAction("Winkelwagentje", "Verhuren");
@@ -72,11 +71,31 @@ namespace MVC_Test.Controllers
                 {
                     li.Add(gekozenfilm);
                     Session["cart"] = li;
-                }
-                
+                }  
             }
             return RedirectToAction("Winkelwagentje", "Verhuren");
         }
+
+        public ActionResult Afrekenen()
+        {
+            WinkelWagenVM VM = new WinkelWagenVM();
+
+            if (Session["cart"] != null)
+            {
+                List<Film> li = new List<Film>();
+                li = (List<Film>)Session["cart"];
+                VM.lFilms = li;
+                VM.klant = (Klant)Session["klant"];
+                Session.Clear();
+                return View(VM);
+            }else
+            {
+                return View("Verhuren");
+            }
+            
+        }
+
+        
 
     }
 }

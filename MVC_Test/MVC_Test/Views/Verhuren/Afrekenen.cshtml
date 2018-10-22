@@ -1,0 +1,20 @@
+﻿@using MVC_Test.Models
+@model WinkelWagenVM
+@{
+    ViewBag.Title = "Home Page";
+    @*Session.Clear();*@
+}
+
+<p>Volgende films:
+<table class="table  table-striped">
+
+    @foreach (var item in Model.lFilms)
+    {
+        <tr><td>@item.Titel</td></tr>
+
+    }
+
+</table>
+worden verstuurd naar @Model.klant.Straat_Nr
+</p>
+

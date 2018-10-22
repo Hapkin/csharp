@@ -22,3 +22,48 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+/* Error handeling */
+.field-validation-error {
+    color: #ff0000;
+    display: block;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+input, textarea, select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Popup css */
+.modalBackground {
+    background-color: Black;
+    filter: alpha(opacity=40);
+    opacity: 0.4;
+}
+
+.modalPopup {
+    background-color: #FFFFFF;
+    width: 300px;
+    border: 1px solid #0DA9D0;
+}
+
+

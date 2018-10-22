@@ -19,7 +19,7 @@ namespace MVC_Test.DB
 
         public int KlantNr { get; set; }
 
-        [Required]
+        
         [StringLength(50)]
         public string Naam { get; set; }
 
@@ -31,7 +31,8 @@ namespace MVC_Test.DB
         [StringLength(50)]
         public string Straat_Nr { get; set; }
 
-         public int PostCode { get; set; }
+        
+        public int PostCode { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -50,5 +51,9 @@ namespace MVC_Test.DB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Verhuur> Verhuur { get; set; }
+
+
+        
+
     }
 }

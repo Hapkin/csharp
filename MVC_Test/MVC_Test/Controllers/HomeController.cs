@@ -14,6 +14,7 @@ namespace MVC_Test.Controllers
         VideoVerhuurService DB = new VideoVerhuurService();
         public ActionResult Index()
         {
+
             return View();
         }
         public ActionResult FouteInlog()
@@ -25,17 +26,24 @@ namespace MVC_Test.Controllers
 
 
         [HttpPost]
-        public ActionResult Inloggen(Klant klant)
+        public ActionResult Inloggen(LoginVM VM)
         {
-            Klant BestaandeKlant = DB.InloggenKlant(klant);
-            if (BestaandeKlant != null)
+            if (this.ModelState.IsValid)
             {
-                Session["klant"] = BestaandeKlant;
-                return RedirectToAction("Index", "Home");
+                Klant BestaandeKlant = DB.InloggenKlant(VM);
+                if (BestaandeKlant != null)
+                {
+                    Session["klant"] = BestaandeKlant;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return RedirectToAction("FouteInlog", "Home", new { fout = "fout" });
+                }
             }
             else
             {
-                return RedirectToAction("FouteInlog", "Home", new {fout="fout" });
+                return View("Index", VM);
             }
 
         }

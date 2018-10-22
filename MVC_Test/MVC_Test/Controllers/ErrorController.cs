@@ -19,6 +19,5 @@ namespace MVC_Test.Controllers
             return View();
         }
 
-
-    }
+   }
 }

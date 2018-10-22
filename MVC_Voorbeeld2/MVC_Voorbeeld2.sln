@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Areas", "MVC_Areas\MVC_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Security", "MVC_Security\MVC_Security.csproj", "{64270DF2-304C-47BA-A3BB-077F126B7797}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TESTJQUERY", "TESTJQUERY\TESTJQUERY.csproj", "{554F5ACE-6E5F-4B71-AB41-C58CC6599E00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{64270DF2-304C-47BA-A3BB-077F126B7797}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64270DF2-304C-47BA-A3BB-077F126B7797}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64270DF2-304C-47BA-A3BB-077F126B7797}.Release|Any CPU.Build.0 = Release|Any CPU
+		{554F5ACE-6E5F-4B71-AB41-C58CC6599E00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{554F5ACE-6E5F-4B71-AB41-C58CC6599E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{554F5ACE-6E5F-4B71-AB41-C58CC6599E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{554F5ACE-6E5F-4B71-AB41-C58CC6599E00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
