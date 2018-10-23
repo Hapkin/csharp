@@ -9,15 +9,20 @@ namespace MVC_Test.Controllers
     public class ErrorController : Controller
     {
         // GET: Error
-        public ActionResult Index()
+        public ActionResult Index(string boodschap)
         {
-            return View();
+            return View("Index", model:boodschap);
         }
-        public ActionResult NotFound()
+        public ActionResult NotFound404()
         {
             Response.StatusCode = 404;
-            return View();
+            return View("NotFound", model:"404");
+        }
+        public ActionResult NotFound500()
+        {
+            Response.StatusCode = 500;
+            return View("NotFound", model:"500");
         }
 
-   }
+    }
 }

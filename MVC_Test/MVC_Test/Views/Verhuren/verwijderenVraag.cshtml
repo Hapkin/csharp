@@ -1,0 +1,15 @@
+﻿@using MVC_Test.Models
+@model WinkelWagenVM
+
+@{
+    ViewBag.Title = "verwijderenVraag";
+    var urlJa = Url.Action("Verwijderen", "verhuren", new { id = Model.FilmVerwijderenID });
+    var urlNee = Url.Action("Winkelwagentje", "verhuren");
+}
+
+<h2>Film uit je lijst verwijderen?</h2>
+<p>
+    @Model.FilmVerwijderen.Titel
+</p>
+<a href="@urlJa" class="btn btn-default">Ja</a> // <a href="@urlNee" class="btn btn-default">Nee</a>
+

@@ -12,6 +12,7 @@ namespace MVC_Test
     {
         protected void Application_Start()
         {
+            DefaultModelBinder.ResourceClassKey = "Messages";
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

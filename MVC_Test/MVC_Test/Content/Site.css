@@ -44,26 +44,15 @@ textarea {
     color: #ff0000;
 }
 
-.validation-summary-valid {
+.validation-summary-valid, .popup {
     display: none;
 }
 
-input, textarea, select {
+input, textarea, select, .popupOpen {
     display: block;
     margin-bottom: 10px;
 }
 
 /* Popup css */
-.modalBackground {
-    background-color: Black;
-    filter: alpha(opacity=40);
-    opacity: 0.4;
-}
-
-.modalPopup {
-    background-color: #FFFFFF;
-    width: 300px;
-    border: 1px solid #0DA9D0;
-}
 
 

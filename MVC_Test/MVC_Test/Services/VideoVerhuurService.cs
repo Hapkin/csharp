@@ -14,7 +14,6 @@ namespace MVC_Test.Services
 
         public List<Genre> GetAllGenres()
         {
-            
             using (EFVideoVerhuur DB = new EFVideoVerhuur())
             {
                 List<Genre> lGenre = DB.Genres.ToList();
@@ -59,14 +58,42 @@ namespace MVC_Test.Services
         {
             using (EFVideoVerhuur DB = new EFVideoVerhuur())
             {
-
-                //Klant query = (Klant)from klant in DB.Klanten
-                //            where klant.Naam.ToLower() == testklant.Naam.ToLower() //&& klant.PostCode == testklant.PostCode
-                //            select klant;
                 Klant klant = DB.Klanten.FirstOrDefault(x => x.Naam == testklant.Naam && x.PostCode == testklant.Postcode);
-
-
                 return klant;
+            }
+        }
+
+        public string SaveAll(List<Film> lFilms, Klant deKlant)
+        {
+            if (lFilms != null && deKlant != null)
+            {
+                using (EFVideoVerhuur DB = new EFVideoVerhuur())
+                {
+                    Klant DBKlant = DB.Klanten.FirstOrDefault(x => x.KlantNr == deKlant.KlantNr);
+                    if (lFilms.Count() > 0 && DBKlant!=null)
+                    {
+                       
+
+                        foreach (Film film in lFilms)
+                        {
+                            Film DBFilm = DB.Films.FirstOrDefault(f => f.BandNr == film.BandNr);
+                            DBFilm.InVoorraad--;
+                            DBFilm.UitVoorraad++;
+                            DBKlant.HuurAantal++;
+
+                        }
+                        DB.SaveChanges();
+                        return "OK";
+                    }
+                    else
+                    {
+                        return "Er zitten geen films in het winkelwagentje Of de gebruiker is niet gevonden.";
+                    }
+                }
+            }
+            else {
+                //hier zou je niet mogen geraken...
+                return "Er is iets misgegaan... Gelieve later opnieuw te proberen en/of ons te contacteren.";
             }
         }
     }

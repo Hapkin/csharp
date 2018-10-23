@@ -2,19 +2,45 @@
 @model WinkelWagenVM
 @{
     ViewBag.Title = "Home Page";
-    @*Session.Clear();*@
+    decimal som = 0;
 }
 
-<p>Volgende films:
+<h2>Afrekenen:</h2>
 <table class="table  table-striped">
+    <thead>
+        <tr>
+            <th class="col-md-3">Titel</th>
+            <th class="col-md-1">Prijs</th>
 
-    @foreach (var item in Model.lFilms)
-    {
-        <tr><td>@item.Titel</td></tr>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.lFilms)
+        {
+            som += item.Prijs;
 
-    }
+            <tr>
+                <td class="col-md-3">@item.Titel</td>
+                <td class="col-md-1">@Html.DisplayFor(m => item.Prijs)</td>
+
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th class="col-md-3 info">Totaal:</th>
+            <th class="col-md-1 info">
+                @string.Format("{0:€ #,##0.00}", som)
+            </th>
+        </tr>
+    </tfoot>
+
+
 
 </table>
-worden verstuurd naar @Model.klant.Straat_Nr
-</p>
+wordt gefactureerd aan:<br />
+@Model.klant.Voornaam @Model.klant.Naam <br />
+@Model.klant.Straat_Nr <br />
+@Model.klant.PostCode @Model.klant.Gemeente <br />
+
 

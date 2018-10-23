@@ -3,31 +3,8 @@
 
 @{
     ViewBag.Title = "Winkelwagentje";
-    
     int i = 0;
-
-
 }
-
-@* @Ajax.ActionLink("Open popup", "SomeAction", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "delete", InsertionMode = InsertionMode.Replace, OnSuccess = "openPopup" })<br />
-*@
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#delete").dialog({
-            autoOpen: false,
-            title: 'Delete?',
-            width: 500,
-            height: 'auto',
-            modal: true
-        });
-    });
-    function openPopup(filmID) {
-        $("#delete").dialog("open");
-    }
-</script>
-
-
 
 
 <h2>Winkelwagentje</h2>
@@ -44,13 +21,14 @@
 
         @foreach (var film in Model.lFilms)
         {
-            var urlVerwijderen = Url.Action("Verwijderen", "verhuren", new { id = i });
+            //var urlVerwijderen = Url.Action("verwijderenVraag", "verhuren", new { filmVerwijderenID = i, filmVerwijderen = film });
+            var urlVerwijderen = Url.Action("verwijderenVraag", "verhuren", new { filmVerwijderenID = i });
             <tr>
                 <td class="col-md-3">@film.Titel</td>
                 <td class="col-md-1"> @Html.DisplayFor(m => film.Prijs) </td>
                 <td class="col-md-1">
-                    @*<a href="@urlVerwijderen" class="btn-xs btn-default">verwijderen?</a>*@
-                    <button onclick="openPopup(@i)" class="btn-xs btn-default">verwijderen</button>
+                    <a href="@urlVerwijderen" class="btn-xs btn-default">verwijderen?</a>
+
                 </td>
             </tr>
             i++;
@@ -58,8 +36,17 @@
     </tbody>
 </table>
 
-<div id="delete" class="modal-dialog">blablabla</div>
+
+<div class="modal">
+    <div class="modal-content">
+        <h2>Ben je zeker dat je deze film wil verwijderen?</h2>
+        <span class="close-button">Nee</span>
+    </div>
+</div>
+
 
 <a href="~/Verhuren/Verhuren/" class="btn btn-default">Verder winkelen</a>
+@if (Model.lFilms.Count > 0)
+{
 <a href="~/Verhuren/Afrekenen/" class="btn btn-default">Afrekenen</a>
-
+}

@@ -1,6 +1,12 @@
-﻿@{
+﻿@model string
+@{
     ViewBag.Title = "NotFound";
 }
 <p class="lead alert alert-danger">
     De gevraagde URL werd niet gevonden.
-    </p>
+</p>
+    @if (Model != null)
+    {
+        <p>error: @Model</p>
+    }
+    

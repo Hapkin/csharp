@@ -17,7 +17,7 @@ namespace MVC_Test.Controllers
         // GET: Verhuren
         public ActionResult Index()
         {
-            return View("Verhuren");
+            return RedirectToAction("Verhuren");
         }
         public ActionResult Verhuren(int? id)
         {
@@ -33,6 +33,10 @@ namespace MVC_Test.Controllers
 
             return View(VM);
         }
+
+
+
+
         public ActionResult Winkelwagentje()
         {
             WinkelWagenVM VM = new WinkelWagenVM();
@@ -42,6 +46,19 @@ namespace MVC_Test.Controllers
             return View(VM);
         }
 
+        public ActionResult verwijderenVraag(int filmVerwijderenID)//Film filmVerwijderen, 
+        {
+            WinkelWagenVM VM = new WinkelWagenVM();
+
+            List<Film> gekozenFilms = (List<Film>)Session["cart"];
+            Film filmVerwijderen = gekozenFilms[filmVerwijderenID];
+
+            VM.FilmVerwijderenID = filmVerwijderenID;
+            VM.FilmVerwijderen = filmVerwijderen;
+            return View(VM);
+        }
+
+
         public ActionResult Verwijderen(int id)
         {
             List<Film> li = (List<Film>)Session["cart"];
@@ -50,6 +67,10 @@ namespace MVC_Test.Controllers
 
             return RedirectToAction("Winkelwagentje", "Verhuren");
         }
+
+
+
+
         public ActionResult Toevoegen(int id)
         {
 
@@ -66,6 +87,8 @@ namespace MVC_Test.Controllers
                 if (li.Any(x => x.BandNr == id))
                 {
                     //verwijzen naar error boodschap? is reeds opgenomen in de lijst
+                    //return RedirectToAction("Index", "Error", new { boodschap = "Je hebt deze film al gekozen" });
+                    //return View("Index", "Error");
                 }
                 else
                 {
@@ -78,19 +101,34 @@ namespace MVC_Test.Controllers
 
         public ActionResult Afrekenen()
         {
-            WinkelWagenVM VM = new WinkelWagenVM();
+            //return RedirectToAction("index");
 
-            if (Session["cart"] != null)
+            WinkelWagenVM VM = new WinkelWagenVM();
+            string saveResult;
+
+            if (Session["cart"] != null && Session["klant"] != null)
             {
-                List<Film> li = new List<Film>();
-                li = (List<Film>)Session["cart"];
+
+                List<Film> li = (List<Film>)Session["cart"];
                 VM.lFilms = li;
                 VM.klant = (Klant)Session["klant"];
-                Session.Clear();
-                return View(VM);
-            }else
+
+                saveResult = DB.SaveAll(VM.lFilms, VM.klant);
+
+                if (saveResult == "OK")
+                {
+                    Session.Clear();
+                    return View("Afrekenen", VM);
+                }
+                else
+                {
+                    //return View("index", "Error", new { boodschap = saveResult });
+                    return RedirectToAction("index");
+                }
+            }
+            else
             {
-                return View("Verhuren");
+                return RedirectToAction("index");
             }
             
         }

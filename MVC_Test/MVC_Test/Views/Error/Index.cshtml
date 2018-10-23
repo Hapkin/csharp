@@ -1,0 +1,13 @@
+﻿@model string
+@{
+    ViewBag.Title = "NotFound";
+}
+
+
+
+@if (Model != null)
+{
+    <p class="lead alert alert-danger">error: @Model</p>
+}
+<a class="btn btn-default" href="~/home/index">Home Page</a>
+

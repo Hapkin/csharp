@@ -34,12 +34,12 @@
                     <li class="navbar-text">@ViewBag.Title</li>
                     @if (Session["cart"] != null)
                     {
-                        <li class="nav navbar-nav"> @Html.ActionLink("Afrekenen?", "Winkelwagentje", "Verhuren") </li>
+                        <li class="nav navbar-nav"> @Html.ActionLink("Winkelwagentje", "Winkelwagentje", "Verhuren") </li>
                     }
                     @if (Session["klant"] != null)
                     {
 
-                        <li class="nav navbar-nav"> @Html.ActionLink("Uitloggen?", "Uitloggen", "Home") </li>
+                        <li class="nav navbar-nav"> @Html.ActionLink("Uitloggen", "Uitloggen", "Home") </li>
                     }
                 </ul>
             </div>
